@@ -172,3 +172,9 @@ parameters:
     maxAge: false
     # Sets the Access-Control-Allow-Credentials header.
     supportsCredentials: false
+
+# Added this temporarily to have a twig debug, according to 2. Configuring Render API cache for debugging
+# see more on https://www.drupal.org/node/1903374
+# $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
+# $settings['cache']['bins']['render'] = 'cache.backend.null';
+# $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';

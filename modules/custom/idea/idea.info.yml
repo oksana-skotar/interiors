@@ -1,0 +1,5 @@
+name: Idea
+type: module
+description: Handle display of exemples on Idea CT page
+core: 8.x
+package: custom
