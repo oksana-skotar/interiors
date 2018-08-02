@@ -73,7 +73,7 @@ class __TwigTemplate_562d25a66ab12b6b54d5eeac1408b0797d9c28649548dcd51d059ca6447
       ";
         // line 110
         $this->displayBlock('content', $context, $blocks);
-        // line 114
+        // line 115
         echo "    </div>
   </div>
 </article>
@@ -150,6 +150,10 @@ class __TwigTemplate_562d25a66ab12b6b54d5eeac1408b0797d9c28649548dcd51d059ca6447
         echo "
         ";
         // line 112
+        echo $this->env->getExtension('Twig_Extension_Sandbox')->ensureToStringAllowed($this->env->getExtension('Drupal\Core\Template\TwigExtension')->escapeFilter($this->env, $this->getAttribute(($context["content"] ?? null), "field_idea_object", array()), "html", null, true));
+        echo "
+        ";
+        // line 113
         echo $this->env->getExtension('Twig_Extension_Sandbox')->ensureToStringAllowed($this->env->getExtension('Drupal\Core\Template\TwigExtension')->escapeFilter($this->env, $this->getAttribute(($context["content"] ?? null), "title", array()), "html", null, true));
         echo "
       ";
@@ -167,7 +171,7 @@ class __TwigTemplate_562d25a66ab12b6b54d5eeac1408b0797d9c28649548dcd51d059ca6447
 
     public function getDebugInfo()
     {
-        return array (  153 => 112,  148 => 111,  145 => 110,  141 => 108,  135 => 105,  132 => 104,  130 => 101,  129 => 99,  125 => 98,  121 => 97,  117 => 96,  114 => 95,  112 => 94,  107 => 93,  99 => 90,  94 => 89,  92 => 88,  87 => 87,  84 => 86,  77 => 114,  75 => 110,  72 => 109,  70 => 86,  65 => 84,  60 => 82,  56 => 81,  52 => 80,  50 => 76,  49 => 75,  48 => 74,  47 => 73,  46 => 72,  45 => 70,);
+        return array (  157 => 113,  153 => 112,  148 => 111,  145 => 110,  141 => 108,  135 => 105,  132 => 104,  130 => 101,  129 => 99,  125 => 98,  121 => 97,  117 => 96,  114 => 95,  112 => 94,  107 => 93,  99 => 90,  94 => 89,  92 => 88,  87 => 87,  84 => 86,  77 => 115,  75 => 110,  72 => 109,  70 => 86,  65 => 84,  60 => 82,  56 => 81,  52 => 80,  50 => 76,  49 => 75,  48 => 74,  47 => 73,  46 => 72,  45 => 70,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
