@@ -109,16 +109,6 @@
       </header>
       {% block content %}
         {{ content }}
-        
-        {{ related_node_image }}
-
-        {{file_url(related_node.field_example_image['#items'].entity.uri.value)}}"
-        
-        <img src="/edsa-drupal2/sites/default/files/2018-08/706aab50090749.58c732c60b7cb.jpg" width="320"> 
-        {{ related_node_description }}
-        {{ related_node_project }}
-        
-
       {% endblock %}
     </div>
   </div>

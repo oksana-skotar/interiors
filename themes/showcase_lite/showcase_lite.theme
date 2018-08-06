@@ -7,6 +7,8 @@
 use Drupal\Core\Theme\ThemeSettings;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Template\Attribute;
+use Drupal\node\Entity\Node;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_preprocess_HOOK() for HTML document templates.
@@ -706,7 +708,6 @@ function showcase_lite_preprocess_node(&$variables) {
       $variables['comment_count'] = "0";
     }
   }
-
 }
 
 function showcase_lite_preprocess_node__article(&$variables) {
@@ -722,6 +723,31 @@ function showcase_lite_preprocess_node__article(&$variables) {
     $words = $words - str_word_count(strip_tags($node_comments));
   }
   $variables['minutes'] = floor($words / 275);
+}
+
+function showcase_lite_preprocess_node__idea(&$variables) {
+  $current_node = $variables['node'];
+  $current_node_id = $current_node->id();
+  
+  $query = \Drupal::entityQuery('node');
+  $query->condition('type', 'example');
+  $query->condition('status', 1);
+  $query->condition('field_example_ideas', $current_node_id);
+  $nids = $query->execute();
+  $relatednodes = Node::loadMultiple($nids);
+
+  if (!empty($relatednodes)) {
+    foreach ($relatednodes as $related_node) {
+      $related_node_image = $related_node->field_example_image->value;
+      $related_node_description = $related_node->field_example_description->value;    
+      $related_node_project = $related_node->field_example_project->value;
+      
+      $variables['related_node_image'] = $related_node_image;
+      $variables['related_node_description'] = $related_node_description;
+      $variables['related_node_project'] = $related_node_project;
+      
+    }
+  }
 }
 
 /**
