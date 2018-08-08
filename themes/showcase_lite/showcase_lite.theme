@@ -736,18 +736,9 @@ function showcase_lite_preprocess_node__idea(&$variables) {
   $nids = $query->execute();
   $relatednodes = Node::loadMultiple($nids);
 
-  if (!empty($relatednodes)) {
-    foreach ($relatednodes as $related_node) {
-      $related_node_image = $related_node->field_example_image->value;
-      $related_node_description = $related_node->field_example_description->value;    
-      $related_node_project = $related_node->field_example_project->value;
-      
-      $variables['related_node_image'] = $related_node_image;
-      $variables['related_node_description'] = $related_node_description;
-      $variables['related_node_project'] = $related_node_project;
-      
-    }
-  }
+  $variables['related_nodes'] = \Drupal::entityTypeManager()
+      ->getViewBuilder('node')
+      ->viewMultiple($relatednodes, $view_mode = 'example_img_description_project', $current_node->language()->getId());
 }
 
 /**
