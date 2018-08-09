@@ -736,9 +736,12 @@ function showcase_lite_preprocess_node__idea(&$variables) {
   $nids = $query->execute();
   $relatednodes = Node::loadMultiple($nids);
 
-  $variables['related_nodes'] = \Drupal::entityTypeManager()
-      ->getViewBuilder('node')
-      ->viewMultiple($relatednodes, $view_mode = 'example_img_description_project', $current_node->language()->getId());
+  foreach ($relatednodes as $node) {
+  $variables['related_nodes'][] = \Drupal::entityTypeManager()
+    ->getViewBuilder('node')
+    ->view($node, $view_mode  = 'example_img_description_project', $current_node->language()->getId());
+  }
+  
 }
 
 /**
