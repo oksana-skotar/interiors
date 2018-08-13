@@ -1,0 +1,12 @@
+uuid: ed9e478c-8aab-4ea3-bd2f-f74dce670e41
+langcode: en
+status: true
+dependencies: {  }
+label: 'Example small'
+id: example_small
+description: ''
+aspect_ratio: ''
+soft_limit_width: 400
+soft_limit_height: 150
+hard_limit_width: null
+hard_limit_height: null

@@ -1,0 +1,23 @@
+uuid: bde2a343-630c-446c-9f94-316d45583eb9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_example_fullscreen
+    - node.type.example
+id: node.example.field_example_fullscreen
+field_name: field_example_fullscreen
+entity_type: node
+bundle: example
+label: Full-screen
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

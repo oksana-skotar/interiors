@@ -1,0 +1,29 @@
+uuid: 9e6d4f1b-9dac-4ac7-a79a-cd50447b8e0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_example_constraint
+    - node.type.example
+    - taxonomy.vocabulary.constraints
+id: node.example.field_example_constraint
+field_name: field_example_constraint
+entity_type: node
+bundle: example
+label: Constraint
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      constraints: constraints
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

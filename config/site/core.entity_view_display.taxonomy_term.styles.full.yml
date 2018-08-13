@@ -1,0 +1,38 @@
+uuid: 8c6749f2-d81a-4062-9d00-8ec4acf6ceb5
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.full
+    - field.field.taxonomy_term.styles.field_style_characteristic
+    - field.field.taxonomy_term.styles.field_style_color
+    - field.field.taxonomy_term.styles.field_style_images
+    - field.field.taxonomy_term.styles.field_style_material
+    - taxonomy.vocabulary.styles
+  module:
+    - text
+id: taxonomy_term.styles.full
+targetEntityType: taxonomy_term
+bundle: styles
+mode: full
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_style_characteristic:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  field_style_color: true
+  field_style_images: true
+  field_style_material: true
+  langcode: true

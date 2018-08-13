@@ -1,0 +1,29 @@
+uuid: 7d2b92bc-ab29-4d47-9784-c9c1126e19f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_example_space
+    - node.type.example
+    - taxonomy.vocabulary.spaces
+id: node.example.field_example_space
+field_name: field_example_space
+entity_type: node
+bundle: example
+label: Space
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      spaces: spaces
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

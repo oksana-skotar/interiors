@@ -1,0 +1,19 @@
+uuid: 11cc02c7-19b5-4d4d-8eb4-aef219c85731
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_example_project
+field_name: field_example_project
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

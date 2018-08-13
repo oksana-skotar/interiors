@@ -1,0 +1,14 @@
+uuid: c3e9f1c5-d95a-4e91-9ffa-3a6fdcfff291
+name: 'Quick Mints for HOME'
+mail: o.skotar@gmail.com
+slogan: 'fresh ideas quickly'
+page:
+  403: ''
+  404: ''
+  front: /node/17
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI

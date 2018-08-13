@@ -1,0 +1,29 @@
+uuid: 885326ff-f80f-4dd7-ba2e-ad04ace4019f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_style_color
+    - taxonomy.vocabulary.colors
+    - taxonomy.vocabulary.styles
+id: taxonomy_term.styles.field_style_color
+field_name: field_style_color
+entity_type: taxonomy_term
+bundle: styles
+label: Color
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      colors: colors
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

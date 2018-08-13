@@ -1,0 +1,9 @@
+uuid: 060fb197-81c0-4add-9be1-5172b1321550
+langcode: en
+status: true
+dependencies: {  }
+name: Objects
+vid: objects
+description: ''
+hierarchy: 0
+weight: 0

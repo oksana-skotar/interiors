@@ -1,0 +1,10 @@
+uuid: 4ad6ffa8-0918-41cf-a805-9f69798636c9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.example_img_description_project
+label: 'Example - img, description, project'
+targetEntityType: node
+cache: true

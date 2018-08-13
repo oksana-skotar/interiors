@@ -1,0 +1,20 @@
+uuid: b2722be5-e779-482b-9bd6-b39c9e1e875a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_example_material
+field_name: field_example_material
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

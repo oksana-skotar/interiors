@@ -1,0 +1,29 @@
+uuid: 959dc651-247c-47a6-8847-9a52e410257f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_example_image
+    - media.type.image
+    - node.type.example
+id: node.example.field_example_image
+field_name: field_example_image
+entity_type: node
+bundle: example
+label: Image
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: created
+      direction: DESC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

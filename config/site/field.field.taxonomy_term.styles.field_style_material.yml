@@ -1,0 +1,29 @@
+uuid: 87797e41-cf71-43cb-a463-5bf82528f696
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_style_material
+    - taxonomy.vocabulary.materials
+    - taxonomy.vocabulary.styles
+id: taxonomy_term.styles.field_style_material
+field_name: field_style_material
+entity_type: taxonomy_term
+bundle: styles
+label: Material
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      materials: materials
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

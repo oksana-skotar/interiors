@@ -1,0 +1,29 @@
+uuid: dad163c7-dc7c-487b-aae5-12b35c909a24
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_idea_surface
+    - node.type.idea
+    - taxonomy.vocabulary.surfaces
+id: node.idea.field_idea_surface
+field_name: field_idea_surface
+entity_type: node
+bundle: idea
+label: Surface
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      surfaces: surfaces
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

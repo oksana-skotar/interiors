@@ -1,0 +1,47 @@
+uuid: c3c9f81e-7f13-4936-9ea6-79d783468a44
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.example.field_example_color
+    - field.field.node.example.field_example_constraint
+    - field.field.node.example.field_example_description
+    - field.field.node.example.field_example_fullscreen
+    - field.field.node.example.field_example_ideas
+    - field.field.node.example.field_example_image
+    - field.field.node.example.field_example_material
+    - field.field.node.example.field_example_object
+    - field.field.node.example.field_example_project
+    - field.field.node.example.field_example_space
+    - field.field.node.example.field_example_style
+    - field.field.node.example.field_example_surface
+    - field.field.node.example.field_example_theme
+    - field.field.node.example.field_example_users_age
+    - node.type.example
+  module:
+    - user
+id: node.example.teaser
+targetEntityType: node
+bundle: example
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_example_color: true
+  field_example_constraint: true
+  field_example_description: true
+  field_example_fullscreen: true
+  field_example_ideas: true
+  field_example_image: true
+  field_example_material: true
+  field_example_object: true
+  field_example_project: true
+  field_example_space: true
+  field_example_style: true
+  field_example_surface: true
+  field_example_theme: true
+  field_example_users_age: true
+  langcode: true

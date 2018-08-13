@@ -1,0 +1,20 @@
+uuid: 8f8b5fdb-9b4e-4b53-ae30-42bbd2d89766
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_idea_material
+field_name: field_idea_material
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

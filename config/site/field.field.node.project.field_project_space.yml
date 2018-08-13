@@ -1,0 +1,29 @@
+uuid: b468080a-0930-4a0e-9b03-322d9a230ffa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_project_space
+    - node.type.project
+    - taxonomy.vocabulary.spaces
+id: node.project.field_project_space
+field_name: field_project_space
+entity_type: node
+bundle: project
+label: Space
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      spaces: spaces
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

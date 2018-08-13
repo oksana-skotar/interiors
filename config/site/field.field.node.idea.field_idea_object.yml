@@ -1,0 +1,29 @@
+uuid: fab67172-4d68-48c1-9300-6937706032ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_idea_object
+    - node.type.idea
+    - taxonomy.vocabulary.objects
+id: node.idea.field_idea_object
+field_name: field_idea_object
+entity_type: node
+bundle: idea
+label: Object
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      objects: objects
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

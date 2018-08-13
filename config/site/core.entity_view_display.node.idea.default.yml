@@ -1,0 +1,123 @@
+uuid: f1118d67-28d5-491e-8bae-82b7cadec485
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.idea.body
+    - field.field.node.idea.field_idea_collections
+    - field.field.node.idea.field_idea_color
+    - field.field.node.idea.field_idea_constraint
+    - field.field.node.idea.field_idea_ideas_criteria
+    - field.field.node.idea.field_idea_material
+    - field.field.node.idea.field_idea_object
+    - field.field.node.idea.field_idea_space
+    - field.field.node.idea.field_idea_style
+    - field.field.node.idea.field_idea_surface
+    - field.field.node.idea.field_idea_teaser_image
+    - field.field.node.idea.field_idea_theme
+    - field.field.node.idea.field_idea_users_age
+    - node.type.idea
+  module:
+    - text
+    - user
+id: node.idea.default
+targetEntityType: node
+bundle: idea
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_idea_collections:
+    weight: 11
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_idea_color:
+    weight: 10
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_idea_constraint:
+    weight: 5
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_idea_material:
+    weight: 7
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_idea_object:
+    weight: 3
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_idea_space:
+    weight: 4
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_idea_style:
+    weight: 2
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_idea_surface:
+    weight: 6
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_idea_theme:
+    weight: 9
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_idea_users_age:
+    weight: 8
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_idea_ideas_criteria: true
+  field_idea_teaser_image: true
+  langcode: true

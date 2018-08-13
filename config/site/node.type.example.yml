@@ -1,0 +1,18 @@
+uuid: 51a14649-1380-497f-9572-8f01280c176e
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Example
+type: example
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

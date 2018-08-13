@@ -1,0 +1,24 @@
+uuid: 569e457f-52b1-4442-b403-7a75cd4384db
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.page
+  content:
+    - 'file:file:35104ded-daee-482a-9c80-46758487ac74'
+  module:
+    - entity_embed
+    - node
+label: Media
+id: media
+type_id: entity
+type_settings:
+  entity_type: node
+  bundles:
+    - page
+  display_plugins:
+    - 'view_mode:node.full'
+  entity_browser: images_browser
+  entity_browser_settings:
+    display_review: true
+icon_uuid: 35104ded-daee-482a-9c80-46758487ac74

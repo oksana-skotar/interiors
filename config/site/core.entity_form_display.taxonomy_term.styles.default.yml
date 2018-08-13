@@ -1,0 +1,90 @@
+uuid: 0e8e6671-3809-4553-8f98-c3102cfed5b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.images_browser
+    - field.field.taxonomy_term.styles.field_style_characteristic
+    - field.field.taxonomy_term.styles.field_style_color
+    - field.field.taxonomy_term.styles.field_style_images
+    - field.field.taxonomy_term.styles.field_style_material
+    - taxonomy.vocabulary.styles
+  module:
+    - entity_browser
+    - path
+    - text
+id: taxonomy_term.styles.default
+targetEntityType: taxonomy_term
+bundle: styles
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  field_style_characteristic:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_style_color:
+    weight: 6
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_style_images:
+    weight: 1
+    settings:
+      entity_browser: images_browser
+      field_widget_display: label
+      field_widget_edit: true
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_replace: false
+      field_widget_display_settings: {  }
+    third_party_settings: {  }
+    type: entity_browser_entity_reference
+    region: content
+  field_style_material:
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

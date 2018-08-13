@@ -1,0 +1,26 @@
+uuid: d36fc13a-3264-4a9b-8f7a-ee4dc3c17ead
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - showcase_lite
+_core:
+  default_config_hash: qQm6V9netJjLJByPLCBx_FYqFr3xIt7v8l0MSLcDm7s
+id: showcase_lite_main_menu
+theme: showcase_lite
+region: header
+weight: -5
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 1
+visibility: {  }

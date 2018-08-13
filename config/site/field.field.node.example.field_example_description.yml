@@ -1,0 +1,19 @@
+uuid: bbcccb71-946e-4f17-88e8-521bceb6731a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_example_description
+    - node.type.example
+id: node.example.field_example_description
+field_name: field_example_description
+entity_type: node
+bundle: example
+label: Description
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,29 @@
+uuid: d7c49951-92d0-448b-b6ad-368f68a6fb46
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_collection_constraint
+    - node.type.collection
+    - taxonomy.vocabulary.constraints
+id: node.collection.field_collection_constraint
+field_name: field_collection_constraint
+entity_type: node
+bundle: collection
+label: Constraint
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      constraints: constraints
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

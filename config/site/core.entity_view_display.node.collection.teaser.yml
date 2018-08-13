@@ -1,0 +1,49 @@
+uuid: 3b69aeca-28ec-44f6-9dae-425861b20679
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.collection.body
+    - field.field.node.collection.field_collection_collections
+    - field.field.node.collection.field_collection_color
+    - field.field.node.collection.field_collection_constraint
+    - field.field.node.collection.field_collection_material
+    - field.field.node.collection.field_collection_object
+    - field.field.node.collection.field_collection_space
+    - field.field.node.collection.field_collection_style
+    - field.field.node.collection.field_collection_surface
+    - field.field.node.collection.field_collection_theme
+    - field.field.node.collection.field_collection_users_age
+    - node.type.collection
+  module:
+    - text
+    - user
+id: node.collection.teaser
+targetEntityType: node
+bundle: collection
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_collection_collections: true
+  field_collection_color: true
+  field_collection_constraint: true
+  field_collection_material: true
+  field_collection_object: true
+  field_collection_space: true
+  field_collection_style: true
+  field_collection_surface: true
+  field_collection_theme: true
+  field_collection_users_age: true
+  langcode: true

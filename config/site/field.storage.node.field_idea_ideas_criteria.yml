@@ -1,0 +1,20 @@
+uuid: a7011558-c1ef-4ae7-8f52-98187678470f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_idea_ideas_criteria
+field_name: field_idea_ideas_criteria
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_vocabulary
+module: core
+locked: false
+cardinality: 3
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

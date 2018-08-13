@@ -1,0 +1,29 @@
+uuid: 394276dd-d6ff-4f05-a2a1-233f7eb7d662
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_idea_color
+    - node.type.idea
+    - taxonomy.vocabulary.colors
+id: node.idea.field_idea_color
+field_name: field_idea_color
+entity_type: node
+bundle: idea
+label: Color
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      colors: colors
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

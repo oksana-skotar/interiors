@@ -1,0 +1,29 @@
+uuid: 7b09f605-69bf-45f6-834c-050898b59c9e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_project_constraint
+    - node.type.project
+    - taxonomy.vocabulary.constraints
+id: node.project.field_project_constraint
+field_name: field_project_constraint
+entity_type: node
+bundle: project
+label: Constraint
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      constraints: constraints
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,29 @@
+uuid: 00775d49-51ec-4517-a6f2-a05bab966089
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_example_material
+    - node.type.example
+    - taxonomy.vocabulary.materials
+id: node.example.field_example_material
+field_name: field_example_material
+entity_type: node
+bundle: example
+label: Material
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      materials: materials
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

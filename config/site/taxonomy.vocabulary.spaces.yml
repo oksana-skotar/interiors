@@ -1,0 +1,9 @@
+uuid: 6b942ac9-25f8-47a0-8724-bfd34528dc41
+langcode: en
+status: true
+dependencies: {  }
+name: Spaces
+vid: spaces
+description: ''
+hierarchy: 0
+weight: 0

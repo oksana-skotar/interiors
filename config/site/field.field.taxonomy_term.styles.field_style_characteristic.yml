@@ -1,0 +1,19 @@
+uuid: d2767432-bc0f-4407-8ab5-ac8921cf9333
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_style_characteristic
+    - taxonomy.vocabulary.styles
+id: taxonomy_term.styles.field_style_characteristic
+field_name: field_style_characteristic
+entity_type: taxonomy_term
+bundle: styles
+label: Characteristic
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

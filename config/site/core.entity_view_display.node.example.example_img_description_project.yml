@@ -1,0 +1,66 @@
+uuid: 4e1fcf83-0eab-4e76-9512-46b8b443280b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.example_img_description_project
+    - field.field.node.example.field_example_color
+    - field.field.node.example.field_example_constraint
+    - field.field.node.example.field_example_description
+    - field.field.node.example.field_example_fullscreen
+    - field.field.node.example.field_example_ideas
+    - field.field.node.example.field_example_image
+    - field.field.node.example.field_example_material
+    - field.field.node.example.field_example_object
+    - field.field.node.example.field_example_project
+    - field.field.node.example.field_example_space
+    - field.field.node.example.field_example_style
+    - field.field.node.example.field_example_surface
+    - field.field.node.example.field_example_theme
+    - field.field.node.example.field_example_users_age
+    - node.type.example
+  module:
+    - user
+id: node.example.example_img_description_project
+targetEntityType: node
+bundle: example
+mode: example_img_description_project
+content:
+  field_example_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_example_image:
+    type: entity_reference_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_example_project:
+    weight: 2
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  field_example_color: true
+  field_example_constraint: true
+  field_example_fullscreen: true
+  field_example_ideas: true
+  field_example_material: true
+  field_example_object: true
+  field_example_space: true
+  field_example_style: true
+  field_example_surface: true
+  field_example_theme: true
+  field_example_users_age: true
+  langcode: true
+  links: true
