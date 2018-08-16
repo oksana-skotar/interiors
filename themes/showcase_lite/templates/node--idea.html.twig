@@ -99,7 +99,7 @@
         {% endblock %}
       </header>
       {% block content %}
-        {{ content|without('body','field_idea_object', 'field_idea_surface') }} 
+        {{ content|without('body','field_idea_object', 'field_idea_surface', 'field_idea_space', 'field_idea_constraint', 'field_idea_style', 'field_idea_material', 'field_idea_users_age', 'field_idea_theme', 'field_idea_users_color') }} 
         <div class="node-short-description">{{ content.body }}</div>
             <div class="row">
             {% for rel_node in related_nodes[0:1] %}  

@@ -1,0 +1,32 @@
+uuid: 9ca5eb7c-fdd6-4ae1-906a-6dacd818cdf8
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.related_ideas
+  module:
+    - ctools
+    - views
+  theme:
+    - showcase_lite
+id: views_block__block_related_ideas
+theme: showcase_lite
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:related_ideas-block_related_ideas'
+settings:
+  id: 'views_block:related_ideas-block_related_ideas'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      idea: idea
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
