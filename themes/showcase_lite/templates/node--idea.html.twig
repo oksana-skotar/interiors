@@ -93,23 +93,14 @@
           {{ title_suffix }}
           {% if display_submitted %}
             <div class="node__meta">
-              {{ author_picture }}
-              <span{{ author_attributes.addClass('node__submitted-info') }}>
-                {% trans %}
-                  <span class="node__submitted-info-text">By</span> {{ author_name }} on
-                  <span class="node__submitted-date">
-                    {{ date }}
-                  </span>
-                {% endtrans %}
-              </span>
               {{ metadata }}
             </div>
           {% endif %}
         {% endblock %}
       </header>
       {% block content %}
-        {{ content|without('field_idea_object', 'field_idea_surface') }} 
-            
+        {{ content|without('body','field_idea_object', 'field_idea_surface') }} 
+        <div class="node-short-description">{{ content.body }}</div>
             <div class="row">
             {% for rel_node in related_nodes[0:1] %}  
                <div class="col-md-12">{{ rel_node }}</div>
@@ -142,13 +133,20 @@
 
             <div class="row">
             {% for rel_node in related_nodes[9:] %}  
-               <div>{{ rel_node }}</div>
+               <div class="col-md-4 col-xs-6">{{ rel_node }}</div>
             {% endfor %}            
             </div>
 
-      <div class="row">
-        <div class="d-inline">{{ content.field_idea_object }}</div>
-        <div class="d-inline">{{ content.field_idea_surface }}</div>
+      <div class="taxo-row">
+        {{ content.field_idea_space }}
+        {{ content.field_idea_constraint }}
+        {{ content.field_idea_surface }}
+        {{ content.field_idea_object }}
+        {{ content.field_idea_style }}
+        {{ content.field_idea_material }}
+        {{ content.field_idea_users_age }}
+        {{ content.field_idea_theme }}
+        {{ content.field_idea_color }}
       </div>
 
       {% endblock %}      

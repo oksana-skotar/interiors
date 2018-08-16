@@ -12,3 +12,11 @@
     font-size: 13px;
     line-height: 1.2;
 }
+
+.node-short-description {
+    font-size: 20px;
+}
+
+.taxo-row div{
+	display: inline-block;
+}
