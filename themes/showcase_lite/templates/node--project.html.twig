@@ -93,22 +93,27 @@
           {{ title_suffix }}
           {% if display_submitted %}
             <div class="node__meta">
-              {{ author_picture }}
-              <span{{ author_attributes.addClass('node__submitted-info') }}>
-                {% trans %}
-                  <span class="node__submitted-info-text">By</span> {{ author_name }} on
-                  <span class="node__submitted-date">
-                    {{ date }}
-                  </span>
-                {% endtrans %}
-              </span>
               {{ metadata }}
             </div>
           {% endif %}
         {% endblock %}
       </header>
       {% block content %}
-        {{ content }}
+        <div class="source-url">By {{ content.field_project_source_url }}</div>
+        
+        <div class="node-short-description">{{ content.body }}</div>
+
+        {{ content.field_project_images }}
+
+      <div class="taxo-row">
+        {{ content.field_project_space }}
+        {{ content.field_project_constraint }}
+        {{ content.field_project_style }}
+        {{ content.field_project_material }}
+        {{ content.field_project_users_age }}
+        {{ content.field_project_theme }}
+        {{ content.field_project_color }}
+      </div>
       {% endblock %}
     </div>
   </div>

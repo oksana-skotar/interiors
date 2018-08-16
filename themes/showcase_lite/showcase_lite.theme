@@ -741,7 +741,6 @@ function showcase_lite_preprocess_node__idea(&$variables) {
     ->getViewBuilder('node')
     ->view($node, $view_mode  = 'example_img_description_project', $current_node->language()->getId());
   }
-  
 }
 
 /**
