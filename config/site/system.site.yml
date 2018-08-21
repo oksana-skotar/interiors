@@ -5,7 +5,7 @@ slogan: 'fresh ideas quickly'
 page:
   403: ''
   404: ''
-  front: /node/17
+  front: /ideas
 admin_compact_mode: false
 weight_select_max: 100
 langcode: en
