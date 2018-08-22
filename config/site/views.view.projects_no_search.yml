@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_project_teaser_image
     - image.style.example_small
     - node.type.project
+    - taxonomy.vocabulary.constraints
     - taxonomy.vocabulary.spaces
   module:
     - media
@@ -252,6 +253,51 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
+        field_project_constraint_target_id:
+          id: field_project_constraint_target_id
+          table: node__field_project_constraint
+          field: field_project_constraint_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_project_constraint_target_id_op
+            label: Constraint
+            description: ''
+            use_operator: false
+            operator: field_project_constraint_target_id_op
+            identifier: field_project_constraint_target_id
+            required: false
+            remember: true
+            multiple: false
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: constraints
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
       sorts:
         created:
           id: created
@@ -276,6 +322,7 @@ display:
       arguments: {  }
       display_extenders: {  }
       use_ajax: true
+      css_class: main-listing
     cache_metadata:
       max-age: -1
       contexts:
