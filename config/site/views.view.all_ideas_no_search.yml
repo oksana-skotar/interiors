@@ -525,8 +525,8 @@ display:
             remember: true
             multiple: false
             remember_roles:
-              anonymous: anonymous
               authenticated: authenticated
+              anonymous: anonymous
               administrator: administrator
             reduce: false
           is_grouped: false
@@ -545,7 +545,7 @@ display:
           type: select
           limit: true
           vid: users_ages
-          hierarchy: false
+          hierarchy: true
           error_message: true
           plugin_id: taxonomy_index_tid
         field_idea_theme_target_id:
@@ -662,7 +662,7 @@ display:
       arguments: {  }
       display_extenders: {  }
       use_ajax: true
-      css_class: ''
+      css_class: main-listing
     cache_metadata:
       max-age: -1
       contexts:
