@@ -8,6 +8,7 @@ dependencies:
     - node.type.project
     - taxonomy.vocabulary.constraints
     - taxonomy.vocabulary.spaces
+    - taxonomy.vocabulary.styles
   module:
     - media
     - node
@@ -296,6 +297,51 @@ display:
           limit: true
           vid: constraints
           hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_project_style_target_id:
+          id: field_project_style_target_id
+          table: node__field_project_style
+          field: field_project_style_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_project_style_target_id_op
+            label: Style
+            description: ''
+            use_operator: false
+            operator: field_project_style_target_id_op
+            identifier: field_project_style_target_id
+            required: false
+            remember: true
+            multiple: false
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: styles
+          hierarchy: true
           error_message: true
           plugin_id: taxonomy_index_tid
       sorts:
