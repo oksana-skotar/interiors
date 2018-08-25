@@ -743,6 +743,24 @@ function showcase_lite_preprocess_node__idea(&$variables) {
   }
 }
 
+function showcase_lite_preprocess_node__project(&$variables) {
+  $current_node = $variables['node'];
+  $current_node_id = $current_node->id();
+  
+  $query = \Drupal::entityQuery('node');
+  $query->condition('type', 'example');
+  $query->condition('status', 1);
+  $query->condition('field_example_project', $current_node_id);
+  $nids = $query->execute();
+  $relatednodes = Node::loadMultiple($nids);
+
+  foreach ($relatednodes as $node) {
+  $variables['related_nodes'][] = \Drupal::entityTypeManager()
+    ->getViewBuilder('node')
+    ->view($node, $view_mode  = 'example_img_description_ideas', $current_node->language()->getId());
+  }
+}
+
 /**
  * Implements hook_preprocess_HOOK() for block.html.twig.
  */

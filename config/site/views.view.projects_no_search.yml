@@ -6,9 +6,13 @@ dependencies:
     - field.storage.node.field_project_teaser_image
     - image.style.example_small
     - node.type.project
+    - taxonomy.vocabulary.colors
     - taxonomy.vocabulary.constraints
+    - taxonomy.vocabulary.materials
     - taxonomy.vocabulary.spaces
     - taxonomy.vocabulary.styles
+    - taxonomy.vocabulary.themes
+    - taxonomy.vocabulary.users_ages
   module:
     - media
     - node
@@ -74,6 +78,15 @@ display:
             next: ››
       style:
         type: grid
+        options:
+          grouping: {  }
+          columns: 2
+          automatic_width: true
+          alignment: horizontal
+          col_class_default: true
+          col_class_custom: ''
+          row_class_default: true
+          row_class_custom: ''
       row:
         type: fields
       fields:
@@ -81,39 +94,54 @@ display:
           id: title
           table: node_field_data
           field: title
-          entity_type: node
-          entity_field: title
-          label: ''
-          alter:
-            alter_text: false
-            make_link: false
-            absolute: false
-            trim: false
-            word_boundary: false
-            ellipsis: false
-            strip_tags: false
-            html: false
-          hide_empty: false
-          empty_zero: false
-          settings:
-            link_to_entity: true
-          plugin_id: field
           relationship: none
           group_type: group
           admin_label: ''
+          label: ''
           exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
           element_type: ''
-          element_class: ''
+          element_class: listings-title
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
           empty: ''
+          hide_empty: false
+          empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
           type: string
+          settings:
+            link_to_entity: true
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -124,6 +152,9 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          entity_type: node
+          entity_field: title
+          plugin_id: field
         field_project_teaser_image:
           id: field_project_teaser_image
           table: node__field_project_teaser_image
@@ -337,11 +368,191 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
+          reduce_duplicates: true
           type: select
           limit: true
           vid: styles
           hierarchy: true
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_project_material_target_id:
+          id: field_project_material_target_id
+          table: node__field_project_material
+          field: field_project_material_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_project_material_target_id_op
+            label: Material
+            description: ''
+            use_operator: false
+            operator: field_project_material_target_id_op
+            identifier: field_project_material_target_id
+            required: false
+            remember: true
+            multiple: false
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          type: select
+          limit: true
+          vid: materials
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_project_users_age_target_id:
+          id: field_project_users_age_target_id
+          table: node__field_project_users_age
+          field: field_project_users_age_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_project_users_age_target_id_op
+            label: 'User''s age'
+            description: ''
+            use_operator: false
+            operator: field_project_users_age_target_id_op
+            identifier: field_project_users_age_target_id
+            required: false
+            remember: true
+            multiple: false
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          type: select
+          limit: true
+          vid: users_ages
+          hierarchy: true
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_project_theme_target_id:
+          id: field_project_theme_target_id
+          table: node__field_project_theme
+          field: field_project_theme_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_project_theme_target_id_op
+            label: Theme
+            description: ''
+            use_operator: false
+            operator: field_project_theme_target_id_op
+            identifier: field_project_theme_target_id
+            required: false
+            remember: true
+            multiple: false
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: themes
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_project_color_target_id:
+          id: field_project_color_target_id
+          table: node__field_project_color
+          field: field_project_color_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_project_color_target_id_op
+            label: Color
+            description: ''
+            use_operator: false
+            operator: field_project_color_target_id_op
+            identifier: field_project_color_target_id
+            required: false
+            remember: true
+            multiple: false
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          type: select
+          limit: true
+          vid: colors
+          hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
       sorts:

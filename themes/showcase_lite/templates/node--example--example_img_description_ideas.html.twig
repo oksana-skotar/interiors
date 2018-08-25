@@ -83,14 +83,7 @@
   <div class="node__container">
     <div{{ content_attributes.addClass('node__main-content', 'clearfix') }}>
       <header class="node__header">
-        {% block meta_area %}
-          {{ title_prefix }}
-          {% if not page %}
-            <h2{{ title_attributes.addClass('node__title') }}>
-              <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-            </h2>
-          {% endif %}
-          {{ title_suffix }}
+        {% block meta_area %}      
           {% if display_submitted %}
             <div class="node__meta">
               {{ metadata }}
@@ -99,26 +92,7 @@
         {% endblock %}
       </header>
       {% block content %}
-        <div class="source-url">By {{ content.field_project_source_url }}</div>
-        
-        <div class="node-short-description">{{ content.body }}</div>
-
-        {{ content.field_project_images }}
-            <div class="row-examples">
-            {% for rel_node in related_nodes %}  
-               <div class="col-md-4 col-xs-6">{{ rel_node }}</div>
-            {% endfor %}
-            </div>
-
-      <div class="taxo-row">
-        {{ content.field_project_space }}
-        {{ content.field_project_constraint }}
-        {{ content.field_project_style }}
-        {{ content.field_project_material }}
-        {{ content.field_project_users_age }}
-        {{ content.field_project_theme }}
-        {{ content.field_project_color }}
-      </div>
+        {{ content }}
       {% endblock %}
     </div>
   </div>

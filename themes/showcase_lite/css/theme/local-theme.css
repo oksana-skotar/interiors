@@ -64,4 +64,8 @@
     background-color: #ffffff;
 }
 
-
+.row-examples 
+{
+    display: flex;
+    flex-wrap: wrap;
+}
