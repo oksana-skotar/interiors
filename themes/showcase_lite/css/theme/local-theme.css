@@ -27,7 +27,7 @@
     margin-bottom: 0px;
 }
 
-.views-view-grid .views-col {
+.col-listings-grid {
     position: relative;
     padding: 12px;
 }
@@ -97,4 +97,22 @@ margin-bottom: 35px;
 
 .col-md-12 h2.title {
     padding-bottom: 10px;
+}
+
+.blog-item-title {
+    width: 1000px;
+}
+
+.blog-row .views-field-field-collection-teaser-image {
+    display: inline-block;
+}
+
+.blog-row .views-field-body {
+    display: inline-block;
+    width: 700px;
+    padding: 12px;
+}
+
+.blog-row {
+    margin-bottom: 60px;
 }
