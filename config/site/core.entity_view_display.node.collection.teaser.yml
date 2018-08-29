@@ -5,7 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.collection.body
-    - field.field.node.collection.field_collection_collections
     - field.field.node.collection.field_collection_color
     - field.field.node.collection.field_collection_constraint
     - field.field.node.collection.field_collection_material
@@ -36,7 +35,6 @@ content:
     weight: 100
     region: content
 hidden:
-  field_collection_collections: true
   field_collection_color: true
   field_collection_constraint: true
   field_collection_material: true
@@ -44,6 +42,7 @@ hidden:
   field_collection_space: true
   field_collection_style: true
   field_collection_surface: true
+  field_collection_teaser_image: true
   field_collection_theme: true
   field_collection_users_age: true
   langcode: true

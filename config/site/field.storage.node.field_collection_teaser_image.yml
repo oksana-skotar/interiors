@@ -1,19 +1,19 @@
-uuid: ccda4020-ad71-48c0-ab85-73c05cc8bc22
+uuid: 9fa4b4f3-c30f-4f73-a1b0-3eff72378162
 langcode: en
 status: true
 dependencies:
   module:
+    - media
     - node
-    - system
-id: node.field_project_examples
-field_name: field_project_examples
+id: node.field_collection_teaser_image
+field_name: field_collection_teaser_image
 entity_type: node
 type: entity_reference
 settings:
-  target_type: action
+  target_type: media
 module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

@@ -1,28 +1,28 @@
-uuid: 91c0e027-cfe6-4f69-aaef-1fbbcf2884ef
+uuid: d08e7c56-5a64-47aa-bb7a-ded53fdada77
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_collection_collections
+    - field.storage.node.field_collection_teaser_image
+    - media.type.image
     - node.type.collection
-id: node.collection.field_collection_collections
-field_name: field_collection_collections
+id: node.collection.field_collection_teaser_image
+field_name: field_collection_teaser_image
 entity_type: node
 bundle: collection
-label: 'Related collections'
+label: 'Teaser image'
 description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:node'
+  handler: 'default:media'
   handler_settings:
     target_bundles:
-      collection: collection
+      image: image
     sort:
-      field: title
-      direction: DESC
+      field: _none
     auto_create: false
     auto_create_bundle: ''
 field_type: entity_reference
