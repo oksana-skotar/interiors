@@ -1,0 +1,21 @@
+uuid: bb17bb69-2c1e-4528-ac25-f42e61b216b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_style_summary
+    - taxonomy.vocabulary.styles
+  module:
+    - text
+id: taxonomy_term.styles.field_style_summary
+field_name: field_style_summary
+entity_type: taxonomy_term
+bundle: styles
+label: Summary
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

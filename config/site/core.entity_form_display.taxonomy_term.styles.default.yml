@@ -8,6 +8,7 @@ dependencies:
     - field.field.taxonomy_term.styles.field_style_color
     - field.field.taxonomy_term.styles.field_style_images
     - field.field.taxonomy_term.styles.field_style_material
+    - field.field.taxonomy_term.styles.field_style_summary
     - taxonomy.vocabulary.styles
   module:
     - entity_browser
@@ -18,16 +19,8 @@ targetEntityType: taxonomy_term
 bundle: styles
 mode: default
 content:
-  description:
-    type: text_textarea
-    weight: 2
-    region: content
-    settings:
-      placeholder: ''
-      rows: 5
-    third_party_settings: {  }
   field_style_characteristic:
-    weight: 4
+    weight: 3
     settings:
       size: 60
       placeholder: ''
@@ -35,7 +28,7 @@ content:
     type: string_textfield
     region: content
   field_style_color:
-    weight: 6
+    weight: 5
     settings:
       match_operator: CONTAINS
       size: 60
@@ -58,7 +51,7 @@ content:
     type: entity_browser_entity_reference
     region: content
   field_style_material:
-    weight: 5
+    weight: 4
     settings:
       match_operator: CONTAINS
       size: 60
@@ -66,9 +59,17 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  field_style_summary:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
   langcode:
     type: language_select
-    weight: 2
+    weight: 6
     region: content
     settings:
       include_locked: true
@@ -83,8 +84,9 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 3
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  description: true
