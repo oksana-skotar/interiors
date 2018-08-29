@@ -82,15 +82,6 @@
 <article{{ attributes.addClass(classes) }}>
   <div class="node__container">
     <div{{ content_attributes.addClass('node__main-content', 'clearfix') }}>
-      <header class="node__header">
-        {% block meta_area %}      
-          {% if display_submitted %}
-            <div class="node__meta">
-              {{ metadata }}
-            </div>
-          {% endif %}
-        {% endblock %}
-      </header>
       {% block content %}
         {{ content }}
       {% endblock %}

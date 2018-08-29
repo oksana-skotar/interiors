@@ -17,9 +17,14 @@
     font-size: 20px;
 }
 
-.taxo-row div, .source-url div {
+.source-url div {
     display: inline-block;
     padding-bottom: 20px;
+}
+
+.taxo-row div {
+    display: inline-block;
+    margin-bottom: 0px;
 }
 
 .views-view-grid .views-col {
@@ -70,8 +75,26 @@
     flex-wrap: wrap;
 }
 
+.example-item {
+margin-bottom: 35px;
+}
+
 .collections-row div {
     display: inline-block;
     padding-bottom: 20px;
     padding-right: 5px;
     }
+
+.field--name-field-project-images div {
+    margin-top: 15px;
+}
+
+.title-separator {
+    margin-top: 60px;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.col-md-12 h2.title {
+    padding-bottom: 10px;
+}
