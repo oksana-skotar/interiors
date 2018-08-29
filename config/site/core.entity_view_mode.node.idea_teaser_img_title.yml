@@ -1,0 +1,10 @@
+uuid: b77c4a56-91aa-49c9-97a4-98d2a79e7337
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.idea_teaser_img_title
+label: 'Idea - teaser img, title'
+targetEntityType: node
+cache: true

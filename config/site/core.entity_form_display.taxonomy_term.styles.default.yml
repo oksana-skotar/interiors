@@ -28,7 +28,7 @@ content:
     type: string_textfield
     region: content
   field_style_color:
-    weight: 5
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60
@@ -51,7 +51,7 @@ content:
     type: entity_browser_entity_reference
     region: content
   field_style_material:
-    weight: 4
+    weight: 5
     settings:
       match_operator: CONTAINS
       size: 60
@@ -69,7 +69,7 @@ content:
     region: content
   langcode:
     type: language_select
-    weight: 6
+    weight: 7
     region: content
     settings:
       include_locked: true
@@ -84,7 +84,7 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
