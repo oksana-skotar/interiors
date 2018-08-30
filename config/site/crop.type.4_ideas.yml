@@ -1,0 +1,12 @@
+uuid: cec8b09a-0a46-4d27-bcb9-87c98e43d9cd
+langcode: en
+status: true
+dependencies: {  }
+label: '4 ideas'
+id: 4_ideas
+description: ''
+aspect_ratio: '1:1'
+soft_limit_width: null
+soft_limit_height: null
+hard_limit_width: 270
+hard_limit_height: 270

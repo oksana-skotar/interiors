@@ -7,24 +7,21 @@ dependencies:
     - field.field.taxonomy_term.styles.field_style_color
     - field.field.taxonomy_term.styles.field_style_images
     - field.field.taxonomy_term.styles.field_style_material
+    - field.field.taxonomy_term.styles.field_style_summary
+    - field.field.taxonomy_term.styles.field_style_teaser_image
+    - image.style.example_small
     - taxonomy.vocabulary.styles
   module:
+    - media
     - text
 id: taxonomy_term.styles.default
 targetEntityType: taxonomy_term
 bundle: styles
 mode: default
 content:
-  description:
-    label: above
-    type: text_default
-    weight: 0
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_style_characteristic:
     weight: 2
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
@@ -32,7 +29,7 @@ content:
     region: content
   field_style_color:
     weight: 4
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
@@ -40,20 +37,37 @@ content:
     region: content
   field_style_images:
     type: entity_reference_entity_view
-    weight: 5
-    label: above
+    weight: 0
+    label: hidden
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
     region: content
   field_style_material:
-    weight: 3
-    label: above
+    weight: 5
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  field_style_summary:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_style_teaser_image:
+    type: media_thumbnail
+    weight: 6
+    label: hidden
+    settings:
+      image_style: example_small
+      image_link: content
+    third_party_settings: {  }
+    region: content
 hidden:
+  description: true
   langcode: true

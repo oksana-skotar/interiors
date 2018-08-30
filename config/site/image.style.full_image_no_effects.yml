@@ -1,0 +1,7 @@
+uuid: ef46208f-7c30-4f51-9a08-af99a9f10615
+langcode: en
+status: true
+dependencies: {  }
+name: full_image_no_effects
+label: 'Full image (no effects)'
+effects: {  }

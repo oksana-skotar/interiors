@@ -1,0 +1,51 @@
+uuid: b87a4997-8a7e-48a1-b348-ec7fbe6bd6ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.project_teaser_img_title
+    - field.field.node.project.body
+    - field.field.node.project.field_project_color
+    - field.field.node.project.field_project_constraint
+    - field.field.node.project.field_project_images
+    - field.field.node.project.field_project_material
+    - field.field.node.project.field_project_rel_collections
+    - field.field.node.project.field_project_source_url
+    - field.field.node.project.field_project_space
+    - field.field.node.project.field_project_style
+    - field.field.node.project.field_project_teaser_image
+    - field.field.node.project.field_project_theme
+    - field.field.node.project.field_project_users_age
+    - image.style.2_projects
+    - node.type.project
+  module:
+    - media
+    - user
+id: node.project.project_teaser_img_title
+targetEntityType: node
+bundle: project
+mode: project_teaser_img_title
+content:
+  field_project_teaser_image:
+    type: media_thumbnail
+    weight: 0
+    label: hidden
+    settings:
+      image_style: 2_projects
+      image_link: content
+    third_party_settings: {  }
+    region: content
+hidden:
+  body: true
+  field_project_color: true
+  field_project_constraint: true
+  field_project_images: true
+  field_project_material: true
+  field_project_rel_collections: true
+  field_project_source_url: true
+  field_project_space: true
+  field_project_style: true
+  field_project_theme: true
+  field_project_users_age: true
+  langcode: true
+  links: true

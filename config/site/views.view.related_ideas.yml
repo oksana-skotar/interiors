@@ -58,6 +58,15 @@ display:
           offset: 0
       style:
         type: grid
+        options:
+          grouping: {  }
+          columns: 4
+          automatic_width: true
+          alignment: horizontal
+          col_class_default: true
+          col_class_custom: col-listings-grid
+          row_class_default: true
+          row_class_custom: ''
       row:
         type: fields
       fields:
@@ -314,6 +323,7 @@ display:
     display_options:
       display_extenders: {  }
       display_description: ''
+      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:

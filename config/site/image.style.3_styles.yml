@@ -1,0 +1,14 @@
+uuid: a80755b6-edd0-4bdc-ad54-25cb33438fd9
+langcode: en
+status: true
+dependencies: {  }
+name: 3_styles
+label: '3 styles'
+effects:
+  fab9b5cc-076d-4c2f-9c7a-9f3b42590755:
+    uuid: fab9b5cc-076d-4c2f-9c7a-9f3b42590755
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 360
+      height: 260

@@ -1,0 +1,10 @@
+uuid: 824a52d3-0875-4472-a684-44110e273f4a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.example_img_description_ideas
+label: 'Example - img, description, ideas'
+targetEntityType: node
+cache: true

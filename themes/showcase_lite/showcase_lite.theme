@@ -743,6 +743,56 @@ function showcase_lite_preprocess_node__idea(&$variables) {
   }
 }
 
+function showcase_lite_preprocess_node__project(&$variables) {
+  $current_node = $variables['node'];
+  $current_node_id = $current_node->id();
+  
+  $query = \Drupal::entityQuery('node');
+  $query->condition('type', 'example');
+  $query->condition('status', 1);
+  $query->condition('field_example_project', $current_node_id);
+  $nids = $query->execute();
+  $relatednodes = Node::loadMultiple($nids);
+
+  foreach ($relatednodes as $node) {
+  $variables['related_nodes'][] = \Drupal::entityTypeManager()
+    ->getViewBuilder('node')
+    ->view($node, $view_mode  = 'example_img_description_ideas', $current_node->language()->getId());
+  }
+}
+
+function showcase_lite_preprocess_taxonomy_term__styles(&$variables) {
+  $current_term = $variables['elements']['#taxonomy_term'];
+  $current_term_id = $current_term->id();
+
+  $query = \Drupal::entityQuery('node');
+  $query->condition('type', 'idea');
+  $query->condition('status', 1);
+  $query->condition('field_idea_style', $current_term_id);
+  $nids = $query->execute();
+  $relatedideas = Node::loadMultiple($nids);
+
+  foreach ($relatedideas as $idea) {
+  $variables['related_ideas'][] = \Drupal::entityTypeManager()
+    ->getViewBuilder('node')
+    ->view($idea, $view_mode  = 'idea_teaser_img_title', $current_term->language()->getId());
+  }
+
+  $query = \Drupal::entityQuery('node');
+  $query->condition('type', 'project');
+  $query->condition('status', 1);
+  $query->condition('field_project_style', $current_term_id);
+  $nids = $query->execute();
+  $relatedprojects = Node::loadMultiple($nids);
+
+  foreach ($relatedprojects as $project) {
+  $variables['related_projects'][] = \Drupal::entityTypeManager()
+    ->getViewBuilder('node')
+    ->view($project, $view_mode  = 'project_teaser_img_title', $current_term->language()->getId());
+  }
+
+}
+
 /**
  * Implements hook_preprocess_HOOK() for block.html.twig.
  */

@@ -1,15 +1,15 @@
 favicon:
-  mimetype: image/vnd.microsoft.icon
-  path: ''
+  mimetype: image/png
+  path: 'public://icosahedron-favicon.png'
   url: ''
-  use_default: true
+  use_default: false
 features:
   comment_user_picture: true
   comment_user_verification: true
   favicon: true
   node_user_picture: true
 logo:
-  path: 'public://quickmintslogo.png'
+  path: 'public://icosahedrongreen30.png'
   url: ''
   use_default: false
 _core:

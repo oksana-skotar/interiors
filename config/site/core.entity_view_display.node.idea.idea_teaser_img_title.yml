@@ -1,0 +1,53 @@
+uuid: cd9225bd-d413-4fcf-8f9f-783c06a86a35
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.idea_teaser_img_title
+    - field.field.node.idea.body
+    - field.field.node.idea.field_idea_collections
+    - field.field.node.idea.field_idea_color
+    - field.field.node.idea.field_idea_constraint
+    - field.field.node.idea.field_idea_ideas_criteria
+    - field.field.node.idea.field_idea_material
+    - field.field.node.idea.field_idea_object
+    - field.field.node.idea.field_idea_space
+    - field.field.node.idea.field_idea_style
+    - field.field.node.idea.field_idea_surface
+    - field.field.node.idea.field_idea_teaser_image
+    - field.field.node.idea.field_idea_theme
+    - field.field.node.idea.field_idea_users_age
+    - image.style.4_ideas
+    - node.type.idea
+  module:
+    - media
+    - user
+id: node.idea.idea_teaser_img_title
+targetEntityType: node
+bundle: idea
+mode: idea_teaser_img_title
+content:
+  field_idea_teaser_image:
+    type: media_thumbnail
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      image_style: 4_ideas
+      image_link: content
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_idea_collections: true
+  field_idea_color: true
+  field_idea_constraint: true
+  field_idea_ideas_criteria: true
+  field_idea_material: true
+  field_idea_object: true
+  field_idea_space: true
+  field_idea_style: true
+  field_idea_surface: true
+  field_idea_theme: true
+  field_idea_users_age: true
+  langcode: true
+  links: true

@@ -1,19 +1,19 @@
 uuid: e38d0f78-1497-4428-9136-804db6596018
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.project.body
     - field.field.node.project.field_project_color
     - field.field.node.project.field_project_constraint
-    - field.field.node.project.field_project_examples
     - field.field.node.project.field_project_images
     - field.field.node.project.field_project_material
     - field.field.node.project.field_project_rel_collections
     - field.field.node.project.field_project_source_url
     - field.field.node.project.field_project_space
     - field.field.node.project.field_project_style
+    - field.field.node.project.field_project_teaser_image
     - field.field.node.project.field_project_theme
     - field.field.node.project.field_project_users_age
     - node.type.project
@@ -39,13 +39,13 @@ content:
 hidden:
   field_project_color: true
   field_project_constraint: true
-  field_project_examples: true
   field_project_images: true
   field_project_material: true
   field_project_rel_collections: true
   field_project_source_url: true
   field_project_space: true
   field_project_style: true
+  field_project_teaser_image: true
   field_project_theme: true
   field_project_users_age: true
   langcode: true

@@ -1,0 +1,34 @@
+uuid: e6f7e230-e667-4375-ba17-5e0c1fff94e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.related_collections
+  module:
+    - ctools
+    - views
+  theme:
+    - showcase_lite
+id: views_block__related_collections_block_1
+theme: showcase_lite
+region: content
+weight: 1
+provider: null
+plugin: 'views_block:related_collections-block_1'
+settings:
+  id: 'views_block:related_collections-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      collection: collection
+      idea: idea
+      project: project
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
