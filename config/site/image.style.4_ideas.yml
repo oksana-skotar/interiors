@@ -1,0 +1,14 @@
+uuid: 50f1618f-870b-4c4d-8d16-929c5ea2f66b
+langcode: en
+status: true
+dependencies: {  }
+name: 4_ideas
+label: '4 ideas'
+effects:
+  12494735-7518-4480-bed8-5b2d776a8394:
+    uuid: 12494735-7518-4480-bed8-5b2d776a8394
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 270
+      height: 270

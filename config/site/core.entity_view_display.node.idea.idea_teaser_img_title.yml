@@ -17,7 +17,7 @@ dependencies:
     - field.field.node.idea.field_idea_teaser_image
     - field.field.node.idea.field_idea_theme
     - field.field.node.idea.field_idea_users_age
-    - image.style.example_small
+    - image.style.4_ideas
     - node.type.idea
   module:
     - media
@@ -33,7 +33,7 @@ content:
     region: content
     label: hidden
     settings:
-      image_style: example_small
+      image_style: 4_ideas
       image_link: content
     third_party_settings: {  }
 hidden:

@@ -16,7 +16,7 @@ dependencies:
     - field.field.node.project.field_project_teaser_image
     - field.field.node.project.field_project_theme
     - field.field.node.project.field_project_users_age
-    - image.style.example_small
+    - image.style.2_projects
     - node.type.project
   module:
     - media
@@ -31,7 +31,7 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: example_small
+      image_style: 2_projects
       image_link: content
     third_party_settings: {  }
     region: content

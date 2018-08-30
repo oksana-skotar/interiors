@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_idea_teaser_image
-    - image.style.example_small
+    - image.style.4_ideas
     - node.type.idea
     - taxonomy.vocabulary.colors
     - taxonomy.vocabulary.constraints
@@ -208,7 +208,7 @@ display:
           click_sort_column: target_id
           type: media_thumbnail
           settings:
-            image_style: example_small
+            image_style: 4_ideas
             image_link: content
           group_column: target_id
           group_columns: {  }
