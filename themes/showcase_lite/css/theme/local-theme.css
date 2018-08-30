@@ -32,7 +32,7 @@
     padding: 12px;
 }
 
-.listings-title{
+.listings-title {
     
     background-color: #ffffff99;
     width: 100%;
@@ -115,4 +115,35 @@ margin-bottom: 35px;
 
 .blog-row {
     margin-bottom: 80px;
+}
+
+.site-slogan {
+    letter-spacing: 0.21em;
+    font-size: 11px;
+}
+
+.site-name a {
+    font-size: 31px;
+}
+
+.header__container {
+    padding: 10px 0;
+}
+
+.region-header {
+    padding-top: 10px;
+}
+
+.logo {
+    padding: 10px 0;
+}
+
+.style-characteristic {
+    line-height: 2;
+}
+
+.style-summary {
+    margin-top: 20px;
+    display: inline-block;
+    margin-left: 5px;
 }

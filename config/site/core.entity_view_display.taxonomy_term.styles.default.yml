@@ -8,8 +8,11 @@ dependencies:
     - field.field.taxonomy_term.styles.field_style_images
     - field.field.taxonomy_term.styles.field_style_material
     - field.field.taxonomy_term.styles.field_style_summary
+    - field.field.taxonomy_term.styles.field_style_teaser_image
+    - image.style.example_small
     - taxonomy.vocabulary.styles
   module:
+    - media
     - text
 id: taxonomy_term.styles.default
 targetEntityType: taxonomy_term
@@ -55,6 +58,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
+  field_style_teaser_image:
+    type: media_thumbnail
+    weight: 6
+    label: hidden
+    settings:
+      image_style: example_small
+      image_link: content
+    third_party_settings: {  }
     region: content
 hidden:
   description: true

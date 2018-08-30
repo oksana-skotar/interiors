@@ -1,9 +1,9 @@
-uuid: e38d0f78-1497-4428-9136-804db6596018
+uuid: b87a4997-8a7e-48a1-b348-ec7fbe6bd6ed
 langcode: en
-status: false
+status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.project_teaser_img_title
     - field.field.node.project.body
     - field.field.node.project.field_project_color
     - field.field.node.project.field_project_constraint
@@ -16,27 +16,27 @@ dependencies:
     - field.field.node.project.field_project_teaser_image
     - field.field.node.project.field_project_theme
     - field.field.node.project.field_project_users_age
+    - image.style.example_small
     - node.type.project
   module:
-    - text
+    - media
     - user
-id: node.project.teaser
+id: node.project.project_teaser_img_title
 targetEntityType: node
 bundle: project
-mode: teaser
+mode: project_teaser_img_title
 content:
-  body:
+  field_project_teaser_image:
+    type: media_thumbnail
+    weight: 0
     label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
     settings:
-      trim_length: 600
+      image_style: example_small
+      image_link: content
     third_party_settings: {  }
     region: content
-  links:
-    weight: 100
-    region: content
 hidden:
+  body: true
   field_project_color: true
   field_project_constraint: true
   field_project_images: true
@@ -45,7 +45,7 @@ hidden:
   field_project_source_url: true
   field_project_space: true
   field_project_style: true
-  field_project_teaser_image: true
   field_project_theme: true
   field_project_users_age: true
   langcode: true
+  links: true

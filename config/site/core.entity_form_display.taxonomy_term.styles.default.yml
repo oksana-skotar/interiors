@@ -9,6 +9,7 @@ dependencies:
     - field.field.taxonomy_term.styles.field_style_images
     - field.field.taxonomy_term.styles.field_style_material
     - field.field.taxonomy_term.styles.field_style_summary
+    - field.field.taxonomy_term.styles.field_style_teaser_image
     - taxonomy.vocabulary.styles
   module:
     - entity_browser
@@ -28,7 +29,7 @@ content:
     type: string_textfield
     region: content
   field_style_color:
-    weight: 6
+    weight: 5
     settings:
       match_operator: CONTAINS
       size: 60
@@ -51,7 +52,7 @@ content:
     type: entity_browser_entity_reference
     region: content
   field_style_material:
-    weight: 5
+    weight: 4
     settings:
       match_operator: CONTAINS
       size: 60
@@ -66,6 +67,20 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
+  field_style_teaser_image:
+    weight: 6
+    settings:
+      entity_browser: images_browser
+      field_widget_display: label
+      field_widget_edit: true
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_replace: false
+      field_widget_display_settings: {  }
+    third_party_settings: {  }
+    type: entity_browser_entity_reference
     region: content
   langcode:
     type: language_select

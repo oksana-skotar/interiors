@@ -778,6 +778,19 @@ function showcase_lite_preprocess_taxonomy_term__styles(&$variables) {
     ->view($idea, $view_mode  = 'idea_teaser_img_title', $current_term->language()->getId());
   }
 
+  $query = \Drupal::entityQuery('node');
+  $query->condition('type', 'project');
+  $query->condition('status', 1);
+  $query->condition('field_project_style', $current_term_id);
+  $nids = $query->execute();
+  $relatedprojects = Node::loadMultiple($nids);
+
+  foreach ($relatedprojects as $project) {
+  $variables['related_projects'][] = \Drupal::entityTypeManager()
+    ->getViewBuilder('node')
+    ->view($project, $view_mode  = 'project_teaser_img_title', $current_term->language()->getId());
+  }
+
 }
 
 /**

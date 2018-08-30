@@ -1,0 +1,10 @@
+uuid: 545504cc-9667-4bf9-aeed-a3df954e9f84
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.project_teaser_img_title
+label: 'Project - teaser img, title'
+targetEntityType: node
+cache: true

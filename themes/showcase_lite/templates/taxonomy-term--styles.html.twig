@@ -39,23 +39,31 @@
       {% block content %}
         
         {{ content.field_style_images }}
-        {{ content.field_style_summary }}
+        <i class="far fa-image"></i><div class="style-summary">{{ content.field_style_summary }}</div>
+        {{ content.field_style_characteristic }}
 
-        <div class="row">
-               <div class="col-md-6 col-xs-12">{{ content.field_style_characteristic }}</div>
-               <div class="col-md-6 col-xs-12">
-                    <div class="taxo-row">
-                      {{ content.field_style_color }}
-                      {{ content.field_style_material }}
-                    </div>
-               </div>    
+        <div class="taxo-row">
+          {{ content.field_style_color }}
+          {{ content.field_style_material }}
         </div>
 
-        <h2 class="title-separator">Ideas</h2>
+        {% if related_ideas is not empty %}
+          <h2 class="title-separator">Ideas</h2>
+        {% endif %}
 
-        <div class="row-examples">
+        <div class="row">
             {% for rel_idea in related_ideas %}  
-               <div class="col-md-4 col-xs-6 example-item">{{ rel_idea }}</div>
+               <div class="col-md-3 col-xs-6 col-listings-grid">{{ rel_idea }}</div>
+            {% endfor %}
+        </div>
+
+        {% if related_projects is not empty %}
+          <h2 class="title-separator">Projects</h2>
+        {% endif %}
+        
+        <div class="row">
+            {% for rel_project in related_projects %}  
+               <div class="col-md-6 col-xs-12 col-listings-grid">{{ rel_project }}</div>
             {% endfor %}
         </div>
 

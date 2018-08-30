@@ -105,7 +105,9 @@
 
         {{ content.field_project_images }}
 
-        <h2 class="title-separator">Takeaways</h2>
+        {% if related_nodes is not empty %}
+          <h2 class="title-separator">Takeaways</h2>
+        {% endif %}
 
         <div class="row-examples">
             {% for rel_node in related_nodes %}  
