@@ -4,10 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.node.idea.body
-    - field.field.node.idea.field_idea_collections
     - field.field.node.idea.field_idea_color
     - field.field.node.idea.field_idea_constraint
-    - field.field.node.idea.field_idea_ideas_criteria
     - field.field.node.idea.field_idea_material
     - field.field.node.idea.field_idea_object
     - field.field.node.idea.field_idea_space
@@ -31,14 +29,6 @@ content:
     weight: 1
     settings: {  }
     third_party_settings: {  }
-    region: content
-  field_idea_collections:
-    weight: 11
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
     region: content
   field_idea_color:
     weight: 10
@@ -118,6 +108,5 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_idea_ideas_criteria: true
   field_idea_teaser_image: true
   langcode: true
