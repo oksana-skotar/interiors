@@ -67,6 +67,7 @@
 .main-listing .form-select {
     border-color: #ffffff;
     background-color: #ffffff;
+    padding-right: 23px;
 }
 
 .row-examples 
@@ -146,4 +147,16 @@ margin-bottom: 35px;
     margin-top: 20px;
     display: inline-block;
     margin-left: 5px;
+}
+
+.form-item, .form-actions {
+    margin: 0px;
+}
+
+.views-exposed-form {
+    text-align: center;
+}
+
+.form--inline {
+    display: inline-block;
 }
