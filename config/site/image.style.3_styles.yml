@@ -1,14 +1,24 @@
 uuid: a80755b6-edd0-4bdc-ad54-25cb33438fd9
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - crop.type.full_image_cropped_manually
+  module:
+    - crop
 name: 3_styles
 label: '3 styles'
 effects:
   fab9b5cc-076d-4c2f-9c7a-9f3b42590755:
     uuid: fab9b5cc-076d-4c2f-9c7a-9f3b42590755
     id: image_scale_and_crop
-    weight: 1
+    weight: -9
     data:
       width: 360
       height: 260
+  3ceafaf5-f858-4f16-971d-6a1bd7ed8322:
+    uuid: 3ceafaf5-f858-4f16-971d-6a1bd7ed8322
+    id: crop_crop
+    weight: -10
+    data:
+      crop_type: full_image_cropped_manually

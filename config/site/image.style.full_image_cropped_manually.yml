@@ -1,0 +1,17 @@
+uuid: 57b36f11-665f-473b-b8a2-dc9149ba63df
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.full_image_cropped_manually
+  module:
+    - crop
+name: full_image_cropped_manually
+label: 'Full image cropped manually'
+effects:
+  95d68366-0da4-4156-8f04-939d9c2a078e:
+    uuid: 95d68366-0da4-4156-8f04-939d9c2a078e
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: full_image_cropped_manually

@@ -1,14 +1,24 @@
 uuid: f7487dab-ea88-4388-b958-fe281563a553
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - crop.type.full_image_cropped_manually
+  module:
+    - crop
 name: 2_projects
 label: '2 projects'
 effects:
   50a7ae27-17dc-422f-9450-616d0579430b:
     uuid: 50a7ae27-17dc-422f-9450-616d0579430b
     id: image_scale_and_crop
-    weight: 1
+    weight: -9
     data:
       width: 550
       height: 365
+  1084303a-6c44-409d-8738-b07ba983d169:
+    uuid: 1084303a-6c44-409d-8738-b07ba983d169
+    id: crop_crop
+    weight: -10
+    data:
+      crop_type: full_image_cropped_manually

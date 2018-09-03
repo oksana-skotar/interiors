@@ -1,14 +1,24 @@
 uuid: 50f1618f-870b-4c4d-8d16-929c5ea2f66b
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - crop.type.full_image_cropped_manually
+  module:
+    - crop
 name: 4_ideas
 label: '4 ideas'
 effects:
   12494735-7518-4480-bed8-5b2d776a8394:
     uuid: 12494735-7518-4480-bed8-5b2d776a8394
     id: image_scale_and_crop
-    weight: 1
+    weight: -9
     data:
       width: 270
       height: 270
+  fea691c7-eb3c-4b23-8242-33ab7a117cf9:
+    uuid: fea691c7-eb3c-4b23-8242-33ab7a117cf9
+    id: crop_crop
+    weight: -10
+    data:
+      crop_type: full_image_cropped_manually

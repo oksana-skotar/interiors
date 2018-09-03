@@ -1,14 +1,24 @@
 uuid: 6d31fe0e-0609-494c-8e02-0ad76e3d6038
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - crop.type.full_image_cropped_manually
+  module:
+    - crop
 name: thumbnail_75_75
 label: 'Thumbnail (75×75)'
 effects:
   1f0d5df8-3a34-4991-91f7-146a8cdba575:
     uuid: 1f0d5df8-3a34-4991-91f7-146a8cdba575
     id: image_scale_and_crop
-    weight: 1
+    weight: -9
     data:
       width: 75
       height: 75
+  33de858d-9c72-4f06-b3d4-914c12b0e1b1:
+    uuid: 33de858d-9c72-4f06-b3d4-914c12b0e1b1
+    id: crop_crop
+    weight: -10
+    data:
+      crop_type: full_image_cropped_manually
