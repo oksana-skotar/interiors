@@ -18,6 +18,7 @@ dependencies:
     - node
     - taxonomy
     - user
+    - views_filter_autosubmit
 id: projects_no_search
 label: 'Projects no search'
 module: views
@@ -49,15 +50,16 @@ display:
           query_comment: ''
           query_tags: {  }
       exposed_form:
-        type: basic
+        type: autosubmit
         options:
           submit_button: Apply
-          reset_button: false
-          reset_button_label: Reset
+          reset_button: 1
+          reset_button_label: 'Erase all'
           exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
+          expose_sort_order: 0
           sort_asc_label: Asc
           sort_desc_label: Desc
+          autosubmit_hide: 1
       pager:
         type: mini
         options:
