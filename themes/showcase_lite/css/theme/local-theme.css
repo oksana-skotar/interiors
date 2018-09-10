@@ -187,7 +187,3 @@ input[type="submit"] + input[type="submit"], .button + .button {
 .main-listing .select {
     padding: 10px 10px;
 }
-
-select option:focus {
-    background-color: #2d2d2d;
-  }
