@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.project.field_project_constraint
     - field.field.node.project.field_project_images
     - field.field.node.project.field_project_material
-    - field.field.node.project.field_project_rel_collections
     - field.field.node.project.field_project_source_url
     - field.field.node.project.field_project_space
     - field.field.node.project.field_project_style
@@ -41,7 +40,6 @@ hidden:
   field_project_constraint: true
   field_project_images: true
   field_project_material: true
-  field_project_rel_collections: true
   field_project_source_url: true
   field_project_space: true
   field_project_style: true

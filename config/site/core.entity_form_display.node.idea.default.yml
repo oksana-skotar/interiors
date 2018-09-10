@@ -5,10 +5,8 @@ dependencies:
   config:
     - entity_browser.browser.images_browser
     - field.field.node.idea.body
-    - field.field.node.idea.field_idea_collections
     - field.field.node.idea.field_idea_color
     - field.field.node.idea.field_idea_constraint
-    - field.field.node.idea.field_idea_ideas_criteria
     - field.field.node.idea.field_idea_material
     - field.field.node.idea.field_idea_object
     - field.field.node.idea.field_idea_space
@@ -42,15 +40,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_idea_collections:
-    weight: 19
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   field_idea_color:
     weight: 18
     settings:
@@ -62,15 +51,6 @@ content:
     region: content
   field_idea_constraint:
     weight: 13
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
-  field_idea_ideas_criteria:
-    weight: 20
     settings:
       match_operator: CONTAINS
       size: 60

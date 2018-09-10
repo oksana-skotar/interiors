@@ -1,0 +1,12 @@
+uuid: cc3803aa-05e1-40fb-99a8-5f722fda28be
+langcode: en
+status: true
+dependencies: {  }
+label: 'Full image cropped manually'
+id: full_image_cropped_manually
+description: ''
+aspect_ratio: ''
+soft_limit_width: 75
+soft_limit_height: 75
+hard_limit_width: null
+hard_limit_height: null

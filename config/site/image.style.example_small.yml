@@ -1,0 +1,7 @@
+uuid: ec6e546f-2eb2-4f34-8a15-2d231cdb8b93
+langcode: en
+status: true
+dependencies: {  }
+name: example_small
+label: Example-small
+effects: {  }

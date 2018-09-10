@@ -289,7 +289,7 @@ display:
       tags: {  }
   page_1:
     display_options:
-      path: node
+      path: nodes
       display_extenders: {  }
     display_plugin: page
     display_title: Page

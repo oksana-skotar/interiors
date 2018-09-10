@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.project.field_project_constraint
     - field.field.node.project.field_project_images
     - field.field.node.project.field_project_material
-    - field.field.node.project.field_project_rel_collections
     - field.field.node.project.field_project_source_url
     - field.field.node.project.field_project_space
     - field.field.node.project.field_project_style
@@ -83,15 +82,6 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  field_project_rel_collections:
-    weight: 19
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   field_project_source_url:
     weight: 9
     settings:
@@ -122,14 +112,13 @@ content:
     weight: 10
     settings:
       entity_browser: images_browser
-      field_widget_display: rendered_entity
+      field_widget_display: label
       field_widget_edit: true
       field_widget_remove: true
       open: true
       selection_mode: selection_append
-      field_widget_display_settings:
-        view_mode: default
       field_widget_replace: false
+      field_widget_display_settings: {  }
     third_party_settings: {  }
     type: entity_browser_entity_reference
     region: content

@@ -5,10 +5,8 @@ dependencies:
   config:
     - core.entity_view_mode.node.idea_teaser_img_title
     - field.field.node.idea.body
-    - field.field.node.idea.field_idea_collections
     - field.field.node.idea.field_idea_color
     - field.field.node.idea.field_idea_constraint
-    - field.field.node.idea.field_idea_ideas_criteria
     - field.field.node.idea.field_idea_material
     - field.field.node.idea.field_idea_object
     - field.field.node.idea.field_idea_space
@@ -38,10 +36,8 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
-  field_idea_collections: true
   field_idea_color: true
   field_idea_constraint: true
-  field_idea_ideas_criteria: true
   field_idea_material: true
   field_idea_object: true
   field_idea_space: true

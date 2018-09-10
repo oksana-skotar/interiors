@@ -67,6 +67,7 @@
 .main-listing .form-select {
     border-color: #ffffff;
     background-color: #ffffff;
+    padding-right: 23px;
 }
 
 .row-examples 
@@ -146,4 +147,43 @@ margin-bottom: 35px;
     margin-top: 20px;
     display: inline-block;
     margin-left: 5px;
+}
+
+.form-item, .form-actions {
+    margin: 0px;
+}
+
+.view-filters {
+    text-align: center;
+}
+
+.form--inline {
+    display: inline-block;
+}
+
+.form-actions {
+    display: inline-block;
+}
+
+.main-listing .button {
+    background-color: #ffffff;
+    padding: 15px 23px 15px 8px;
+    color: #9c9c9c;
+    background-image: linear-gradient(transparent, transparent), url(../../images/cross-black.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: 98.5% 50%;
+}
+
+.headings-wide-spacing-enabled input[type="submit"] {
+    letter-spacing: normal;
+    text-transform: none;
+}
+
+input[type="submit"] + input[type="submit"], .button + .button {
+    margin-left: 0px;
+}
+
+.main-listing .select {
+    padding: 10px 10px;
 }
