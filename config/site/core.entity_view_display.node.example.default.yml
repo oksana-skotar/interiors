@@ -17,39 +17,25 @@ dependencies:
     - field.field.node.example.field_example_surface
     - field.field.node.example.field_example_theme
     - field.field.node.example.field_example_users_age
+    - image.style.full_image_cropped_manually
     - node.type.example
   module:
+    - media
     - user
 id: node.example.default
 targetEntityType: node
 bundle: example
 mode: default
 content:
-  field_example_color:
-    weight: 14
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_example_constraint:
-    weight: 8
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   field_example_description:
     weight: 0
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
     region: content
   field_example_fullscreen:
-    weight: 2
+    weight: 1
     label: above
     settings:
       format: default
@@ -59,90 +45,39 @@ content:
     type: boolean
     region: content
   field_example_ideas:
-    weight: 4
-    label: above
+    weight: 3
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   field_example_image:
-    type: entity_reference_entity_view
-    weight: 15
-    label: above
+    type: media_thumbnail
+    weight: 4
+    label: hidden
     settings:
-      view_mode: default
-      link: false
+      image_style: full_image_cropped_manually
+      image_link: ''
     third_party_settings: {  }
-    region: content
-  field_example_material:
-    weight: 11
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_example_object:
-    weight: 10
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
     region: content
   field_example_project:
-    weight: 3
-    label: above
+    weight: 2
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_example_space:
-    weight: 7
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_example_style:
-    weight: 5
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_example_surface:
-    weight: 9
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_example_theme:
-    weight: 12
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_example_users_age:
-    weight: 13
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  links:
-    weight: 6
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
+  field_example_color: true
+  field_example_constraint: true
+  field_example_material: true
+  field_example_object: true
+  field_example_space: true
+  field_example_style: true
+  field_example_surface: true
+  field_example_theme: true
+  field_example_users_age: true
   langcode: true
+  links: true

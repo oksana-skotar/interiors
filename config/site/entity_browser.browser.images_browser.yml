@@ -11,8 +11,8 @@ name: images_browser
 label: 'Images browser'
 display: modal
 display_configuration:
-  width: '800'
-  height: '600'
+  width: '1100'
+  height: '720'
   link_text: 'Select images'
   auto_open: false
 selection_display: multi_step_display

@@ -18,8 +18,10 @@ dependencies:
     - field.field.node.example.field_example_surface
     - field.field.node.example.field_example_theme
     - field.field.node.example.field_example_users_age
+    - image.style.full_image_cropped_manually
     - node.type.example
   module:
+    - media
     - user
 id: node.example.example_img_description_ideas
 targetEntityType: node
@@ -42,13 +44,13 @@ content:
     type: entity_reference_label
     region: content
   field_example_image:
-    type: entity_reference_entity_view
+    type: media_thumbnail
     weight: 0
     region: content
     label: hidden
     settings:
-      view_mode: default
-      link: false
+      image_style: full_image_cropped_manually
+      image_link: ''
     third_party_settings: {  }
 hidden:
   field_example_color: true

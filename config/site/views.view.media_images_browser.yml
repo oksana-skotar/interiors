@@ -10,6 +10,7 @@ dependencies:
     - image
     - media
     - user
+    - views_filter_autosubmit
 _core:
   default_config_hash: TFUfJMkC5E-HhafRL20wJK0EdtJotDtqb_9kJw2att4
 id: media_images_browser
@@ -43,19 +44,20 @@ display:
           query_comment: ''
           query_tags: {  }
       exposed_form:
-        type: basic
+        type: autosubmit
         options:
           submit_button: Filter
-          reset_button: false
+          reset_button: 0
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
+          expose_sort_order: 0
           sort_asc_label: Asc
           sort_desc_label: Desc
+          autosubmit_hide: 1
       pager:
         type: full
         options:
-          items_per_page: 12
+          items_per_page: 10
           offset: 0
           id: 0
           total_pages: null
@@ -77,7 +79,7 @@ display:
         type: grid
         options:
           grouping: {  }
-          columns: 4
+          columns: 5
           automatic_width: true
           alignment: horizontal
           col_class_default: true
@@ -283,57 +285,6 @@ display:
           entity_type: media
           entity_field: uid
           plugin_id: field
-        operations:
-          id: operations
-          table: media
-          field: operations
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          destination: true
-          entity_type: media
-          plugin_id: entity_operations
         entity_browser_select:
           id: entity_browser_select
           table: media
@@ -398,7 +349,7 @@ display:
           exposed: true
           expose:
             operator_id: name_op
-            label: 'Media name'
+            label: ''
             description: ''
             use_operator: false
             operator: name_op
@@ -410,6 +361,7 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
