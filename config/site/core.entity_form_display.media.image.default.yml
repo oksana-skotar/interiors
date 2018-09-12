@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.media.image.field_media_image
-    - image.style.thumbnail
+    - image.style.medium
     - media.type.image
   module:
     - image_widget_crop
@@ -21,7 +21,7 @@ content:
       show_crop_area: true
       show_default_crop: true
       warn_multiple_usages: true
-      preview_image_style: thumbnail
+      preview_image_style: medium
       crop_preview_image_style: crop_thumbnail
       crop_list:
         - full_image_cropped_manually

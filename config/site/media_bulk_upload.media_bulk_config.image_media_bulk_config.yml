@@ -1,0 +1,12 @@
+uuid: 0a5af22e-c48b-433b-8886-e8ea4ef7930c
+langcode: en
+status: true
+dependencies: {  }
+id: image_media_bulk_config
+label: 'Image media bulk config'
+media_types:
+  image: image
+  audio: 0
+  file: 0
+  video: 0
+form_mode: default

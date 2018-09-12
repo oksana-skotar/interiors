@@ -1,0 +1,25 @@
+uuid: 92ccb21b-19a3-42d8-b4f0-590c5d875070
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.full_image_cropped_manually
+  module:
+    - crop
+name: back_office_preview_cropped_manually
+label: 'Back-office preview cropped manually'
+effects:
+  044a8c46-b097-4820-88e6-930b29495c5b:
+    uuid: 044a8c46-b097-4820-88e6-930b29495c5b
+    id: crop_crop
+    weight: 2
+    data:
+      crop_type: full_image_cropped_manually
+  74994323-4e21-41c3-bd2a-41e53f207d33:
+    uuid: 74994323-4e21-41c3-bd2a-41e53f207d33
+    id: image_scale
+    weight: 2
+    data:
+      width: 300
+      height: 400
+      upscale: false
