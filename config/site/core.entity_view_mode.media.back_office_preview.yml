@@ -1,0 +1,10 @@
+uuid: e4a43b78-2c07-4a86-a256-5a9bfe3ba9b5
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.back_office_preview
+label: 'Back office preview'
+targetEntityType: media
+cache: true

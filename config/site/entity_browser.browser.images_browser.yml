@@ -3,9 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
+    - media.type.image
     - views.view.media_images_browser
   module:
+    - dropzonejs_eb_widget
     - entity_browser_entity_form
+    - media
     - views
 name: images_browser
 label: 'Images browser'
@@ -43,5 +46,24 @@ widgets:
       submit_text: Save
     uuid: da37ea83-f97d-40d9-86ed-8ac128c52aef
     weight: 3
-    label: 'Add media'
+    label: 'Add one'
     id: entity_form
+  37216d90-0465-4701-96e0-c67c9fbdb2b5:
+    settings:
+      form_mode: default
+      media_type: image
+      upload_location: 'public://'
+      dropzone_description: 'Drop files here to upload them'
+      max_filesize: 2M
+      extensions: 'jpg jpeg gif png'
+      clientside_resize: false
+      resize_width: null
+      resize_height: null
+      resize_quality: !!float 1
+      resize_method: contain
+      thumbnail_method: contain
+      submit_text: Place
+    uuid: 37216d90-0465-4701-96e0-c67c9fbdb2b5
+    weight: 3
+    label: 'Add many'
+    id: dropzonejs_media_entity_inline_entity_form

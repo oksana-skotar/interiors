@@ -17,6 +17,8 @@ module:
   datetime: 0
   dblog: 0
   devel: 0
+  dropzonejs: 0
+  dropzonejs_eb_widget: 0
   dynamic_page_cache: 0
   editor: 0
   embed: 0
@@ -40,6 +42,7 @@ module:
   libraries: 0
   link: 0
   media: 0
+  media_bulk_upload: 0
   menu_ui: 0
   node: 0
   options: 0
