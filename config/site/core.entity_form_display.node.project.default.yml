@@ -60,7 +60,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_project_images:
-    weight: 11
+    weight: 10
     settings:
       entity_browser: images_browser
       field_widget_display: rendered_entity
@@ -110,7 +110,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_project_teaser_image:
-    weight: 10
+    weight: 11
     settings:
       entity_browser: images_browser
       field_widget_display: rendered_entity

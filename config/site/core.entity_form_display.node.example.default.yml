@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.example.field_example_material
     - field.field.node.example.field_example_object
     - field.field.node.example.field_example_project
+    - field.field.node.example.field_example_source
     - field.field.node.example.field_example_space
     - field.field.node.example.field_example_style
     - field.field.node.example.field_example_surface
@@ -21,6 +22,7 @@ dependencies:
     - node.type.example
   module:
     - entity_browser
+    - link
     - path
 id: node.example.default
 targetEntityType: node
@@ -49,7 +51,7 @@ content:
       display_label: true
     third_party_settings: {  }
   field_example_ideas:
-    weight: 9
+    weight: 10
     settings:
       match_operator: CONTAINS
       size: 60
@@ -61,13 +63,14 @@ content:
     weight: 2
     settings:
       entity_browser: images_browser
-      field_widget_display: label
+      field_widget_display: rendered_entity
       field_widget_edit: true
       field_widget_remove: true
       open: true
       selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: back_office_preview
       field_widget_replace: false
-      field_widget_display_settings: {  }
     third_party_settings: {  }
     type: entity_browser_entity_reference
     region: content
@@ -79,6 +82,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_example_source:
+    weight: 9
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
     region: content
   path:
     type: path
