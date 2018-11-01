@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.idea.field_idea_constraint
     - field.field.node.idea.field_idea_material
     - field.field.node.idea.field_idea_object
+    - field.field.node.idea.field_idea_products
     - field.field.node.idea.field_idea_space
     - field.field.node.idea.field_idea_style
     - field.field.node.idea.field_idea_surface
@@ -75,6 +76,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_idea_products:
+    weight: 26
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
     region: content
   field_idea_space:
     weight: 12

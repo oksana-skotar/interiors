@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.example.field_example_image
     - field.field.node.example.field_example_material
     - field.field.node.example.field_example_object
+    - field.field.node.example.field_example_products
     - field.field.node.example.field_example_project
     - field.field.node.example.field_example_source
     - field.field.node.example.field_example_space
@@ -62,6 +63,18 @@ content:
       image_style: full_image_cropped_manually
       image_link: ''
     third_party_settings: {  }
+    region: content
+  field_example_products:
+    weight: 6
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
     region: content
   field_example_project:
     weight: 2

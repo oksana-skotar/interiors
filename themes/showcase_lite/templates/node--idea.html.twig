@@ -99,7 +99,7 @@
         {% endblock %}
       </header>
       {% block content %}
-        {{ content|without('body','field_idea_object', 'field_idea_surface', 'field_idea_space', 'field_idea_constraint', 'field_idea_style', 'field_idea_material', 'field_idea_users_age', 'field_idea_theme', 'field_idea_users_color') }} 
+        {{ content|without('body','field_idea_object', 'field_idea_surface', 'field_idea_space', 'field_idea_constraint', 'field_idea_style', 'field_idea_material', 'field_idea_users_age', 'field_idea_theme', 'field_idea_users_color', 'field_idea_products') }} 
         <div class="node-short-description">{{ content.body }}</div>
             <div class="row">
             {% for rel_node in related_nodes_full_screen[0:1] %}  
@@ -147,7 +147,15 @@
         {{ content.field_idea_color }}
       </div>
 
-      {% endblock %}      
+      {% if content.field_idea_products is not empty %}
+          <h2 class="title-separator">Related products</h2>
+      {% endif %}
+
+      {{ content.field_idea_products }}
+      
+
+      {% endblock %}  
+   
     </div>
   </div>
 </article>

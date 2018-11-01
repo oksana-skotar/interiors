@@ -78,7 +78,7 @@
     flex-wrap: wrap;
 }
 
-.example-item {
+.example-item, .product-item {
 margin-bottom: 35px;
 }
 
@@ -192,4 +192,31 @@ input[type="submit"] + input[type="submit"], .button + .button {
 
 .views-field-title {
     line-height: 1.25;
+}
+
+.idea-product {
+    height: 200px;
+}
+
+.product-top-logo-cover {
+    height: 30px;
+    width:120px;
+    background-color: white;
+    position: absolute;
+}
+
+.product-prime-logo-cover {
+    height: 15px;
+    width:46px;
+    background-color: white;
+    position: absolute;
+    top: 181px;
+    left: 80px;
+}
+
+.product-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 15px;
 }

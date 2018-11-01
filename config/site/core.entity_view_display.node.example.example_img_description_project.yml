@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.example.field_example_image
     - field.field.node.example.field_example_material
     - field.field.node.example.field_example_object
+    - field.field.node.example.field_example_products
     - field.field.node.example.field_example_project
     - field.field.node.example.field_example_source
     - field.field.node.example.field_example_space
@@ -46,6 +47,18 @@ content:
       image_link: ''
     third_party_settings: {  }
     region: content
+  field_example_products:
+    type: link
+    weight: 4
+    region: content
+    label: hidden
+    settings:
+      trim_length: 50
+      target: _blank
+      url_only: false
+      url_plain: false
+      rel: '0'
+    third_party_settings: {  }
   field_example_project:
     weight: 2
     label: hidden
@@ -60,11 +73,11 @@ content:
     region: content
     label: hidden
     settings:
-      trim_length: 80
+      trim_length: 50
+      target: _blank
       url_only: false
       url_plain: false
-      rel: ''
-      target: ''
+      rel: '0'
     third_party_settings: {  }
 hidden:
   field_example_color: true

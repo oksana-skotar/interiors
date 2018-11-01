@@ -1,0 +1,21 @@
+uuid: 90cf81cd-1c75-446e-a0f5-1c739bdcb1fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_idea_products
+    - node.type.idea
+  module:
+    - text
+id: node.idea.field_idea_products
+field_name: field_idea_products
+entity_type: node
+bundle: idea
+label: Products
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

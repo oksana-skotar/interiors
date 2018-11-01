@@ -1,0 +1,31 @@
+uuid: 9608518e-9e22-4cce-b61d-62c8327f6ef2
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.iframe
+  module:
+    - ckeditor
+format: iframe
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Tools
+          items:
+            - Source
+  plugins:
+    language:
+      language_list: un
+    stylescombo:
+      styles: ''
+image_upload:
+  status: false
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.example.field_example_image
     - field.field.node.example.field_example_material
     - field.field.node.example.field_example_object
+    - field.field.node.example.field_example_products
     - field.field.node.example.field_example_project
     - field.field.node.example.field_example_source
     - field.field.node.example.field_example_space
@@ -73,6 +74,14 @@ content:
       field_widget_replace: false
     third_party_settings: {  }
     type: entity_browser_entity_reference
+    region: content
+  field_example_products:
+    weight: 11
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
     region: content
   field_example_project:
     weight: 8

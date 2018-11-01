@@ -1,0 +1,33 @@
+uuid: c3966ec5-b6bc-4943-b280-1786360a95a7
+langcode: en
+status: false
+dependencies:
+  config:
+    - filter.format.product_embed
+  module:
+    - ckeditor
+format: product_embed
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Tools
+          items:
+            - Source
+            - Styles
+            - '-'
+  plugins:
+    language:
+      language_list: un
+    stylescombo:
+      styles: 'div.amzn-ad-logo-holder|Hide Amzn Logo'
+image_upload:
+  status: false
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null
