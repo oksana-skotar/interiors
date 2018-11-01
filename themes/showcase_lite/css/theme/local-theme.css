@@ -187,3 +187,7 @@ input[type="submit"] + input[type="submit"], .button + .button {
 .main-listing .select {
     padding: 10px 10px;
 }
+
+.views-field-title {
+    line-height: 1.25;
+}

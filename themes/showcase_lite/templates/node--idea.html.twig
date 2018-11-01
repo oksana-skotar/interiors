@@ -102,39 +102,37 @@
         {{ content|without('body','field_idea_object', 'field_idea_surface', 'field_idea_space', 'field_idea_constraint', 'field_idea_style', 'field_idea_material', 'field_idea_users_age', 'field_idea_theme', 'field_idea_users_color') }} 
         <div class="node-short-description">{{ content.body }}</div>
             <div class="row">
-            {% for rel_node in related_nodes[0:1] %}  
+            {% for rel_node in related_nodes_full_screen[0:1] %}  
                <div class="col-md-12 example-item">{{ rel_node }}</div>
             {% endfor %} 
             </div>
             
             <div class="row">
-            {% for rel_node in related_nodes[1:3] %}  
+            {% for rel_node in related_nodes[0:3] %}  
                <div class="col-md-4 col-xs-6 example-item">{{ rel_node }}</div>
             {% endfor %} 
             </div>
 
-            <div class="row">
-            {% for rel_node in related_nodes[4:1] %}  
+            {% for rel_node in related_nodes_full_screen[1:1] %}  
                <div class="col-md-12 example-item">{{ rel_node }}</div>
             {% endfor %} 
             </div>
 
             <div class="row">
-            {% for rel_node in related_nodes[5:3] %}  
+            {% for rel_node in related_nodes[3:3] %}  
                <div class="col-md-4 col-xs-6 example-item">{{ rel_node }}</div>
             {% endfor %} 
             </div>
 
-            <div class="row">
-            {% for rel_node in related_nodes[8:1] %}  
+            {% for rel_node in related_nodes_full_screen[2:1] %}  
                <div class="col-md-12 example-item">{{ rel_node }}</div>
-            {% endfor %}
+            {% endfor %} 
             </div>
 
             <div class="row">
-            {% for rel_node in related_nodes[9:] %}  
+            {% for rel_node in related_nodes[6:] %}  
                <div class="col-md-4 col-xs-6 example-item">{{ rel_node }}</div>
-            {% endfor %}            
+            {% endfor %} 
             </div>
 
       <div class="taxo-row">
