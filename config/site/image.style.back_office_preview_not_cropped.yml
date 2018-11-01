@@ -1,0 +1,15 @@
+uuid: fc67b49a-fe95-4161-a350-af18131f7ad1
+langcode: en
+status: true
+dependencies: {  }
+name: back_office_preview_not_cropped
+label: 'Back-office preview not cropped'
+effects:
+  74994323-4e21-41c3-bd2a-41e53f207d33:
+    uuid: 74994323-4e21-41c3-bd2a-41e53f207d33
+    id: image_scale
+    weight: 2
+    data:
+      width: 300
+      height: 400
+      upscale: false

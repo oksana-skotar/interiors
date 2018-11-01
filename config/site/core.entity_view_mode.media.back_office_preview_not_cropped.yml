@@ -1,0 +1,10 @@
+uuid: 9199fb99-ae4b-4185-9749-b340d09c9391
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.back_office_preview_not_cropped
+label: 'Back-office preview not cropped'
+targetEntityType: media
+cache: true
