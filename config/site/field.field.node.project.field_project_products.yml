@@ -1,16 +1,16 @@
-uuid: 90cf81cd-1c75-446e-a0f5-1c739bdcb1fd
+uuid: c76d7ebf-8be1-4ae9-8632-25e5394b7db3
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_idea_products
-    - node.type.idea
+    - field.storage.node.field_project_products
+    - node.type.project
   module:
     - text
-id: node.idea.field_idea_products
-field_name: field_idea_products
+id: node.project.field_project_products
+field_name: field_project_products
 entity_type: node
-bundle: idea
+bundle: project
 label: Products
 description: "Copy the Iframe from Amazon.\r\nSet values: width:120px;height:200px"
 required: false

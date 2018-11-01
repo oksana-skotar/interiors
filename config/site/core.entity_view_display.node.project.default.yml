@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.project.field_project_constraint
     - field.field.node.project.field_project_images
     - field.field.node.project.field_project_material
+    - field.field.node.project.field_project_products
     - field.field.node.project.field_project_source_url
     - field.field.node.project.field_project_space
     - field.field.node.project.field_project_style
@@ -63,6 +64,13 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  field_project_products:
+    weight: 117
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
     region: content
   field_project_source_url:
     weight: 105
