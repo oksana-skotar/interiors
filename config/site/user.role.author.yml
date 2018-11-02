@@ -1,0 +1,51 @@
+uuid: 8e2d6c9e-57df-4cd7-950d-daf70d22105d
+langcode: en
+status: true
+dependencies: {  }
+id: author
+label: Author
+weight: 3
+is_admin: null
+permissions:
+  - 'access any production workflow_transion overview'
+  - 'access content overview'
+  - 'access images_browser entity browser pages'
+  - 'access media overview'
+  - 'access own production workflow_transion overview'
+  - 'access production workflow_transition form'
+  - 'access site in maintenance mode'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'access user profiles'
+  - 'administer meta tags'
+  - 'clone media entity'
+  - 'clone node entity'
+  - 'create example content'
+  - 'create idea content'
+  - 'create image media'
+  - 'create media'
+  - 'create production workflow_transition'
+  - 'create project content'
+  - 'create terms in colors'
+  - 'create terms in constraints'
+  - 'create terms in materials'
+  - 'create terms in objects'
+  - 'create terms in spaces'
+  - 'create terms in styles'
+  - 'create terms in surfaces'
+  - 'create terms in tags'
+  - 'create terms in themes'
+  - 'create terms in users_ages'
+  - 'delete own example content'
+  - 'delete own idea content'
+  - 'delete own image media'
+  - 'delete own project content'
+  - 'dropzone upload files'
+  - 'edit own example content'
+  - 'edit own idea content'
+  - 'edit own image media'
+  - 'edit own project content'
+  - 'update media'
+  - 'use image_media_bulk_config bulk upload form'
+  - 'view own unpublished content'
+  - 'view the administration theme'

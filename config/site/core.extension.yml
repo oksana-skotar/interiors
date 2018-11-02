@@ -9,7 +9,6 @@ module:
   breakpoint: 0
   ckeditor: 0
   color: 0
-  comment: 0
   config: 0
   contact: 0
   contextual: 0
@@ -25,7 +24,6 @@ module:
   embed: 0
   entity_browser: 0
   entity_browser_entity_form: 0
-  entity_clone: 0
   entity_embed: 0
   facets: 0
   field: 0
@@ -70,6 +68,9 @@ module:
   user: 0
   views_filter_autosubmit: 0
   views_ui: 0
+  workflow: 0
+  workflow_access: 0
+  workflow_ui: 0
   menu_link_content: 1
   pathauto: 1
   views: 10

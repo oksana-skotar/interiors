@@ -52,6 +52,10 @@
   ]
 %}
 
+  {% if items is not empty %}
+          <h2 class="title-separator">Related products</h2>
+  {% endif %}
+
   <div class="row">
           {% for item in items %}
              <div{{ item.attributes.addClass('field__item', 'col-md-2', 'col-xs-4', 'amzn-product') }}>

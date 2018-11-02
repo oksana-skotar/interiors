@@ -44,7 +44,23 @@
     left: 0px;
     position: absolute;
     padding: 0 15px;
-}   
+}  
+
+@media only screen and (max-width: 900px) {
+    .listings-title {
+        height: 50px;
+        font-size: 0.9em;
+        line-height: 1.3;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .listings-title {
+        height: 40px;
+        font-size: 0.75em;
+        line-height: 1.2;
+    }
+}
 
 .listings-teaser-img {
     
@@ -149,6 +165,18 @@ margin-bottom: 35px;
     margin-top: 20px;
     display: inline-block;
     margin-left: 5px;
+}
+
+
+.style-summary-icon {
+    margin-top: 20px;
+    display: inline-block;
+}
+
+@media only screen and (max-width: 506px) {
+    .style-summary-icon {
+        display: none;
+    }
 }
 
 .form-item, .form-actions {
