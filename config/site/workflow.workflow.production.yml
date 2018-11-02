@@ -1,0 +1,14 @@
+uuid: 4bbd3451-8572-4bb5-b2e6-dd5809161af7
+langcode: en
+status: true
+dependencies: {  }
+id: production
+label: Production
+module: workflow
+options:
+  name_as_title: 0
+  fieldset: 0
+  options: radios
+  schedule_timezone: 1
+  comment_log_node: 1
+  watchdog_log: 0

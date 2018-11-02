@@ -12,7 +12,7 @@ dependencies:
 id: views_block__block_related_ideas
 theme: showcase_lite
 region: content
-weight: 0
+weight: -1
 provider: null
 plugin: 'views_block:related_ideas-block_related_ideas'
 settings:

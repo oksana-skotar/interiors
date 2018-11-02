@@ -1,0 +1,22 @@
+uuid: ef3ea459-2c68-488d-a5b9-992d07c1fc30
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: idea_detail_pages
+label: 'Idea detail pages'
+type: 'canonical_entities:node'
+pattern: '[node:content-type:name]/[node:title]'
+selection_criteria:
+  96e365d5-f82b-47a1-bd3f-fe5d521f3ef2:
+    id: node_type
+    bundles:
+      idea: idea
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 96e365d5-f82b-47a1-bd3f-fe5d521f3ef2
+selection_logic: and
+weight: -5
+relationships: {  }

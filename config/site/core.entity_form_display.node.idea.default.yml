@@ -9,15 +9,18 @@ dependencies:
     - field.field.node.idea.field_idea_constraint
     - field.field.node.idea.field_idea_material
     - field.field.node.idea.field_idea_object
+    - field.field.node.idea.field_idea_products
     - field.field.node.idea.field_idea_space
     - field.field.node.idea.field_idea_style
     - field.field.node.idea.field_idea_surface
     - field.field.node.idea.field_idea_teaser_image
     - field.field.node.idea.field_idea_theme
     - field.field.node.idea.field_idea_users_age
+    - field.field.node.idea.field_meta_tags
     - node.type.idea
   module:
     - entity_browser
+    - metatag
     - path
     - text
 id: node.idea.default
@@ -75,6 +78,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_idea_products:
+    weight: 26
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
     region: content
   field_idea_space:
     weight: 12
@@ -135,6 +146,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_meta_tags:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
     region: content
   langcode:
     type: language_select

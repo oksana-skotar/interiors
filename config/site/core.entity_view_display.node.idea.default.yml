@@ -8,14 +8,17 @@ dependencies:
     - field.field.node.idea.field_idea_constraint
     - field.field.node.idea.field_idea_material
     - field.field.node.idea.field_idea_object
+    - field.field.node.idea.field_idea_products
     - field.field.node.idea.field_idea_space
     - field.field.node.idea.field_idea_style
     - field.field.node.idea.field_idea_surface
     - field.field.node.idea.field_idea_teaser_image
     - field.field.node.idea.field_idea_theme
     - field.field.node.idea.field_idea_users_age
+    - field.field.node.idea.field_meta_tags
     - node.type.idea
   module:
+    - metatag
     - text
     - user
 id: node.idea.default
@@ -62,6 +65,13 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  field_idea_products:
+    weight: 11
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
   field_idea_space:
     weight: 4
     label: hidden
@@ -102,11 +112,19 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  field_meta_tags:
+    weight: 12
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
   links:
     weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  addtoany: true
   field_idea_teaser_image: true
   langcode: true

@@ -1,0 +1,24 @@
+entity_type_groups:
+  media:
+    image:
+      basic: basic
+  node:
+    collection:
+      basic: basic
+      advanced: advanced
+    example:
+      basic: basic
+      advanced: advanced
+    idea:
+      basic: basic
+      advanced: advanced
+    page:
+      basic: basic
+      advanced: advanced
+    project:
+      basic: basic
+      advanced: advanced
+  taxonomy_term:
+    styles:
+      basic: basic
+      advanced: advanced

@@ -1,0 +1,23 @@
+uuid: efc64a87-b15d-4b57-952b-6218daca0e0b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_example_products
+    - node.type.example
+  module:
+    - link
+id: node.example.field_example_products
+field_name: field_example_products
+entity_type: node
+bundle: example
+label: Products
+description: 'Insert an amazon or other reference product link'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

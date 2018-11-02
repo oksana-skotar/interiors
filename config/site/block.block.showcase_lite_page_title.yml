@@ -9,7 +9,7 @@ _core:
 id: showcase_lite_page_title
 theme: showcase_lite
 region: content
-weight: -4
+weight: -5
 provider: null
 plugin: page_title_block
 settings:

@@ -1,0 +1,21 @@
+uuid: e6c054dd-f135-4d7d-aa28-c8523bcbed06
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_collection_products
+    - node.type.collection
+  module:
+    - text
+id: node.collection.field_collection_products
+field_name: field_collection_products
+entity_type: node
+bundle: collection
+label: Products
+description: "Copy the Iframe from Amazon.\r\nSet values: width:120px;height:200px;"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

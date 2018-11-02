@@ -731,9 +731,11 @@ function showcase_lite_preprocess_node__idea(&$variables) {
   $current_node = $variables['node'];
   $current_node_id = $current_node->id();
   
+//get all NOT full-screen (small) examples
   $query = \Drupal::entityQuery('node');
   $query->condition('type', 'example');
   $query->condition('status', 1);
+  $query->condition('field_example_fullscreen', 0);
   $query->condition('field_example_ideas', $current_node_id);
   $nids = $query->execute();
   $relatednodes = Node::loadMultiple($nids);
@@ -742,6 +744,21 @@ function showcase_lite_preprocess_node__idea(&$variables) {
   $variables['related_nodes'][] = \Drupal::entityTypeManager()
     ->getViewBuilder('node')
     ->view($node, $view_mode  = 'example_img_description_project', $current_node->language()->getId());
+  }
+
+//get all full-screen examples
+  $query = \Drupal::entityQuery('node');
+  $query->condition('type', 'example');
+  $query->condition('status', 1);
+  $query->condition('field_example_fullscreen', 1);
+  $query->condition('field_example_ideas', $current_node_id);
+  $nids = $query->execute();
+  $relatednodesfullscreen = Node::loadMultiple($nids);
+
+  foreach ($relatednodesfullscreen as $fullnode) {
+  $variables['related_nodes_full_screen'][] = \Drupal::entityTypeManager()
+    ->getViewBuilder('node')
+    ->view($fullnode, $view_mode  = 'example_img_description_project', $current_node->language()->getId());
   }
 }
 
