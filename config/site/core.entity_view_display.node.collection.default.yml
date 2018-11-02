@@ -15,8 +15,10 @@ dependencies:
     - field.field.node.collection.field_collection_teaser_image
     - field.field.node.collection.field_collection_theme
     - field.field.node.collection.field_collection_users_age
+    - field.field.node.collection.field_meta_tags
     - node.type.collection
   module:
+    - metatag
     - text
     - user
 id: node.collection.default
@@ -110,7 +112,15 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  field_meta_tags:
+    weight: 11
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
 hidden:
+  addtoany: true
   field_collection_teaser_image: true
   langcode: true
   links: true

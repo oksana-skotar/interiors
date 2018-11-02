@@ -1,4 +1,5 @@
 module:
+  addtoany: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
   automated_cron: 0
@@ -45,6 +46,8 @@ module:
   media: 0
   media_bulk_upload: 0
   menu_ui: 0
+  metatag: 0
+  metatag_views: 0
   node: 0
   options: 0
   page_cache: 0

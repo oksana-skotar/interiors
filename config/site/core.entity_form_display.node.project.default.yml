@@ -5,6 +5,7 @@ dependencies:
   config:
     - entity_browser.browser.images_browser
     - field.field.node.project.body
+    - field.field.node.project.field_meta_tags
     - field.field.node.project.field_project_color
     - field.field.node.project.field_project_constraint
     - field.field.node.project.field_project_images
@@ -20,6 +21,7 @@ dependencies:
   module:
     - entity_browser
     - link
+    - metatag
     - path
     - text
 id: node.project.default
@@ -42,6 +44,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_meta_tags:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
+    region: content
   field_project_color:
     weight: 18
     settings:

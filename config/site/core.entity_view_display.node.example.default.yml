@@ -19,11 +19,13 @@ dependencies:
     - field.field.node.example.field_example_surface
     - field.field.node.example.field_example_theme
     - field.field.node.example.field_example_users_age
+    - field.field.node.example.field_meta_tags
     - image.style.full_image_cropped_manually
     - node.type.example
   module:
     - link
     - media
+    - metatag
     - user
 id: node.example.default
 targetEntityType: node
@@ -96,7 +98,15 @@ content:
     third_party_settings: {  }
     type: link
     region: content
+  field_meta_tags:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
 hidden:
+  addtoany: true
   field_example_color: true
   field_example_constraint: true
   field_example_material: true

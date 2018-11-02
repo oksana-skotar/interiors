@@ -16,9 +16,11 @@ dependencies:
     - field.field.node.idea.field_idea_teaser_image
     - field.field.node.idea.field_idea_theme
     - field.field.node.idea.field_idea_users_age
+    - field.field.node.idea.field_meta_tags
     - node.type.idea
   module:
     - entity_browser
+    - metatag
     - path
     - text
 id: node.idea.default
@@ -144,6 +146,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_meta_tags:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
     region: content
   langcode:
     type: language_select

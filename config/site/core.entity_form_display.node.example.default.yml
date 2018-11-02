@@ -20,10 +20,12 @@ dependencies:
     - field.field.node.example.field_example_surface
     - field.field.node.example.field_example_theme
     - field.field.node.example.field_example_users_age
+    - field.field.node.example.field_meta_tags
     - node.type.example
   module:
     - entity_browser
     - link
+    - metatag
     - path
 id: node.example.default
 targetEntityType: node
@@ -99,6 +101,12 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
+  field_meta_tags:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
     region: content
   path:
     type: path
