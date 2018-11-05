@@ -9,17 +9,16 @@ label: 'Content detail pages'
 type: 'canonical_entities:node'
 pattern: '[node:content-type:name]/[node:title]'
 selection_criteria:
-  ca644b25-be6d-4a4a-9d1b-b74f271fc37b:
+  7432071b-b428-448d-9267-00746923cd86:
     id: node_type
     bundles:
       collection: collection
-      example: example
       page: page
       project: project
     negate: false
     context_mapping:
       node: node
-    uuid: ca644b25-be6d-4a4a-9d1b-b74f271fc37b
+    uuid: 7432071b-b428-448d-9267-00746923cd86
 selection_logic: and
 weight: -5
 relationships: {  }
