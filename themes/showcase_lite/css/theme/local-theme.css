@@ -104,7 +104,7 @@ margin-bottom: 35px;
     padding-right: 5px;
     }
 
-.field--name-field-project-images div {
+.field--name-field-project-images div, .field--name-field-style-images div {
     margin-top: 15px;
 }
 
