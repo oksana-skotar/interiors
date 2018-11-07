@@ -600,7 +600,11 @@ display:
     display_title: Projects
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: 'Projects | [site:name]'
+            description: 'Projects of home appartement or house interiors. Modern, beautiful and simple to use living room, bed and bedroom, bathroom, kitchen and hall designs and decor in pictures. Architectural inspiration with new trendy contemporary indoor space planning, nice furniture and decoration. Small living room or bedroom designs.'
       path: projects
       display_description: ''
     cache_metadata:
