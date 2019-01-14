@@ -1,0 +1,29 @@
+uuid: 1cd79496-6516-44b5-b108-f97b2c1700b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_3d_model_teaser_image
+    - media.type.image
+    - node.type.3d_model
+id: node.3d_model.field_3d_model_teaser_image
+field_name: field_3d_model_teaser_image
+entity_type: node
+bundle: 3d_model
+label: 'Teaser image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: created
+      direction: DESC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,10 @@
+uuid: 7e80cca6-e0bf-4eb4-8109-a00abaa8c932
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.imagefield_slideshow
+label: 'Imagefield slideshow'
+targetEntityType: media
+cache: true

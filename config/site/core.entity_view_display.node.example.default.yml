@@ -63,7 +63,7 @@ content:
     label: hidden
     settings:
       image_style: full_image_cropped_manually
-      image_link: ''
+      image_link: media
     third_party_settings: {  }
     region: content
   field_example_products:

@@ -13,7 +13,6 @@ dependencies:
     - taxonomy.vocabulary.spaces
     - taxonomy.vocabulary.styles
     - taxonomy.vocabulary.surfaces
-    - taxonomy.vocabulary.users_ages
   module:
     - media
     - node
@@ -511,51 +510,6 @@ display:
           limit: true
           vid: materials
           hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
-        field_idea_users_age_target_id:
-          id: field_idea_users_age_target_id
-          table: node__field_idea_users_age
-          field: field_idea_users_age_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_idea_users_age_target_id_op
-            label: 'User''s age'
-            description: ''
-            use_operator: false
-            operator: field_idea_users_age_target_id_op
-            identifier: field_idea_users_age_target_id
-            required: false
-            remember: true
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: anonymous
-              administrator: administrator
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: true
-          type: select
-          limit: true
-          vid: users_ages
-          hierarchy: true
           error_message: true
           plugin_id: taxonomy_index_tid
         field_idea_color_target_id:

@@ -297,7 +297,7 @@ display:
               tags: tags
               themes: themes
               users_ages: users_ages
-            anyall: +
+            anyall: ','
             term_page: '0'
           default_argument_skip_url: false
           summary_options:

@@ -1,0 +1,22 @@
+uuid: 86dcb463-df08-4d34-9f8b-6ead91704d66
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.3d_model
+id: node.3d_model.promote
+field_name: promote
+entity_type: node
+bundle: 3d_model
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,23 @@
+uuid: c4c05251-2f96-4675-a17b-74b032d4ae25
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_3d_model_price
+    - node.type.3d_model
+id: node.3d_model.field_3d_model_price
+field_name: field_3d_model_price
+entity_type: node
+bundle: 3d_model
+label: Price
+description: 'Price in USD'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: $
+  suffix: ''
+field_type: decimal
