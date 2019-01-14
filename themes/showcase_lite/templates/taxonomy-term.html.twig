@@ -1,0 +1,64 @@
+{#
+/**
+ * @file
+ * custom implementation to display a Style taxonomy term page.
+ 
+ *
+ * @see template_preprocess_node()
+ */
+#}
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'clearfix',
+  ]
+%}
+{{ attach_library('classy/node') }}
+{{ attach_library('showcase_lite/node') }}
+<article{{ attributes.addClass(classes) }}>
+  <div class="node__container">
+    <div{{ content_attributes.addClass('node__main-content', 'clearfix') }}>
+      <header class="node__header">
+        {% block meta_area %}
+          {{ title_prefix }}
+          {% if not page %}
+            <h2{{ title_attributes.addClass('node__title') }}>
+              <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+            </h2>
+          {% endif %}
+          {{ title_suffix }}
+          {% if display_submitted %}
+            <div class="node__meta">
+              {{ metadata }}
+            </div>
+          {% endif %}
+        {% endblock %}
+      </header>
+      {% block content %}
+
+        {% if related_ideas is not empty %}
+          <h2 class="title-separator">Ideas</h2>
+        {% endif %}
+
+        <div class="row">
+            {% for rel_idea in related_ideas %}  
+               <div class="col-md-3 col-xs-6 col-listings-grid">{{ rel_idea }}</div>
+            {% endfor %}
+        </div>
+
+        {% if related_projects is not empty %}
+          <h2 class="title-separator">Projects</h2>
+        {% endif %}
+        
+        <div class="row">
+            {% for rel_project in related_projects %}  
+               <div class="col-md-6 col-xs-12 col-listings-grid">{{ rel_project }}</div>
+            {% endfor %}
+        </div>
+
+      {% endblock %}
+    </div>
+  </div>
+</article>
