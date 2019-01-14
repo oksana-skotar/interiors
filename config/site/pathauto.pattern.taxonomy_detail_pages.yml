@@ -10,14 +10,23 @@ label: 'Taxonomy detail pages'
 type: 'canonical_entities:taxonomy_term'
 pattern: '[term:vocabulary]/[term:name]'
 selection_criteria:
-  e96e54c6-e8d1-40f2-a23f-f97f0b8cb592:
+  e16490b9-3e73-4d4a-afc0-67c5283ec2c5:
     id: 'entity_bundle:taxonomy_term'
     bundles:
+      colors: colors
+      constraints: constraints
+      materials: materials
+      objects: objects
+      spaces: spaces
       styles: styles
+      surfaces: surfaces
+      tags: tags
+      themes: themes
+      users_ages: users_ages
     negate: false
     context_mapping:
       taxonomy_term: taxonomy_term
-    uuid: e96e54c6-e8d1-40f2-a23f-f97f0b8cb592
+    uuid: e16490b9-3e73-4d4a-afc0-67c5283ec2c5
 selection_logic: and
 weight: -5
 relationships: {  }

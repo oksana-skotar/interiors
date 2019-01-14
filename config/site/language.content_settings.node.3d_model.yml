@@ -1,0 +1,11 @@
+uuid: a04b9b5c-8326-4613-a7e5-a61de5622d3d
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.3d_model
+id: node.3d_model
+target_entity_type_id: node
+target_bundle: 3d_model
+default_langcode: site_default
+language_alterable: false

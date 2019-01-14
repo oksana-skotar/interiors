@@ -40,7 +40,7 @@ content:
     weight: 0
     label: hidden
     settings:
-      view_mode: default
+      view_mode: imagefield_slideshow
       link: false
     third_party_settings: {  }
     region: content

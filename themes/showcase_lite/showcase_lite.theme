@@ -780,14 +780,27 @@ function showcase_lite_preprocess_node__project(&$variables) {
   }
 }
 
-function showcase_lite_preprocess_taxonomy_term__styles(&$variables) {
+function showcase_lite_preprocess_taxonomy_term(&$variables) {
   $current_term = $variables['elements']['#taxonomy_term'];
   $current_term_id = $current_term->id();
 
   $query = \Drupal::entityQuery('node');
   $query->condition('type', 'idea');
   $query->condition('status', 1);
-  $query->condition('field_idea_style', $current_term_id);
+
+  $condition_or = $query->orConditionGroup();
+  $condition_or->condition('field_idea_object', $current_term_id);
+  $condition_or->condition('field_idea_color', $current_term_id);
+  $condition_or->condition('field_idea_constraint', $current_term_id);
+  $condition_or->condition('field_idea_style', $current_term_id);
+  $condition_or->condition('field_idea_surface', $current_term_id);
+  $condition_or->condition('field_idea_users_age', $current_term_id);
+  $condition_or->condition('field_idea_space', $current_term_id);
+  $condition_or->condition('field_idea_material', $current_term_id);
+  $condition_or->condition('field_idea_theme', $current_term_id);
+  
+  $query->condition($condition_or);
+
   $nids = $query->execute();
   $relatedideas = Node::loadMultiple($nids);
 
@@ -800,7 +813,18 @@ function showcase_lite_preprocess_taxonomy_term__styles(&$variables) {
   $query = \Drupal::entityQuery('node');
   $query->condition('type', 'project');
   $query->condition('status', 1);
-  $query->condition('field_project_style', $current_term_id);
+
+  $condition_or = $query->orConditionGroup();
+  $condition_or->condition('field_project_color', $current_term_id);
+  $condition_or->condition('field_project_constraint', $current_term_id);
+  $condition_or->condition('field_project_style', $current_term_id);
+  $condition_or->condition('field_project_users_age', $current_term_id);
+  $condition_or->condition('field_project_material', $current_term_id);
+  $condition_or->condition('field_project_space', $current_term_id);
+  $condition_or->condition('field_project_theme', $current_term_id);
+  
+  $query->condition($condition_or);
+
   $nids = $query->execute();
   $relatedprojects = Node::loadMultiple($nids);
 

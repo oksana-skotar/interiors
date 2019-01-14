@@ -1,0 +1,29 @@
+uuid: 08361db8-2722-4393-92f2-62d145667478
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_3d_model_images
+    - media.type.image
+    - node.type.3d_model
+id: node.3d_model.field_3d_model_images
+field_name: field_3d_model_images
+entity_type: node
+bundle: 3d_model
+label: Images
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: created
+      direction: DESC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

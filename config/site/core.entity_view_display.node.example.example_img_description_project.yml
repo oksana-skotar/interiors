@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.example.field_example_surface
     - field.field.node.example.field_example_theme
     - field.field.node.example.field_example_users_age
+    - field.field.node.example.field_meta_tags
     - image.style.full_image_cropped_manually
     - node.type.example
   module:
@@ -80,6 +81,7 @@ content:
       rel: '0'
     third_party_settings: {  }
 hidden:
+  addtoany: true
   field_example_color: true
   field_example_constraint: true
   field_example_fullscreen: true
@@ -91,5 +93,6 @@ hidden:
   field_example_surface: true
   field_example_theme: true
   field_example_users_age: true
+  field_meta_tags: true
   langcode: true
   links: true

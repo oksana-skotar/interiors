@@ -1,0 +1,29 @@
+uuid: de550851-6781-4c0f-9e1a-c5e50739770d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_3d_model_style
+    - node.type.3d_model
+    - taxonomy.vocabulary.styles
+id: node.3d_model.field_3d_model_style
+field_name: field_3d_model_style
+entity_type: node
+bundle: 3d_model
+label: Style
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      styles: styles
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
