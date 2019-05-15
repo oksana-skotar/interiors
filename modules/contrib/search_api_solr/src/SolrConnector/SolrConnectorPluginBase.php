@@ -93,9 +93,11 @@ abstract class SolrConnectorPluginBase extends ConfigurablePluginBase implements
       'timeout' => 5,
       'index_timeout' => 5,
       'optimize_timeout' => 10,
+      'finalize_timeout' => 30,
       'solr_version' => '',
       'http_method' => 'AUTO',
       'commit_within' => 1000,
+      'jmx' => FALSE,
     ];
   }
 
@@ -174,6 +176,16 @@ abstract class SolrConnectorPluginBase extends ConfigurablePluginBase implements
       '#required' => TRUE,
     ];
 
+    $form['finalize_timeout'] = [
+      '#type' => 'number',
+      '#min' => 1,
+      '#max' => 180,
+      '#title' => $this->t('Finalize timeout'),
+      '#description' => $this->t('The timeout in seconds for index finalization queries on a Solr server.'),
+      '#default_value' => isset($this->configuration['finalize_timeout']) ? $this->configuration['finalize_timeout'] : 30,
+      '#required' => TRUE,
+    ];
+
     $form['commit_within'] = [
       '#type' => 'number',
       '#min' => 0,
@@ -184,10 +196,8 @@ abstract class SolrConnectorPluginBase extends ConfigurablePluginBase implements
     ];
 
     $form['workarounds'] = [
-      '#type' => 'fieldset',
+      '#type' => 'details',
       '#title' => $this->t('Connector Workarounds'),
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
     ];
 
     $form['workarounds']['solr_version'] = [
@@ -213,6 +223,18 @@ abstract class SolrConnectorPluginBase extends ConfigurablePluginBase implements
         'POST' => 'POST',
         'GET' => 'GET',
       ],
+    ];
+
+    $form['advanced'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Advanced server configuration'),
+    ];
+
+    $form['advanced']['jmx'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Enable JMX'),
+      '#description' => $this->t('Enable JMX based monitoring.'),
+      '#default_value' => isset($this->configuration['jmx']) ? $this->configuration['jmx'] : FALSE,
     ];
 
     return $form;
@@ -260,9 +282,13 @@ abstract class SolrConnectorPluginBase extends ConfigurablePluginBase implements
     foreach ($values['workarounds'] as $key => $value) {
       $form_state->setValue($key, $value);
     }
+    foreach ($values['advanced'] as $key => $value) {
+      $form_state->setValue($key, $value);
+    }
 
     // Clean-up the form to avoid redundant entries in the stored configuration.
     $form_state->unsetValue('workarounds');
+    $form_state->unsetValue('advanced');
 
     $this->traitSubmitConfigurationForm($form, $form_state);
   }
@@ -528,11 +554,13 @@ abstract class SolrConnectorPluginBase extends ConfigurablePluginBase implements
     $stats = $this->execute($query)->getData();
     if (!empty($stats)) {
       $solr_version = $this->getSolrVersion(TRUE);
-      $max_time = 0;
+      $max_time = -1;
       if (version_compare($solr_version, '7.0', '>=')) {
         $update_handler_stats = $stats['solr-mbeans']['UPDATE']['updateHandler']['stats'];
         $summary['@pending_docs'] = (int) $update_handler_stats['UPDATE.updateHandler.docsPending'];
-        $max_time = (int) $update_handler_stats['UPDATE.updateHandler.softAutoCommitMaxTime'];
+        if (isset($update_handler_stats['UPDATE.updateHandler.softAutoCommitMaxTime'])) {
+          $max_time = (int) $update_handler_stats['UPDATE.updateHandler.softAutoCommitMaxTime'];
+        }
         $summary['@deletes_by_id'] = (int) $update_handler_stats['UPDATE.updateHandler.deletesById'];
         $summary['@deletes_by_query'] = (int) $update_handler_stats['UPDATE.updateHandler.deletesByQuery'];
         $summary['@core_name'] = $stats['solr-mbeans']['CORE']['core']['stats']['CORE.coreName'];
@@ -841,18 +869,18 @@ abstract class SolrConnectorPluginBase extends ConfigurablePluginBase implements
     $response_code = $e->getCode();
     switch ($response_code) {
       case 404:
-        $description = $this->t('not found');
+        $description = 'not found';
         break;
 
       case 401:
       case 403:
-        $description = $this->t('access denied');
+        $description = 'access denied';
         break;
 
       default:
-        $description = $this->t('unreachable');
+        $description = 'unreachable';
     }
-    throw new SearchApiSolrException($this->t('Solr endpoint @endpoint @description.', ['@endpoint' => $endpoint->getBaseUri(), '@description' => $description]), $response_code, $e);
+    throw new SearchApiSolrException('Solr endpoint ' . $endpoint->getBaseUri() . " $description.", $response_code, $e);
   }
 
   /**
@@ -877,6 +905,54 @@ abstract class SolrConnectorPluginBase extends ConfigurablePluginBase implements
 
     // Reset the timeout setting to the default value for search queries.
     $endpoint->setTimeout($timeout);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function adjustTimeout(int $timeout, Endpoint $endpoint = NULL) {
+    $this->connect();
+
+    if (!$endpoint) {
+      $endpoint = $this->solr->getEndpoint('core');
+    }
+    $previous_timeout = $this->getTimeout($endpoint);
+    $endpoint->setTimeout($timeout);
+    return $previous_timeout;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getTimeout(Endpoint $endpoint = NULL) {
+    $this->connect();
+
+    if (!$endpoint) {
+      $endpoint = $this->solr->getEndpoint('core');
+    }
+
+    return $endpoint->getTimeout();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getIndexTimeout() {
+    return $this->configuration['index_timeout'];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getOptimizeTimeout() {
+    return $this->configuration['optimize_timeout'];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getFinalizeTimeout() {
+    return $this->configuration['finalize_timeout'];
   }
 
   /**
@@ -950,4 +1026,34 @@ abstract class SolrConnectorPluginBase extends ConfigurablePluginBase implements
     return parent::__sleep();
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function reloadCore() {
+    $this->connect();
+
+    try {
+      $core = $this->configuration['core'];
+      $core_admin_query = $this->solr->createCoreAdmin();
+      $reload_action = $core_admin_query->createReload();
+      $reload_action->setCore($core);
+      $core_admin_query->setAction($reload_action);
+      $response = $this->solr->coreAdmin($core_admin_query);
+      $was_successful = $response->getWasSuccessful();
+
+      return $was_successful;
+    }
+    catch (HttpException $e) {
+      throw new SearchApiSolrException("Reloading core $core failed with error code " . $e->getCode() . '.', $e->getCode(), $e);
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function alterConfigFiles(array &$files, string $lucene_match_version, string $server_id = '') {
+    if ($this->configuration['jmx']) {
+      $files['solrconfig_extra.xml'] .= "<jmx />\n";
+    }
+  }
 }

@@ -12,12 +12,15 @@ dependencies:
     - field.field.node.example.field_example_image
     - field.field.node.example.field_example_material
     - field.field.node.example.field_example_object
+    - field.field.node.example.field_example_products
     - field.field.node.example.field_example_project
+    - field.field.node.example.field_example_source
     - field.field.node.example.field_example_space
     - field.field.node.example.field_example_style
     - field.field.node.example.field_example_surface
     - field.field.node.example.field_example_theme
     - field.field.node.example.field_example_users_age
+    - field.field.node.example.field_meta_tags
     - node.type.example
   module:
     - user
@@ -29,7 +32,10 @@ content:
   links:
     weight: 100
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
+  addtoany: true
   field_example_color: true
   field_example_constraint: true
   field_example_description: true
@@ -38,10 +44,13 @@ hidden:
   field_example_image: true
   field_example_material: true
   field_example_object: true
+  field_example_products: true
   field_example_project: true
+  field_example_source: true
   field_example_space: true
   field_example_style: true
   field_example_surface: true
   field_example_theme: true
   field_example_users_age: true
+  field_meta_tags: true
   langcode: true

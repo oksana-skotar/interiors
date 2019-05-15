@@ -8,6 +8,7 @@ backend_config:
   highlight_data: false
   skip_schema_check: false
   domain: generic
+  server_prefix: 'server_prefix'
   connector: basic_auth
   connector_config:
     scheme: http
@@ -18,11 +19,13 @@ backend_config:
     timeout: 5
     index_timeout: 20
     optimize_timeout: 5
+    finalize_timeout: 30
     solr_version: ''
     http_method: AUTO
     username: ''
     password: ''
     commit_within: 1000
+    jmx: false
 status: true
 langcode: en
 dependencies:

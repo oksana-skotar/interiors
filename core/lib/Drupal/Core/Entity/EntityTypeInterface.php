@@ -7,10 +7,19 @@ use Drupal\Component\Plugin\Definition\PluginDefinitionInterface;
 /**
  * Provides an interface for an entity type and its metadata.
  *
- * Additional information can be provided by modules: hook_entity_type_build() can be
- * implemented to define new properties, while hook_entity_type_alter() can be
- * implemented to alter existing data and fill-in defaults. Module-specific
- * properties should be documented in the hook implementations defining them.
+ * Entity type classes can provide docblock annotations. The entity type manager
+ * will use these annotations to populate the entity type object with
+ * properties.
+ *
+ * Additional properties can be defined by module implementations of
+ * hook_entity_type_build(). Existing data can be altered in implementations of
+ * hook_entity_type_alter(), which can also be used to fill in defaults.
+ * Module-specific properties should be documented in the hook implementations
+ * defining them.
+ *
+ * @see \Drupal\Core\Entity\EntityTypeManagerInterface
+ * @see hook_entity_type_build()
+ * @see hook_entity_type_alter()
  */
 interface EntityTypeInterface extends PluginDefinitionInterface {
 
@@ -326,10 +335,10 @@ interface EntityTypeInterface extends PluginDefinitionInterface {
   public function getAccessControlClass();
 
   /**
-   * Gets the access class.
+   * Sets the access control handler class.
    *
    * @param string $class
-   *   The class for this entity type's access.
+   *   The class for this entity type's access control handler.
    *
    * @return $this
    */
@@ -642,7 +651,7 @@ interface EntityTypeInterface extends PluginDefinitionInterface {
    * This label should be used to present a human-readable name of the
    * entity type.
    *
-   * @return string
+   * @return string|\Drupal\Core\StringTranslation\TranslatableMarkup
    *   The human-readable name of the entity type.
    */
   public function getLabel();
@@ -665,7 +674,7 @@ interface EntityTypeInterface extends PluginDefinitionInterface {
    * this is the page title of a page devoted to a collection of entities such
    * as "Workflows" (instead of "Workflow entities").
    *
-   * @return string
+   * @return string|\Drupal\Core\StringTranslation\TranslatableMarkup
    *   The collection label.
    */
   public function getCollectionLabel();
@@ -678,7 +687,7 @@ interface EntityTypeInterface extends PluginDefinitionInterface {
    * "opportunities"), "child" (with the plural as "children"), or "content
    * item" (with the plural as "content items").
    *
-   * @return string
+   * @return string|\Drupal\Core\StringTranslation\TranslatableMarkup
    *   The singular label.
    */
   public function getSingularLabel();
@@ -691,7 +700,7 @@ interface EntityTypeInterface extends PluginDefinitionInterface {
    * "opportunity"), "children" (with the singular as "child"), or "content
    * items" (with the singular as "content item").
    *
-   * @return string
+   * @return string|\Drupal\Core\StringTranslation\TranslatableMarkup
    *   The plural label.
    */
   public function getPluralLabel();
@@ -707,7 +716,7 @@ interface EntityTypeInterface extends PluginDefinitionInterface {
    * @param int $count
    *   The item count to display if the plural form was requested.
    *
-   * @return string
+   * @return string|\Drupal\Core\StringTranslation\TranslatableMarkup
    *   The count label.
    */
   public function getCountLabel($count);
@@ -743,7 +752,8 @@ interface EntityTypeInterface extends PluginDefinitionInterface {
   /**
    * Gets the human-readable name of the entity type group.
    *
-   * @return string
+   * @return string|\Drupal\Core\StringTranslation\TranslatableMarkup
+   *   The group label.
    */
   public function getGroupLabel();
 

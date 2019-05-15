@@ -410,4 +410,68 @@ interface SolrConnectorInterface extends ConfigurablePluginInterface {
    */
   public function viewSettings();
 
+  /**
+   * Reloads the Solr core.
+   *
+   * @return bool
+   */
+  public function reloadCore();
+
+  /**
+   * Sets a new timeout for queries, but not for indexing or optimization.
+   *
+   * The timeout will not be saved in the configuration of the connector. It
+   * will be overwritten for the current request only.
+   *
+   * @param int $timeout
+   * @param \Solarium\Core\Client\Endpoint|NULL $endpoint
+   *
+   * @return int
+   *   The previous timeout value.
+   */
+  public function adjustTimeout(int $timeout, Endpoint $endpoint = NULL);
+
+  /**
+   * Get the query timeout.
+   *
+   * @param \Solarium\Core\Client\Endpoint|NULL $endpoint
+   *
+   * @return int
+   */
+  public function getTimeout(Endpoint $endpoint = NULL);
+
+  /**
+   * Get the index timeout.
+   *
+   * @return int
+   */
+  public function getIndexTimeout();
+
+  /**
+   * Get the optimize timeout.
+   *
+   * @return int
+   */
+  public function getOptimizeTimeout();
+
+  /**
+   * Get the finalize timeout.
+   *
+   * @return int
+   */
+  public function getFinalizeTimeout();
+
+  /**
+   * Alter the newly assembled Solr configuration files.
+   *
+   * @param string[] $files
+   *   Array of config files keyed by file names.
+   * @param string $lucene_match_version
+   *   Lucene (Solr) minor version string.
+   * @param string $server_id
+   *   Optional Search API server id. Will be set in most cases but might be
+   *   empty when the config generation is triggered via UI or drush.
+   */
+  public function alterConfigFiles(array &$files, string $lucene_match_version, string $server_id = '');
+
 }

@@ -207,7 +207,7 @@ class EntityViewsData implements EntityHandlerInterface, EntityViewsDataInterfac
       $data[$base_table]['table']['join'][$data_table] = [
         'left_field' => $base_field,
         'field' => $base_field,
-        'type' => 'INNER'
+        'type' => 'INNER',
       ];
       $data[$data_table]['table']['group'] = $this->entityType->getLabel();
       $data[$data_table]['table']['provider'] = $this->entityType->getProvider();
@@ -250,9 +250,19 @@ class EntityViewsData implements EntityHandlerInterface, EntityViewsDataInterfac
         'help' => $this->t('Restrict the view to only revisions that are the latest revision of their entity.'),
         'filter' => ['id' => 'latest_revision'],
       ];
+      if ($this->entityType->isTranslatable()) {
+        $data[$revision_table]['latest_translation_affected_revision'] = [
+          'title' => $this->t('Is Latest Translation Affected Revision'),
+          'help' => $this->t('Restrict the view to only revisions that are the latest translation affected revision of their entity.'),
+          'filter' => ['id' => 'latest_translation_affected_revision'],
+        ];
+      }
     }
 
     $this->addEntityLinks($data[$base_table]);
+    if ($views_revision_base_table) {
+      $this->addEntityLinks($data[$views_revision_base_table]);
+    }
 
     // Load all typed data definitions of all fields. This should cover each of
     // the entity base, revision, data tables.

@@ -248,3 +248,9 @@ input[type="submit"] + input[type="submit"], .button + .button {
     left: 0;
     margin: 0 15px;
 }
+
+#edit-search-ideas-title {
+    margin-top: 10px;
+    background-color: #fff;
+    border-color: #fff;
+}

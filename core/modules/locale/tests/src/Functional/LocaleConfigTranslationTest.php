@@ -38,6 +38,7 @@ class LocaleConfigTranslationTest extends BrowserTestBase {
     // tests.
     $this->config('locale.settings')
       ->set('translation.import_enabled', TRUE)
+      ->set('translation.use_source', LOCALE_TRANSLATION_USE_SOURCE_LOCAL)
       ->save();
 
     // Add custom language.
@@ -111,7 +112,7 @@ class LocaleConfigTranslationTest extends BrowserTestBase {
 
     // Formatting the date 8 / 27 / 1985 @ 13:37 EST with pattern D should
     // display "Tue".
-    $formatted_date = format_date(494015820, $type = 'medium', NULL, 'America/New_York', $this->langcode);
+    $formatted_date = $this->container->get('date.formatter')->format(494015820, $type = 'medium', NULL, 'America/New_York', $this->langcode);
     $this->assertEqual($formatted_date, 'Tue', 'Got the right formatted date using the date format translation pattern.');
 
     // Assert strings from image module config are not available.
