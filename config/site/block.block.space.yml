@@ -1,0 +1,23 @@
+uuid: 849f6bec-0e67-4398-8a6e-37ffaa041c6a
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.space
+  module:
+    - facets
+  theme:
+    - showcase_lite
+id: space
+theme: showcase_lite
+region: content_top
+weight: -9
+provider: null
+plugin: 'facet_block:space'
+settings:
+  id: 'facet_block:space'
+  label: Space
+  provider: facets
+  label_display: '0'
+  block_id: space
+visibility: {  }

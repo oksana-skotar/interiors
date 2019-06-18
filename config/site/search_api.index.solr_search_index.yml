@@ -1,0 +1,195 @@
+uuid: dc7d8a6f-0cec-4dc3-8dbc-affcb6b19735
+langcode: en
+status: true
+dependencies:
+  module:
+    - search_api_solr
+    - taxonomy
+    - node
+    - search_api
+  config:
+    - field.storage.node.field_idea_color
+    - field.storage.node.field_idea_constraint
+    - field.storage.node.body
+    - field.storage.node.field_idea_material
+    - field.storage.node.field_idea_object
+    - field.storage.node.field_idea_space
+    - field.storage.node.field_idea_style
+    - field.storage.node.field_idea_surface
+    - search_api.server.solrserver
+third_party_settings:
+  search_api_solr:
+    finalize: false
+    commit_before_finalize: false
+    commit_after_finalize: false
+    multilingual:
+      limit_to_content_language: false
+      include_language_independent: true
+    highlighter:
+      maxAnalyzedChars: 51200
+      fragmenter: gap
+      regex:
+        slop: 0.5
+        pattern: blank
+        maxAnalyzedChars: 10000
+      usePhraseHighlighter: true
+      highlightMultiTerm: true
+      preserveMulti: false
+      highlight:
+        mergeContiguous: false
+        requireFieldMatch: false
+        snippets: 3
+        fragsize: 0
+    mlt:
+      mintf: 1
+      mindf: 1
+      maxdf: 0
+      maxdfpct: 0
+      minwl: 0
+      maxwl: 0
+      maxqt: 100
+      maxntp: 2000
+      boost: false
+      interestingTerms: none
+    advanced:
+      index_prefix: ''
+      collection: ''
+id: solr_search_index
+name: 'Solr search index'
+description: ''
+read_only: false
+field_settings:
+  body:
+    label: Description
+    datasource_id: 'entity:node'
+    property_path: body
+    type: 'solr_text_custom:ngram'
+    dependencies:
+      config:
+        - field.storage.node.body
+  name:
+    label: 'Surface » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_idea_surface:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_idea_surface
+      module:
+        - taxonomy
+        - taxonomy
+  name_1:
+    label: 'Object » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_idea_object:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_idea_object
+      module:
+        - taxonomy
+        - taxonomy
+  name_2:
+    label: 'Constraint » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_idea_constraint:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_idea_constraint
+      module:
+        - taxonomy
+        - taxonomy
+  name_3:
+    label: 'Space » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_idea_space:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_idea_space
+      module:
+        - taxonomy
+        - taxonomy
+  name_4:
+    label: 'Color » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_idea_color:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_idea_color
+      module:
+        - taxonomy
+        - taxonomy
+  name_5:
+    label: 'Material » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_idea_material:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_idea_material
+      module:
+        - taxonomy
+        - taxonomy
+  name_6:
+    label: 'Style » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_idea_style:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_idea_style
+      module:
+        - taxonomy
+        - taxonomy
+  status:
+    label: Published
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    dependencies:
+      module:
+        - node
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: 'solr_text_custom:ngram'
+    boost: !!float 2
+    dependencies:
+      module:
+        - node
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: false
+      selected:
+        - idea
+    languages:
+      default: true
+      selected: {  }
+  'entity:taxonomy_term':
+    bundles:
+      default: false
+      selected:
+        - spaces
+        - styles
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  rendered_item: {  }
+  solr_date_range:
+    weights:
+      preprocess_index: 0
+tracker_settings:
+  default:
+    indexing_order: lifo
+options:
+  index_directly: true
+  cron_limit: 50
+server: solrserver

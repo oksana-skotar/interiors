@@ -1,0 +1,23 @@
+uuid: 4fdafed8-4f5c-4bbb-a29f-a3c80c2a6a36
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.constraint
+  module:
+    - facets
+  theme:
+    - showcase_lite
+id: constraint
+theme: showcase_lite
+region: content_top
+weight: -6
+provider: null
+plugin: 'facet_block:constraint'
+settings:
+  id: 'facet_block:constraint'
+  label: Constraint
+  provider: facets
+  label_display: '0'
+  block_id: constraint
+visibility: {  }
