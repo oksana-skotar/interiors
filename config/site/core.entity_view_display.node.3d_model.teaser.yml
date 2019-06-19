@@ -4,6 +4,14 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.3d_model.field_3d_model_description
+    - field.field.node.3d_model.field_3d_model_images
+    - field.field.node.3d_model.field_3d_model_object
+    - field.field.node.3d_model.field_3d_model_price
+    - field.field.node.3d_model.field_3d_model_space
+    - field.field.node.3d_model.field_3d_model_style
+    - field.field.node.3d_model.field_3d_model_surface
+    - field.field.node.3d_model.field_3d_model_teaser_image
     - node.type.3d_model
   module:
     - user
@@ -15,6 +23,16 @@ content:
   links:
     weight: 100
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   addtoany: true
+  field_3d_model_description: true
+  field_3d_model_images: true
+  field_3d_model_object: true
+  field_3d_model_price: true
+  field_3d_model_space: true
+  field_3d_model_style: true
+  field_3d_model_surface: true
+  field_3d_model_teaser_image: true
   langcode: true

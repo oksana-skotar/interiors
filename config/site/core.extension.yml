@@ -9,6 +9,7 @@ module:
   breakpoint: 0
   ckeditor: 0
   color: 0
+  comment: 0
   config: 0
   contact: 0
   contextual: 0
@@ -37,7 +38,6 @@ module:
   image: 0
   image_widget_crop: 0
   inline_entity_form: 0
-  kint: 0
   language: 0
   libraries: 0
   link: 0
@@ -53,8 +53,8 @@ module:
   quickedit: 0
   rdf: 0
   search_api: 0
-  search_api_db: 0
   search_api_solr: 0
+  search_api_solr_admin: 0
   search_api_solr_devel: 0
   shortcut: 0
   sitemap: 0

@@ -5,10 +5,12 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.project.body
+    - field.field.node.project.field_meta_tags
     - field.field.node.project.field_project_color
     - field.field.node.project.field_project_constraint
     - field.field.node.project.field_project_images
     - field.field.node.project.field_project_material
+    - field.field.node.project.field_project_products
     - field.field.node.project.field_project_source_url
     - field.field.node.project.field_project_space
     - field.field.node.project.field_project_style
@@ -35,11 +37,16 @@ content:
   links:
     weight: 100
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
+  addtoany: true
+  field_meta_tags: true
   field_project_color: true
   field_project_constraint: true
   field_project_images: true
   field_project_material: true
+  field_project_products: true
   field_project_source_url: true
   field_project_space: true
   field_project_style: true

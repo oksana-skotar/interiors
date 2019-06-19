@@ -1,0 +1,23 @@
+uuid: 1a19a9ca-afd5-462c-8385-a3f33e7ee252
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.surface
+  module:
+    - facets
+  theme:
+    - showcase_lite
+id: surface_2
+theme: showcase_lite
+region: content_top
+weight: -8
+provider: null
+plugin: 'facet_block:surface'
+settings:
+  id: 'facet_block:surface'
+  label: Surface
+  provider: facets
+  label_display: '0'
+  block_id: surface_2
+visibility: {  }

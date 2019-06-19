@@ -93,7 +93,7 @@ abstract class ControllerBase implements ContainerInjectionInterface {
   /**
    * The state service.
    *
-   * @var \Drupal\Core\KeyValueStore\KeyValueStoreInterface
+   * @var \Drupal\Core\State\StateInterface
    */
   protected $stateService;
 
@@ -129,6 +129,7 @@ abstract class ControllerBase implements ContainerInjectionInterface {
    *   instead.
    */
   protected function entityManager() {
+    @trigger_error('ControllerBase::getEntityManager() is deprecated in Drupal 8.7.0 and will be removed before Drupal 9.0.0. Use ::getEntityTypeManager() instead. See https://www.drupal.org/node/2549139.', E_USER_DEPRECATED);
     if (!$this->entityManager) {
       $this->entityManager = $this->container()->get('entity.manager');
     }
@@ -222,7 +223,7 @@ abstract class ControllerBase implements ContainerInjectionInterface {
    * needs to be the same across development, production, etc. environments
    * (for example, the system maintenance message) should use config() instead.
    *
-   * @return \Drupal\Core\KeyValueStore\KeyValueStoreInterface
+   * @return \Drupal\Core\State\StateInterface
    */
   protected function state() {
     if (!$this->stateService) {

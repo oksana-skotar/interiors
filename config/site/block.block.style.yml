@@ -1,0 +1,23 @@
+uuid: e58f8500-d22f-4016-bafe-04c4580be456
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.style
+  module:
+    - facets
+  theme:
+    - showcase_lite
+id: style
+theme: showcase_lite
+region: content_top
+weight: -5
+provider: null
+plugin: 'facet_block:style'
+settings:
+  id: 'facet_block:style'
+  label: Style
+  provider: facets
+  label_display: '0'
+  block_id: style
+visibility: {  }

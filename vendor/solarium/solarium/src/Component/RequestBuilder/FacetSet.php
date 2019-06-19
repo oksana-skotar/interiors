@@ -12,6 +12,7 @@ use Solarium\Component\Facet\Range as FacetRange;
 use Solarium\Component\FacetSet as FacetsetComponent;
 use Solarium\Component\FacetSetInterface;
 use Solarium\Core\Client\Request;
+use Solarium\Core\ConfigurableInterface;
 use Solarium\Exception\UnexpectedValueException;
 use Solarium\QueryType\Select\RequestBuilder;
 
@@ -31,17 +32,27 @@ class FacetSet extends RequestBuilder implements ComponentRequestBuilderInterfac
      *
      * @return Request
      */
-    public function buildComponent($component, $request)
+    public function buildComponent(ConfigurableInterface $component, Request $request): Request
     {
         $facets = $component->getFacets();
         if (0 !== count($facets)) {
             $non_json = false;
             $json_facets = [];
+
+            // create a list of facet fields
+            // 1) filter for FACET_FIELD
+            // 2) get field name
+            // 3) count occurence
+            $facet_fields = array_count_values(array_map(function ($value) {
+                return $value->getField();
+            }, array_filter($facets, function ($value) {
+                return FacetSetInterface::FACET_FIELD == $value->getType();
+            })));
             foreach ($facets as $key => $facet) {
                 switch ($facet->getType()) {
                     case FacetSetInterface::FACET_FIELD:
                         /* @var FacetField $facet */
-                        $this->addFacetField($request, $facet);
+                        $this->addFacetField($request, $facet, (1 < $facet_fields[$facet->getField()]));
                         $non_json = true;
                         break;
                     case FacetSetInterface::FACET_QUERY:
@@ -89,7 +100,7 @@ class FacetSet extends RequestBuilder implements ComponentRequestBuilderInterfac
                 $request->addParam('facet.sort', $component->getSort());
                 $request->addParam('facet.prefix', $component->getPrefix());
                 $request->addParam('facet.contains', $component->getContains());
-                $request->addParam('facet.contains.ignoreCase', null === ($ignoreCase = $component->getContainsIgnoreCase()) ? null : ($ignoreCase ? 'true' : 'false'));
+                $request->addParam('facet.contains.ignoreCase', $component->getContainsIgnoreCase());
                 $request->addParam('facet.missing', $component->getMissing());
                 $request->addParam('facet.mincount', $component->getMinCount());
                 $request->addParam('facet.limit', $component->getLimit());
@@ -108,28 +119,46 @@ class FacetSet extends RequestBuilder implements ComponentRequestBuilderInterfac
      *
      * @param Request    $request
      * @param FacetField $facet
+     * @param bool       $use_local_params TRUE, if local params instead of global field params should be used. Must be set if the same field is used in different facets. Default is keeping the global field params (https://issues.apache.org/jira/browse/SOLR-6193)
      */
-    public function addFacetField($request, $facet)
+    public function addFacetField(Request $request, FacetField $facet, bool $use_local_params = false)
     {
         $field = $facet->getField();
 
+        if ($use_local_params) {
+            $local_params = ['key' => $facet->getKey(),
+                'ex' => $facet->getExcludes(),
+                'facet.limit' => $facet->getLimit(),
+                'facet.sort' => $facet->getSort(),
+                'facet.prefix' => $facet->getPrefix(),
+                'facet.contains' => $facet->getContains(),
+                'facet.contains.ignoreCase' => $facet->getContainsIgnoreCase(),
+                'facet.offset' => $facet->getOffset(),
+                'facet.mincount' => $facet->getMinCount(),
+                'facet.missing' => $facet->getMissing(),
+                'facet.method' => $facet->getMethod(),
+            ];
+        } else {
+            $local_params = ['key' => $facet->getKey(), 'ex' => $facet->getExcludes()];
+        }
         $request->addParam(
             'facet.field',
             $this->renderLocalParams(
                 $field,
-                ['key' => $facet->getKey(), 'ex' => $facet->getExcludes()]
+                $local_params
             )
         );
-
-        $request->addParam("f.$field.facet.limit", $facet->getLimit());
-        $request->addParam("f.$field.facet.sort", $facet->getSort());
-        $request->addParam("f.$field.facet.prefix", $facet->getPrefix());
-        $request->addParam("f.$field.facet.contains", $facet->getContains());
-        $request->addParam("f.$field.facet.contains.ignoreCase", $facet->getContainsIgnoreCase());
-        $request->addParam("f.$field.facet.offset", $facet->getOffset());
-        $request->addParam("f.$field.facet.mincount", $facet->getMinCount());
-        $request->addParam("f.$field.facet.missing", $facet->getMissing());
-        $request->addParam("f.$field.facet.method", $facet->getMethod());
+        if (!$use_local_params) {
+            $request->addParam("f.$field.facet.limit", $facet->getLimit());
+            $request->addParam("f.$field.facet.sort", $facet->getSort());
+            $request->addParam("f.$field.facet.prefix", $facet->getPrefix());
+            $request->addParam("f.$field.facet.contains", $facet->getContains());
+            $request->addParam("f.$field.facet.contains.ignoreCase", $facet->getContainsIgnoreCase());
+            $request->addParam("f.$field.facet.offset", $facet->getOffset());
+            $request->addParam("f.$field.facet.mincount", $facet->getMinCount());
+            $request->addParam("f.$field.facet.missing", $facet->getMissing());
+            $request->addParam("f.$field.facet.method", $facet->getMethod());
+        }
     }
 
     /**

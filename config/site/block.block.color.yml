@@ -1,0 +1,23 @@
+uuid: ff50fbc9-c5f2-4b53-a753-2b31517c4fc2
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.color
+  module:
+    - facets
+  theme:
+    - showcase_lite
+id: color
+theme: showcase_lite
+region: content_top
+weight: -4
+provider: null
+plugin: 'facet_block:color'
+settings:
+  id: 'facet_block:color'
+  label: Color
+  provider: facets
+  label_display: '0'
+  block_id: color
+visibility: {  }

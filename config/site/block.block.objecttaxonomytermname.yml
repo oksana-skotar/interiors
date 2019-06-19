@@ -1,0 +1,23 @@
+uuid: 7515509c-6b75-4506-bfa6-033d14e03784
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.object
+  module:
+    - facets
+  theme:
+    - showcase_lite
+id: objecttaxonomytermname
+theme: showcase_lite
+region: content_top
+weight: -7
+provider: null
+plugin: 'facet_block:object'
+settings:
+  id: 'facet_block:object'
+  label: 'Object » Taxonomy term » Name'
+  provider: facets
+  label_display: '0'
+  block_id: objecttaxonomytermname
+visibility: {  }

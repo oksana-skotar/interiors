@@ -6,10 +6,8 @@
     "require": {
         "composer/installers": "^1.0.24",
         "wikimedia/composer-merge-plugin": "^1.4",
-        "drupal/search_api_solr": "^2.1"
-    },
-    "replace": {
-        "drupal/core": "^8.5"
+        "drupal/core": "~8.7",
+        "drupal/search_api_solr": "^3.1"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

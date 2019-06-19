@@ -4,9 +4,11 @@ namespace Solarium\QueryType\Stream;
 
 use Solarium\Core\Query\AbstractResponseParser as ResponseParserAbstract;
 use Solarium\Core\Query\ResponseParserInterface as ResponseParserInterface;
+use Solarium\Core\Query\Result\ResultInterface;
 use Solarium\Exception\RuntimeException;
 use Solarium\Exception\StreamException;
 use Solarium\QueryType\Select\Result\Result;
+use Solarium\Core\Query\DocumentInterface;
 
 /**
  * Parse streaming expression response data.
@@ -16,26 +18,24 @@ class ResponseParser extends ResponseParserAbstract implements ResponseParserInt
     /**
      * Get result data for the response.
      *
-     * @param Result $result
+     * @param Result|ResultInterface $result
      *
      * @throws RuntimeException
      *
      * @return array
      */
-    public function parse($result)
+    public function parse(ResultInterface $result): array
     {
         $data = $result->getData();
 
-        /*
-         * @var Query
-         */
+        /** @var Query $query */
         $query = $result->getQuery();
 
         // create document instances
         $documentClass = $query->getOption('documentclass');
         $classes = class_implements($documentClass);
-        if (!in_array('Solarium\QueryType\Select\Result\DocumentInterface', $classes, true)) {
-            throw new RuntimeException('The result document class must implement a document interface');
+        if (!in_array(DocumentInterface::class, $classes, true)) {
+            throw new RuntimeException('The result document class must implement DocumentInterface');
         }
 
         $documents = [];
@@ -44,7 +44,9 @@ class ResponseParser extends ResponseParserAbstract implements ResponseParserInt
                 $fields = (array) $doc;
                 if (isset($fields['EXCEPTION'])) {
                     // Use Solr's exception as message.
-                    throw new StreamException($fields['EXCEPTION']);
+                    $e = new StreamException($fields['EXCEPTION']);
+                    $e->setExpression($query->getExpression());
+                    throw $e;
                 }
                 if (isset($fields['EOF'])) {
                     // End of stream.
@@ -53,12 +55,16 @@ class ResponseParser extends ResponseParserAbstract implements ResponseParserInt
                 $documents[] = new $documentClass($fields);
             }
             if (!isset($fields['EOF'])) {
-                throw new StreamException('Streaming expression returned an incomplete result-set.');
+                $e = new StreamException('Streaming expression returned an incomplete result-set.');
+                $e->setExpression($query->getExpression());
+                throw $e;
             }
             $data['responseHeader']['QTime'] = $fields['RESPONSE_TIME'];
             $data['responseHeader']['status'] = 0;
         } else {
-            throw new StreamException('Streaming expression did not return a result-set.');
+            $e = new StreamException('Streaming expression did not return a result-set.');
+            $e->setExpression($query->getExpression());
+            throw $e;
         }
 
         return $this->addHeaderInfo(

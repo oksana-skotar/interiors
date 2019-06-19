@@ -68,7 +68,7 @@
 
 .main-content__section
 {
-    padding: 60px 0 130px;
+    padding: 0 0 130px;
 }
 
 .breadcrumb
@@ -82,10 +82,16 @@
     padding: 0 5px;
 }
 
-.main-listing .form-select {
+.main-listing .form-select, .facets-dropdown {
     border-color: #ffffff;
     background-color: #ffffff;
     padding-right: 23px;
+    margin: 0px;
+}
+
+.form-item-search-api-fulltext-ideas {
+    width: 100%;
+    padding: 0 50px;
 }
 
 .row-examples 
@@ -167,7 +173,6 @@ margin-bottom: 35px;
     margin-left: 5px;
 }
 
-
 .style-summary-icon {
     margin-top: 20px;
     display: inline-block;
@@ -183,12 +188,24 @@ margin-bottom: 35px;
     margin: 0px;
 }
 
-.view-filters {
+.view-filters, .facets-container {
     text-align: center;
 }
 
-.form--inline {
+.form--inline, .block-facet--dropdown {
     display: inline-block;
+}
+
+.form--inline {
+width: 100%;
+}
+
+.content-top__section {
+    padding: 60px 0 0 0;
+}
+
+.content-top__section .block {
+    padding-bottom: 0px;
 }
 
 .form-actions {
@@ -248,3 +265,10 @@ input[type="submit"] + input[type="submit"], .button + .button {
     left: 0;
     margin: 0 15px;
 }
+
+#edit-search-ideas-title {
+    margin-top: 10px;
+    background-color: #fff;
+    border-color: #fff;
+}
+

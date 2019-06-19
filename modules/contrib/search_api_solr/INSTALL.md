@@ -12,8 +12,8 @@ cd $DRUPAL
 composer require drupal/search_api_solr
 ```
 
-Setting up Solr
----------------
+Setting up Solr (single core)
+-----------------------------
 
 In order for this module to work, you need to set up a Solr server.
 For this, you can either purchase a server from a web Solr hosts or set up your
@@ -31,7 +31,7 @@ http://www.apache.org/dyn/closer.cgi/lucene/solr/ and unpack the archive
 somewhere outside of your web server's document tree. The unpacked Solr
 directory is named `$SOLR` in these instructions.
 
-For better performance and more features, 7.x should be used!
+For better performance and more features, 7.7.x or 8.x should be used!
 
 First you have to create a Solr core for Drupal. Therefore you have to create
 two directories (replace `$SOLR` and `$CORE` according to your needs):
@@ -53,8 +53,7 @@ configuration files. They aren't always static but vary on your Drupal setup.
 But the Search API Solr Search module will create the correct configs for you!
 
 1. Create a Search API Server according to the search_api documentation using
-   "Solr" or "Multilingual Solr" as Backend and the "Standard" or "Basic Auth"
-   Connector.
+   "Solr" as Backend and the connector that meets your setup.
 2. Download the config.zip from the server's details page or by using
    `drush solr-gsc`
 3. Extract the config.zip to the conf directory of your new core.
@@ -63,12 +62,9 @@ But the Search API Solr Search module will create the correct configs for you!
 unzip config.zip -d $SOLR/server/solr/$CORE/conf
 ```
 
-NOTE: If you use the "Multilingual Solr" backend you have to repeat steps 2 and
-3 every time you add a new language to your Drupal instance!
-
-NOTE: It's important that the Solr server runs with the right config files for
-a backend. Don't switch between Solr Backends without adjusting the config
-files!
+NOTE: You have to repeat steps 2 and 3 every time you add a new language to your
+Drupal instance or add a custom Solr Field Type! The UI should inform you about
+that.
 
 NOTE: There's file called `solrcore.properties` within the set of generated
 config files. If you need to fine tune some setting you should do it within this

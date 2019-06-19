@@ -9,12 +9,14 @@ dependencies:
     - field.field.node.idea.field_idea_constraint
     - field.field.node.idea.field_idea_material
     - field.field.node.idea.field_idea_object
+    - field.field.node.idea.field_idea_products
     - field.field.node.idea.field_idea_space
     - field.field.node.idea.field_idea_style
     - field.field.node.idea.field_idea_surface
     - field.field.node.idea.field_idea_teaser_image
     - field.field.node.idea.field_idea_theme
     - field.field.node.idea.field_idea_users_age
+    - field.field.node.idea.field_meta_tags
     - node.type.idea
   module:
     - text
@@ -35,15 +37,20 @@ content:
   links:
     weight: 100
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
+  addtoany: true
   field_idea_color: true
   field_idea_constraint: true
   field_idea_material: true
   field_idea_object: true
+  field_idea_products: true
   field_idea_space: true
   field_idea_style: true
   field_idea_surface: true
   field_idea_teaser_image: true
   field_idea_theme: true
   field_idea_users_age: true
+  field_meta_tags: true
   langcode: true

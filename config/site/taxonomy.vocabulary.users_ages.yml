@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'User''s ages'
 vid: users_ages
 description: ''
-hierarchy: 0
 weight: 0

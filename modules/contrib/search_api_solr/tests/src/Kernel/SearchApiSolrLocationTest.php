@@ -20,6 +20,7 @@ class SearchApiSolrLocationTest extends SolrBackendTestBase {
    * @var string[]
    */
   public static $modules = [
+    'language',
     'search_api_location',
     'search_api_test_example_content',
     'search_api_solr_test',
@@ -123,6 +124,13 @@ class SearchApiSolrLocationTest extends SolrBackendTestBase {
    * Tests location searches and distance facets.
    */
   public function testBackend() {
+    // Regression test.
+    // @see https://www.drupal.org/project/search_api_solr/issues/2921774
+    $query = $this->buildSearch(NULL, [], NULL, TRUE);
+    $query->addCondition('location', NULL, '<>');
+    $result = $query->execute();
+    $this->assertResults([1, 2, 3], $result, 'Search for all documents having a location');
+
     // Search 500km from Antwerp.
     $location_options = [
       [
@@ -145,7 +153,9 @@ class SearchApiSolrLocationTest extends SolrBackendTestBase {
     $item = $result->getResultItems()['entity:entity_test_mulrev_changed/3:en'];
     $distance = $item->getField('location__distance')->getValues()[0];
 
-    $this->assertEquals(42.5263374675, $distance, 'The distance is correctly returned');
+    // We get different precisions from Solr 6 and 7. Therefore we treat the
+    // decimal as string and compare the first 9 characters.
+    $this->assertEquals('42.526337', substr($distance, 0, 9), 'The distance is correctly returned');
 
     // Search between 100km and 6000km from Antwerp.
     $location_options = [
@@ -167,7 +177,7 @@ class SearchApiSolrLocationTest extends SolrBackendTestBase {
     $facets_options['location__distance'] = [
       'field' => 'location__distance',
       'limit' => 10,
-      'min_count' => 0,
+      'min_count' => 1,
       'missing' => TRUE,
     ];
 
@@ -196,18 +206,6 @@ class SearchApiSolrLocationTest extends SolrBackendTestBase {
       [
         'filter' => '[200 399]',
         'count' => 1,
-      ],
-      [
-        'filter' => '[400 599]',
-        'count' => 0,
-      ],
-      [
-        'filter' => '[600 799]',
-        'count' => 0,
-      ],
-      [
-        'filter' => '[800 999]',
-        'count' => 0,
       ],
     ];
 
@@ -269,26 +267,44 @@ class SearchApiSolrLocationTest extends SolrBackendTestBase {
       'format' => 'ints2D',
     ];
     $result = $query->execute();
+    // @codingStandardsIgnoreLine
+    $heatmap = [NULL, NULL, NULL, NULL, NULL, NULL, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], NULL, [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL];
+    $filter = [];
+    if (version_compare($this->getSolrVersion(), '7.5', '>=')) {
+      $filter = [
+        "gridLevel" => 2,
+        "columns" => 32,
+        "rows" => 32,
+        "minX" => -180.0,
+        "maxX" => 180.0,
+        "minY" => -90.0,
+        "maxY" => 90.0,
+        "counts_ints2D" => $heatmap,
+      ];
+    }
+    else {
+      $filter = [
+        "gridLevel",
+        2,
+        "columns",
+        32,
+        "rows",
+        32,
+        "minX",
+        -180.0,
+        "maxX",
+        180.0,
+        "minY",
+        -90.0,
+        "maxY",
+        90.0,
+        "counts_ints2D",
+        $heatmap,
+      ];
+    }
     $expected = [
       [
-        'filter' => [
-          "gridLevel",
-          2,
-          "columns",
-          32,
-          "rows",
-          32,
-          "minX",
-          -180.0,
-          "maxX",
-          180.0,
-          "minY",
-          -90.0,
-          "maxY",
-          90.0,
-          "counts_ints2D",
-          [NULL, NULL, NULL, NULL, NULL, NULL, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], NULL, [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL],
-        ],
+        'filter' => $filter,
         'count' => 3,
       ],
     ];
@@ -315,32 +331,61 @@ class SearchApiSolrLocationTest extends SolrBackendTestBase {
       'format' => 'ints2D',
     ];
     $result = $query->execute();
+    // @codingStandardsIgnoreLine
+    $heatmap = [NULL, NULL, NULL, [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL];
+    $filter = [];
+    if (version_compare($this->getSolrVersion(), '7.5', '>=')) {
+      $filter = [
+        "gridLevel" => 2,
+        "columns" => 18,
+        "rows" => 29,
+        "minX" => -67.5,
+        "maxX" => 135.0,
+        "minY" => -90.0,
+        "maxY" => 73.125,
+        "counts_ints2D" => $heatmap,
+      ];
+    }
+    else {
+      $filter = [
+        "gridLevel",
+        2,
+        "columns",
+        18,
+        "rows",
+        29,
+        "minX",
+        -67.5,
+        "maxX",
+        135.0,
+        "minY",
+        -90.0,
+        "maxY",
+        73.125,
+        "counts_ints2D",
+        $heatmap,
+      ];
+    }
     $expected = [
       [
-        'filter' => [
-          "gridLevel",
-          2,
-          "columns",
-          18,
-          "rows",
-          29,
-          "minX",
-          -67.5,
-          "maxX",
-          135.0,
-          "minY",
-          -90.0,
-          "maxY",
-          73.125,
-          "counts_ints2D",
-          [NULL, NULL, NULL, [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL],
-        ],
+        'filter' => $filter,
         'count' => 2,
       ],
     ];
 
     $facets = $result->getExtraData('search_api_facets', [])['rpt'];
     $this->assertEquals($expected, $facets, 'The correct location facets are returned');
+
+    // Test boundary filtering.
+    $query = $this->buildSearch()
+      ->addCondition('location', ['38,-75', '42,-70'], 'BETWEEN');
+    $result = $query->execute();
+    $this->assertResults([2], $result, 'Search for NYC by boundary and NYC only');
+
+    $query = $this->buildSearch()
+      ->addCondition('location', ['38,-75', '42,-70'], 'NOT BETWEEN');
+    $result = $query->execute();
+    $this->assertResults([1, 3], $result, 'Search for outside NYC by boundary');
   }
 
 }

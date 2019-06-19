@@ -1,0 +1,1710 @@
+diff --git a/config/install/search_api_solr.solr_field_type.text_edge_und_6_0_0.yml b/config/install/search_api_solr.solr_field_type.text_edge_und_6_0_0.yml
+new file mode 100644
+index 0000000..6387436
+--- /dev/null
++++ b/config/install/search_api_solr.solr_field_type.text_edge_und_6_0_0.yml
+@@ -0,0 +1,258 @@
++langcode: en
++status: true
++dependencies:
++  module:
++    - search_api_solr
++id: text_edge_und_6_0_0
++label: 'Edge NGram Text Field'
++minimum_solr_version: 6.0.0
++custom_code: 'edge'
++field_type_language_code: und
++domains: {}
++field_type:
++  name: text_edge
++  class: solr.TextField
++  positionIncrementGap: 100
++  analyzers:
++    -
++      type: index
++      charFilters:
++        -
++          class: solr.MappingCharFilterFactory
++          mapping: accents_edge_und.txt
++      tokenizer:
++        class: solr.WhitespaceTokenizerFactory
++      filters:
++        -
++          class: solr.StopFilterFactory
++          ignoreCase: true
++          words: stopwords_edge_und.txt
++        -
++          class: solr.WordDelimiterFilterFactory
++          catenateNumbers: 1
++          generateNumberParts: 1
++          protected: protwords_edge_und.txt
++          splitOnCaseChange: 0
++          generateWordParts: 1
++          preserveOriginal: 1
++          catenateAll: 0
++          catenateWords: 1
++        -
++          class: solr.LengthFilterFactory
++          min: 2
++          max: 100
++        -
++          class: solr.LowerCaseFilterFactory
++        -
++          class: solr.RemoveDuplicatesTokenFilterFactory
++        -
++          class: solr.EdgeNGramFilterFactory
++          minGramSize: 2
++          maxGramSize: 25
++    -
++      type: query
++      charFilters:
++        -
++          class: solr.MappingCharFilterFactory
++          mapping: accents_edge_und.txt
++      tokenizer:
++        class: solr.WhitespaceTokenizerFactory
++      filters:
++        -
++          class: solr.LengthFilterFactory
++          min: 2
++          max: 100
++        -
++          class: solr.LowerCaseFilterFactory
++        -
++          class: solr.RemoveDuplicatesTokenFilterFactory
++solr_configs: {}
++text_files:
++  stopwords: |
++    a
++    an
++    and
++    are
++    as
++    at
++    be
++    but
++    by
++    for
++    if
++    in
++    into
++    is
++    it
++    no
++    not
++    of
++    on
++    or
++    s
++    such
++    t
++    that
++    the
++    their
++    then
++    there
++    these
++    they
++    this
++    to
++    was
++    will
++    with
++  synonyms: |
++    drupal, durpal
++  protwords: |
++  accents: |
++    # À => A
++    "\u00C0" => "A"
++    # Á => A
++    "\u00C1" => "A"
++    # Â => A
++    "\u00C2" => "A"
++    # Ã => A
++    "\u00C3" => "A"
++    # Ä => A
++    "\u00C4" => "A"
++    # Å => A
++    "\u00C5" => "A"
++    # Æ => AE
++    "\u00C6" => "AE"
++    # Ç => C
++    "\u00C7" => "C"
++    # È => E
++    "\u00C8" => "E"
++    # É => E
++    "\u00C9" => "E"
++    # Ê => E
++    "\u00CA" => "E"
++    # Ë => E
++    "\u00CB" => "E"
++    # Ì => I
++    "\u00CC" => "I"
++    # Í => I
++    "\u00CD" => "I"
++    # Î => I
++    "\u00CE" => "I"
++    # Ï => I
++    "\u00CF" => "I"
++    # Ĳ => IJ
++    "\u0132" => "IJ"
++    # Ð => D
++    "\u00D0" => "D"
++    # Ñ => N
++    "\u00D1" => "N"
++    # Ò => O
++    "\u00D2" => "O"
++    # Ó => O
++    "\u00D3" => "O"
++    # Ô => O
++    "\u00D4" => "O"
++    # Õ => O
++    "\u00D5" => "O"
++    # Ö => O
++    "\u00D6" => "O"
++    # Ø => O
++    "\u00D8" => "O"
++    # Œ => OE
++    "\u0152" => "OE"
++    # Þ
++    "\u00DE" => "TH"
++    # Ù => U
++    "\u00D9" => "U"
++    # Ú => U
++    "\u00DA" => "U"
++    # Û => U
++    "\u00DB" => "U"
++    # Ü => U
++    "\u00DC" => "U"
++    # Ý => Y
++    "\u00DD" => "Y"
++    # Ÿ => Y
++    "\u0178" => "Y"
++    # à => a
++    "\u00E0" => "a"
++    # á => a
++    "\u00E1" => "a"
++    # â => a
++    "\u00E2" => "a"
++    # ã => a
++    "\u00E3" => "a"
++    # ä => a
++    "\u00E4" => "a"
++    # å => a
++    "\u00E5" => "a"
++    # æ => ae
++    "\u00E6" => "ae"
++    # ç => c
++    "\u00E7" => "c"
++    # è => e
++    "\u00E8" => "e"
++    # é => e
++    "\u00E9" => "e"
++    # ê => e
++    "\u00EA" => "e"
++    # ë => e
++    "\u00EB" => "e"
++    # ì => i
++    "\u00EC" => "i"
++    # í => i
++    "\u00ED" => "i"
++    # î => i
++    "\u00EE" => "i"
++    # ï => i
++    "\u00EF" => "i"
++    # ĳ => ij
++    "\u0133" => "ij"
++    # ð => d
++    "\u00F0" => "d"
++    # ñ => n
++    "\u00F1" => "n"
++    # ò => o
++    "\u00F2" => "o"
++    # ó => o
++    "\u00F3" => "o"
++    # ô => o
++    "\u00F4" => "o"
++    # õ => o
++    "\u00F5" => "o"
++    # ö => o
++    "\u00F6" => "o"
++    # ø => o
++    "\u00F8" => "o"
++    # œ => oe
++    "\u0153" => "oe"
++    # ß => ss
++    "\u00DF" => "ss"
++    # þ => th
++    "\u00FE" => "th"
++    # ù => u
++    "\u00F9" => "u"
++    # ú => u
++    "\u00FA" => "u"
++    # û => u
++    "\u00FB" => "u"
++    # ü => u
++    "\u00FC" => "u"
++    # ý => y
++    "\u00FD" => "y"
++    # ÿ => y
++    "\u00FF" => "y"
++    # ﬀ => ff
++    "\uFB00" => "ff"
++    # ﬁ => fi
++    "\uFB01" => "fi"
++    # ﬂ => fl
++    "\uFB02" => "fl"
++    # ﬃ => ffi
++    "\uFB03" => "ffi"
++    # ﬄ => ffl
++    "\uFB04" => "ffl"
++    # ﬅ => st
++    "\uFB05" => "st"
++    # ﬆ => st
++    "\uFB06" => "st"
+diff --git a/config/install/search_api_solr.solr_field_type.text_edgestring_und_6_0_0.yml b/config/install/search_api_solr.solr_field_type.text_edgestring_und_6_0_0.yml
+new file mode 100644
+index 0000000..b7ef691
+--- /dev/null
++++ b/config/install/search_api_solr.solr_field_type.text_edgestring_und_6_0_0.yml
+@@ -0,0 +1,44 @@
++# Edge NGram String type
++# For example for matching against queries with results KeywordTokenizer leaves
++# input string intact as a single term.
++# @see: http://www.lucidimagination.com/blog/2009/09/08/auto-suggest-from-popular-queries-using-edgengrams/
++langcode: en
++status: true
++dependencies:
++  module:
++    - search_api_solr
++id: text_edgestring_und_6_0_0
++label: 'Edge NGram String Field'
++minimum_solr_version: 6.0.0
++custom_code: 'edgestring'
++field_type_language_code: und
++domains: {}
++field_type:
++  name: text_edgenstring
++  class: solr.TextField
++  positionIncrementGap: 100
++  analyzers:
++    -
++      type: index
++      tokenizer:
++        class: solr.KeywordTokenizerFactory
++      filters:
++        -
++          class: solr.LowerCaseFilterFactory
++        -
++          class: solr.RemoveDuplicatesTokenFilterFactory
++        -
++          class: solr.EdgeNGramFilterFactory
++          minGramSize: 2
++          maxGramSize: 25
++    -
++      type: query
++      tokenizer:
++        class: solr.KeywordTokenizerFactory
++      filters:
++        -
++          class: solr.LowerCaseFilterFactory
++        -
++          class: solr.RemoveDuplicatesTokenFilterFactory
++solr_configs: {}
++text_files: {}
+diff --git a/config/install/search_api_solr.solr_field_type.text_ngram_und_6_0_0.yml b/config/install/search_api_solr.solr_field_type.text_ngram_und_6_0_0.yml
+new file mode 100644
+index 0000000..c6e990e
+--- /dev/null
++++ b/config/install/search_api_solr.solr_field_type.text_ngram_und_6_0_0.yml
+@@ -0,0 +1,258 @@
++langcode: en
++status: true
++dependencies:
++  module:
++    - search_api_solr
++id: text_ngram_und_6_0_0
++label: 'NGram Text Field'
++minimum_solr_version: 6.0.0
++custom_code: 'ngram'
++field_type_language_code: und
++domains: {}
++field_type:
++  name: text_ngram
++  class: solr.TextField
++  positionIncrementGap: 100
++  analyzers:
++    -
++      type: index
++      charFilters:
++        -
++          class: solr.MappingCharFilterFactory
++          mapping: accents_ngram_und.txt
++      tokenizer:
++        class: solr.WhitespaceTokenizerFactory
++      filters:
++        -
++          class: solr.StopFilterFactory
++          ignoreCase: true
++          words: stopwords_ngram_und.txt
++        -
++          class: solr.WordDelimiterFilterFactory
++          catenateNumbers: 1
++          generateNumberParts: 1
++          protected: protwords_ngram_und.txt
++          splitOnCaseChange: 0
++          generateWordParts: 1
++          preserveOriginal: 1
++          catenateAll: 0
++          catenateWords: 1
++        -
++          class: solr.LengthFilterFactory
++          min: 2
++          max: 100
++        -
++          class: solr.LowerCaseFilterFactory
++        -
++          class: solr.RemoveDuplicatesTokenFilterFactory
++        -
++          class: solr.NGramFilterFactory
++          minGramSize: 2
++          maxGramSize: 25
++    -
++      type: query
++      charFilters:
++        -
++          class: solr.MappingCharFilterFactory
++          mapping: accents_ngram_und.txt
++      tokenizer:
++        class: solr.WhitespaceTokenizerFactory
++      filters:
++        -
++          class: solr.LengthFilterFactory
++          min: 2
++          max: 100
++        -
++          class: solr.LowerCaseFilterFactory
++        -
++          class: solr.RemoveDuplicatesTokenFilterFactory
++solr_configs: {}
++text_files:
++  stopwords: |
++    a
++    an
++    and
++    are
++    as
++    at
++    be
++    but
++    by
++    for
++    if
++    in
++    into
++    is
++    it
++    no
++    not
++    of
++    on
++    or
++    s
++    such
++    t
++    that
++    the
++    their
++    then
++    there
++    these
++    they
++    this
++    to
++    was
++    will
++    with
++  synonyms: |
++    drupal, durpal
++  protwords: |
++  accents: |
++    # À => A
++    "\u00C0" => "A"
++    # Á => A
++    "\u00C1" => "A"
++    # Â => A
++    "\u00C2" => "A"
++    # Ã => A
++    "\u00C3" => "A"
++    # Ä => A
++    "\u00C4" => "A"
++    # Å => A
++    "\u00C5" => "A"
++    # Æ => AE
++    "\u00C6" => "AE"
++    # Ç => C
++    "\u00C7" => "C"
++    # È => E
++    "\u00C8" => "E"
++    # É => E
++    "\u00C9" => "E"
++    # Ê => E
++    "\u00CA" => "E"
++    # Ë => E
++    "\u00CB" => "E"
++    # Ì => I
++    "\u00CC" => "I"
++    # Í => I
++    "\u00CD" => "I"
++    # Î => I
++    "\u00CE" => "I"
++    # Ï => I
++    "\u00CF" => "I"
++    # Ĳ => IJ
++    "\u0132" => "IJ"
++    # Ð => D
++    "\u00D0" => "D"
++    # Ñ => N
++    "\u00D1" => "N"
++    # Ò => O
++    "\u00D2" => "O"
++    # Ó => O
++    "\u00D3" => "O"
++    # Ô => O
++    "\u00D4" => "O"
++    # Õ => O
++    "\u00D5" => "O"
++    # Ö => O
++    "\u00D6" => "O"
++    # Ø => O
++    "\u00D8" => "O"
++    # Œ => OE
++    "\u0152" => "OE"
++    # Þ
++    "\u00DE" => "TH"
++    # Ù => U
++    "\u00D9" => "U"
++    # Ú => U
++    "\u00DA" => "U"
++    # Û => U
++    "\u00DB" => "U"
++    # Ü => U
++    "\u00DC" => "U"
++    # Ý => Y
++    "\u00DD" => "Y"
++    # Ÿ => Y
++    "\u0178" => "Y"
++    # à => a
++    "\u00E0" => "a"
++    # á => a
++    "\u00E1" => "a"
++    # â => a
++    "\u00E2" => "a"
++    # ã => a
++    "\u00E3" => "a"
++    # ä => a
++    "\u00E4" => "a"
++    # å => a
++    "\u00E5" => "a"
++    # æ => ae
++    "\u00E6" => "ae"
++    # ç => c
++    "\u00E7" => "c"
++    # è => e
++    "\u00E8" => "e"
++    # é => e
++    "\u00E9" => "e"
++    # ê => e
++    "\u00EA" => "e"
++    # ë => e
++    "\u00EB" => "e"
++    # ì => i
++    "\u00EC" => "i"
++    # í => i
++    "\u00ED" => "i"
++    # î => i
++    "\u00EE" => "i"
++    # ï => i
++    "\u00EF" => "i"
++    # ĳ => ij
++    "\u0133" => "ij"
++    # ð => d
++    "\u00F0" => "d"
++    # ñ => n
++    "\u00F1" => "n"
++    # ò => o
++    "\u00F2" => "o"
++    # ó => o
++    "\u00F3" => "o"
++    # ô => o
++    "\u00F4" => "o"
++    # õ => o
++    "\u00F5" => "o"
++    # ö => o
++    "\u00F6" => "o"
++    # ø => o
++    "\u00F8" => "o"
++    # œ => oe
++    "\u0153" => "oe"
++    # ß => ss
++    "\u00DF" => "ss"
++    # þ => th
++    "\u00FE" => "th"
++    # ù => u
++    "\u00F9" => "u"
++    # ú => u
++    "\u00FA" => "u"
++    # û => u
++    "\u00FB" => "u"
++    # ü => u
++    "\u00FC" => "u"
++    # ý => y
++    "\u00FD" => "y"
++    # ÿ => y
++    "\u00FF" => "y"
++    # ﬀ => ff
++    "\uFB00" => "ff"
++    # ﬁ => fi
++    "\uFB01" => "fi"
++    # ﬂ => fl
++    "\uFB02" => "fl"
++    # ﬃ => ffi
++    "\uFB03" => "ffi"
++    # ﬄ => ffl
++    "\uFB04" => "ffl"
++    # ﬅ => st
++    "\uFB05" => "st"
++    # ﬆ => st
++    "\uFB06" => "st"
+diff --git a/config/install/search_api_solr.solr_field_type.text_ngramstring_und_6_0_0.yml b/config/install/search_api_solr.solr_field_type.text_ngramstring_und_6_0_0.yml
+new file mode 100644
+index 0000000..b2ffc0a
+--- /dev/null
++++ b/config/install/search_api_solr.solr_field_type.text_ngramstring_und_6_0_0.yml
+@@ -0,0 +1,44 @@
++# NGram String type
++# For example for matching against queries with results KeywordTokenizer leaves
++# input string intact as a single term.
++# @see: http://www.lucidimagination.com/blog/2009/09/08/auto-suggest-from-popular-queries-using-edgengrams/
++langcode: en
++status: true
++dependencies:
++  module:
++    - search_api_solr
++id: text_ngramstring_und_6_0_0
++label: 'NGram String Field'
++minimum_solr_version: 6.0.0
++custom_code: 'ngramstring'
++field_type_language_code: und
++domains: {}
++field_type:
++  name: text_ngramstring
++  class: solr.TextField
++  positionIncrementGap: 100
++  analyzers:
++    -
++      type: index
++      tokenizer:
++        class: solr.KeywordTokenizerFactory
++      filters:
++        -
++          class: solr.LowerCaseFilterFactory
++        -
++          class: solr.RemoveDuplicatesTokenFilterFactory
++        -
++          class: solr.NGramFilterFactory
++          minGramSize: 2
++          maxGramSize: 25
++    -
++      type: query
++      tokenizer:
++        class: solr.KeywordTokenizerFactory
++      filters:
++        -
++          class: solr.LowerCaseFilterFactory
++        -
++          class: solr.RemoveDuplicatesTokenFilterFactory
++solr_configs: {}
++text_files: {}
+diff --git a/config/install/search_api_solr.solr_field_type.text_und_6_0_0.yml b/config/install/search_api_solr.solr_field_type.text_und_6_0_0.yml
+index 74840aa..e934b3b 100644
+--- a/config/install/search_api_solr.solr_field_type.text_und_6_0_0.yml
++++ b/config/install/search_api_solr.solr_field_type.text_und_6_0_0.yml
+@@ -19,19 +19,19 @@ field_type:
+       charFilters:
+         -
+           class: solr.MappingCharFilterFactory
+-          mapping: mapping-ISOLatin1Accent.txt
++          mapping: accents_und.txt
+       tokenizer:
+         class: solr.WhitespaceTokenizerFactory
+       filters:
+         -
+           class: solr.StopFilterFactory
+           ignoreCase: true
+-          words: stopwords.txt
++          words: stopwords_und.txt
+         -
+           class: solr.WordDelimiterFilterFactory
+           catenateNumbers: 1
+           generateNumberParts: 1
+-          protected: protwords.txt
++          protected: protwords_und.txt
+           splitOnCaseChange: 0
+           generateWordParts: 1
+           preserveOriginal: 1
+@@ -50,24 +50,24 @@ field_type:
+       charFilters:
+         -
+           class: solr.MappingCharFilterFactory
+-          mapping: mapping-ISOLatin1Accent.txt
++          mapping: accents_und.txt
+       tokenizer:
+         class: solr.WhitespaceTokenizerFactory
+       filters:
+         -
+           class: solr.SynonymFilterFactory
+-          synonyms: synonyms.txt
++          synonyms: synonyms_und.txt
+           expand: true
+           ignoreCase: true
+         -
+           class: solr.StopFilterFactory
+           ignoreCase: true
+-          words: stopwords.txt
++          words: stopwords_und.txt
+         -
+           class: solr.WordDelimiterFilterFactory
+           catenateNumbers: 0
+           generateNumberParts: 1
+-          protected: protwords.txt
++          protected: protwords_und.txt
+           splitOnCaseChange: 0
+           generateWordParts: 1
+           preserveOriginal: 1
+diff --git a/config/install/search_api_solr.solr_field_type.text_und_7_0_0.yml b/config/install/search_api_solr.solr_field_type.text_und_7_0_0.yml
+index 5179502..76a049d 100644
+--- a/config/install/search_api_solr.solr_field_type.text_und_7_0_0.yml
++++ b/config/install/search_api_solr.solr_field_type.text_und_7_0_0.yml
+@@ -19,19 +19,19 @@ field_type:
+       charFilters:
+         -
+           class: solr.MappingCharFilterFactory
+-          mapping: mapping-ISOLatin1Accent.txt
++          mapping: accents_und.txt
+       tokenizer:
+         class: solr.WhitespaceTokenizerFactory
+       filters:
+         -
+           class: solr.StopFilterFactory
+           ignoreCase: true
+-          words: stopwords.txt
++          words: stopwords_und.txt
+         -
+           class: solr.WordDelimiterGraphFilterFactory
+           catenateNumbers: 1
+           generateNumberParts: 1
+-          protected: protwords.txt
++          protected: protwords_und.txt
+           splitOnCaseChange: 0
+           generateWordParts: 1
+           preserveOriginal: 1
+@@ -50,24 +50,24 @@ field_type:
+       charFilters:
+         -
+           class: solr.MappingCharFilterFactory
+-          mapping: mapping-ISOLatin1Accent.txt
++          mapping: accents_und.txt
+       tokenizer:
+         class: solr.WhitespaceTokenizerFactory
+       filters:
+         -
+           class: solr.SynonymGraphFilterFactory
+-          synonyms: synonyms.txt
++          synonyms: synonyms_und.txt
+           expand: true
+           ignoreCase: true
+         -
+           class: solr.StopFilterFactory
+           ignoreCase: true
+-          words: stopwords.txt
++          words: stopwords_und.txt
+         -
+           class: solr.WordDelimiterGraphFilterFactory
+           catenateNumbers: 0
+           generateNumberParts: 1
+-          protected: protwords.txt
++          protected: protwords_und.txt
+           splitOnCaseChange: 0
+           generateWordParts: 1
+           preserveOriginal: 1
+diff --git a/config/schema/solr_field_type.schema.yml b/config/schema/solr_field_type.schema.yml
+index 85ea9f5..1b813e1 100644
+--- a/config/schema/solr_field_type.schema.yml
++++ b/config/schema/solr_field_type.schema.yml
+@@ -169,11 +169,11 @@ search_api_solr.solr_field_type.*:
+                       nullable: true
+                     minGramSize:
+                       type: integer
+-                      label: 'EdgeNGramFilterFactory::minGramSize'
++                      label: 'NGramFilter:: EdgeNGramFilter::minGramSize'
+                       nullable: true
+                     maxGramSize:
+                       type: integer
+-                      label: 'EdgeNGramFilterFactory::maxGramSize'
++                      label: 'NGramFilter:: EdgeNGramFilter::maxGramSize'
+                       nullable: true
+                     languageSet:
+                       type: string
+diff --git a/search_api_solr.install b/search_api_solr.install
+index 7782945..9633893 100644
+--- a/search_api_solr.install
++++ b/search_api_solr.install
+@@ -618,4 +618,26 @@ function search_api_solr_update_8300() {
+       ->save(TRUE);
+   }
+ 
++  /**
++   * Field types clean-up.
++   */
++  function search_api_solr_update_8301() {
++    $config_factory = \Drupal::configFactory();
++    foreach ($config_factory->listAll('search_api.index.') as $index_name) {
++      $index = $config_factory->getEditable($index_name);
++      $field_settings = $index->get('field_settings');
++      foreach ($field_settings as &$field_setting) {
++        if ('solr_text_ngram' == $field_setting['type']) {
++          $field_setting['type'] = 'solr_text_custom:edge';
++        }
++        if ('solr_text_phonetic' == $field_setting['type']) {
++          $field_setting['type'] = 'solr_text_custom:phonetic';
++        }
++      }
++
++      $index->set('field_settings', $field_settings)
++        ->save(TRUE);
++    }
++  }
++
+ }
+diff --git a/search_api_solr.module b/search_api_solr.module
+index 619c02d..d8ad05c 100644
+--- a/search_api_solr.module
++++ b/search_api_solr.module
+@@ -360,9 +360,7 @@ function search_api_solr_form_search_api_index_form_validate_server(&$element, F
+  * @see _search_api_views_handler_mapping()
+  */
+ function search_api_solr_search_api_views_handler_mapping_alter(&$mapping) {
+-  $mapping['solr_text_ngram'] =
+   $mapping['solr_text_omit_norms'] =
+-  $mapping['solr_text_phonetic'] =
+   $mapping['solr_text_suggester'] =
+   $mapping['solr_text_unstemmed'] =
+   $mapping['solr_text_wstoken'] = [
+@@ -376,18 +374,6 @@ function search_api_solr_search_api_views_handler_mapping_alter(&$mapping) {
+       'id' => 'search_api',
+     ],
+   ];
+-
+-  $mapping['solr_string_ngram'] = [
+-    'argument' => [
+-      'id' => 'search_api',
+-    ],
+-    'filter' => [
+-      'id' => 'search_api_string',
+-    ],
+-    'sort' => [
+-      'id' => 'search_api',
+-    ],
+-  ];
+ }
+ 
+ /**
+diff --git a/solr-conf/6.x/mapping-ISOLatin1Accent.txt b/solr-conf/6.x/mapping-ISOLatin1Accent.txt
+deleted file mode 100644
+index b92d03c..0000000
+--- a/solr-conf/6.x/mapping-ISOLatin1Accent.txt
++++ /dev/null
+@@ -1,14 +0,0 @@
+-# This file contains character mappings for the default fulltext field type.
+-# The source characters (on the left) will be replaced by the respective target
+-# characters before any other processing takes place.
+-# Lines starting with a pound character # are ignored.
+-#
+-# For sensible defaults, use the mapping-ISOLatin1Accent.txt file distributed
+-# with the example application of your Solr version.
+-#
+-# Examples:
+-#   "À" => "A"
+-#   "\u00c4" => "A"
+-#   "\u00c4" => "\u0041"
+-#   "æ" => "ae"
+-#   "\n" => " "
+diff --git a/solr-conf/6.x/protwords.txt b/solr-conf/6.x/protwords.txt
+deleted file mode 100644
+index cda8581..0000000
+--- a/solr-conf/6.x/protwords.txt
++++ /dev/null
+@@ -1,7 +0,0 @@
+-#-----------------------------------------------------------------------
+-# This file blocks words from being operated on by the stemmer and word delimiter.
+-&amp;
+-&lt;
+-&gt;
+-&#039;
+-&quot;
+diff --git a/solr-conf/6.x/schema.xml b/solr-conf/6.x/schema.xml
+index 5b68e4b..2387b72 100644
+--- a/solr-conf/6.x/schema.xml
++++ b/solr-conf/6.x/schema.xml
+@@ -182,20 +182,10 @@
+   <!-- Regular text (without processing) can be stored in a string field-->
+   <dynamicField name="ss_*"  type="string"  indexed="true"  stored="true" multiValued="false"/>
+   <dynamicField name="sm_*"  type="string"  indexed="true"  stored="true" multiValued="true"/>
+-  <dynamicField name="ses_*" type="edge_n2_kw_string"  indexed="true"  stored="true" multiValued="false"/>
+-  <dynamicField name="sem_*" type="edge_n2_kw_string"  indexed="true"  stored="true" multiValued="true"/>
+-  <!-- Normal text fields are for full text - the relevance of a match depends on the length of the text -->
+-  <dynamicField name="ts_*"  type="text"    indexed="true"  stored="true" multiValued="false" termVectors="true"/>
+-  <dynamicField name="tm_*"  type="text"    indexed="true"  stored="true" multiValued="true" termVectors="true"/>
+   <!-- Unstemmed text fields for full text - the relevance of a match depends on the length of the text -->
+   <dynamicField name="tus_*" type="text_und" indexed="true"  stored="true" multiValued="false" termVectors="true"/>
+   <dynamicField name="tum_*" type="text_und" indexed="true"  stored="true" multiValued="true" termVectors="true"/>
+-  <!-- These text fields omit norms - useful for extracted text like taxonomy_names -->
+-  <dynamicField name="tos_*" type="text"    indexed="true"  stored="true" multiValued="false" termVectors="true" omitNorms="true"/>
+-  <dynamicField name="tom_*" type="text"    indexed="true"  stored="true" multiValued="true" termVectors="true" omitNorms="true"/>
+   <!-- Special-purpose text fields -->
+-  <dynamicField name="tes_*" type="edge_n2_kw_text" indexed="true" stored="true" multiValued="false"/>
+-  <dynamicField name="tem_*" type="edge_n2_kw_text" indexed="true" stored="true" multiValued="true"/>
+   <dynamicField name="tws_*" type="text_ws" indexed="true" stored="true" multiValued="false"/>
+   <dynamicField name="twm_*" type="text_ws" indexed="true" stored="true" multiValued="true"/>
+ 
+@@ -241,10 +231,6 @@
+   <dynamicField name="rpts_*" type="location_rpt" indexed="true" stored="true" multiValued="false" />
+   <dynamicField name="rptm_*" type="location_rpt" indexed="true" stored="true" multiValued="true" />
+ 
+-  <!-- Special fields for Solr 5 functionality. -->
+-  <dynamicField name="phons_*" type="phonetic" indexed="true" stored="true" multiValued="false" />
+-  <dynamicField name="phonm_*" type="phonetic" indexed="true" stored="true" multiValued="true" />
+-
+   <!-- External file fields -->
+   <dynamicField name="eff_*" type="file"/>
+ 
+@@ -405,153 +391,11 @@
+       </analyzer>
+     </fieldType>
+ 
+-    <!-- A text field that uses WordDelimiterFilter to enable splitting and matching of
+-        words on case-change, alpha numeric boundaries, and non-alphanumeric chars,
+-        so that a query of "wifi" or "wi fi" could match a document containing "Wi-Fi".
+-        Synonyms and stopwords are customized by external files, and stemming is enabled.
+-        Duplicate tokens at the same position (which may result from Stemmed Synonyms or
+-        WordDelim parts) are removed.
+-        -->
+-    <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
+-      <analyzer type="index">
+-        <charFilter class="solr.MappingCharFilterFactory" mapping="mapping-ISOLatin1Accent.txt"/>
+-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+-        <!-- in this example, we will only use synonyms at query time
+-        <filter class="solr.SynonymFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
+-        -->
+-        <!-- Case insensitive stop word removal. -->
+-        <filter class="solr.StopFilterFactory"
+-                ignoreCase="true"
+-                words="stopwords.txt"
+-                />
+-        <filter class="solr.WordDelimiterFilterFactory"
+-                protected="protwords.txt"
+-                generateWordParts="1"
+-                generateNumberParts="1"
+-                catenateWords="1"
+-                catenateNumbers="1"
+-                catenateAll="0"
+-                splitOnCaseChange="0"
+-                preserveOriginal="1"/>
+-        <filter class="solr.LengthFilterFactory" min="2" max="100" />
+-        <filter class="solr.LowerCaseFilterFactory"/>
+-        <filter class="solr.SnowballPorterFilterFactory" language="English" protected="protwords.txt"/>
+-        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+-      </analyzer>
+-      <analyzer type="query">
+-        <charFilter class="solr.MappingCharFilterFactory" mapping="mapping-ISOLatin1Accent.txt"/>
+-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+-        <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+-        <filter class="solr.StopFilterFactory"
+-                ignoreCase="true"
+-                words="stopwords.txt"
+-                />
+-        <filter class="solr.WordDelimiterFilterFactory"
+-                protected="protwords.txt"
+-                generateWordParts="1"
+-                generateNumberParts="1"
+-                catenateWords="0"
+-                catenateNumbers="0"
+-                catenateAll="0"
+-                splitOnCaseChange="0"
+-                preserveOriginal="1"/>
+-        <filter class="solr.LengthFilterFactory" min="2" max="100" />
+-        <filter class="solr.LowerCaseFilterFactory"/>
+-        <filter class="solr.SnowballPorterFilterFactory" language="English" protected="protwords.txt"/>
+-        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+-      </analyzer>
+-      <analyzer type="multiterm">
+-        <charFilter class="solr.MappingCharFilterFactory" mapping="mapping-ISOLatin1Accent.txt"/>
+-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+-        <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+-        <filter class="solr.StopFilterFactory"
+-                ignoreCase="true"
+-                words="stopwords.txt"
+-                />
+-        <filter class="solr.WordDelimiterFilterFactory"
+-                protected="protwords.txt"
+-                generateWordParts="1"
+-                generateNumberParts="1"
+-                catenateWords="0"
+-                catenateNumbers="0"
+-                catenateAll="0"
+-                splitOnCaseChange="1"
+-                preserveOriginal="1"/>
+-        <filter class="solr.LengthFilterFactory" min="2" max="100" />
+-        <filter class="solr.LowerCaseFilterFactory"/>
+-        <filter class="solr.SnowballPorterFilterFactory" language="English" protected="protwords.txt"/>
+-        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+-      </analyzer>
+-    </fieldType>
+-
+-    <fieldType name="edge_n2_kw_text" class="solr.TextField" positionIncrementGap="100">
+-      <analyzer type="index">
+-        <charFilter class="solr.MappingCharFilterFactory" mapping="mapping-ISOLatin1Accent.txt"/>
+-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+-        <!-- Case insensitive stop word removal. -->
+-        <filter class="solr.StopFilterFactory"
+-                ignoreCase="true"
+-                words="stopwords.txt"
+-        />
+-        <filter class="solr.WordDelimiterFilterFactory"
+-                protected="protwords.txt"
+-                generateWordParts="1"
+-                generateNumberParts="1"
+-                catenateWords="1"
+-                catenateNumbers="1"
+-                catenateAll="0"
+-                splitOnCaseChange="0"
+-                preserveOriginal="1"/>
+-        <filter class="solr.LengthFilterFactory" min="2" max="100" />
+-        <filter class="solr.LowerCaseFilterFactory"/>
+-        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+-        <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="25" />
+-      </analyzer>
+-      <analyzer type="query">
+-        <charFilter class="solr.MappingCharFilterFactory" mapping="mapping-ISOLatin1Accent.txt"/>
+-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+-        <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+-        <filter class="solr.StopFilterFactory"
+-                ignoreCase="true"
+-                words="stopwords.txt"
+-        />
+-        <filter class="solr.LengthFilterFactory" min="2" max="100" />
+-        <filter class="solr.LowerCaseFilterFactory"/>
+-      </analyzer>
+-      <analyzer type="multiterm">
+-        <charFilter class="solr.MappingCharFilterFactory" mapping="mapping-ISOLatin1Accent.txt"/>
+-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+-        <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+-        <filter class="solr.StopFilterFactory"
+-                ignoreCase="true"
+-                words="stopwords.txt"
+-        />
+-        <filter class="solr.LengthFilterFactory" min="2" max="100" />
+-        <filter class="solr.LowerCaseFilterFactory"/>
+-      </analyzer>
+-    </fieldType>
+-
+-    <!-- Edge N gram type - for example for matching against queries with results
+-        KeywordTokenizer leaves input string intact as a single term.
+-        see: http://www.lucidimagination.com/blog/2009/09/08/auto-suggest-from-popular-queries-using-edgengrams/
+-      -->
+-    <fieldType name="edge_n2_kw_string" class="solr.TextField" omitNorms="true" positionIncrementGap="100">
+-      <analyzer type="index">
+-        <tokenizer class="solr.KeywordTokenizerFactory"/>
+-        <filter class="solr.LowerCaseFilterFactory"/>
+-        <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="25" />
+-      </analyzer>
+-      <analyzer type="query">
+-        <tokenizer class="solr.KeywordTokenizerFactory"/>
+-        <filter class="solr.LowerCaseFilterFactory"/>
+-      </analyzer>
+-    </fieldType>
+-
+     <!--  Setup simple analysis for spell checking -->
+    <fieldType name="textSpell" class="solr.TextField" positionIncrementGap="100">
+       <analyzer>
+         <tokenizer class="solr.StandardTokenizerFactory" />
+-        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
++        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords_und.txt"/>
+         <filter class="solr.LengthFilterFactory" min="4" max="20" />
+         <filter class="solr.LowerCaseFilterFactory" />
+         <filter class="solr.RemoveDuplicatesTokenFilterFactory" />
+@@ -626,13 +470,6 @@
+       </analyzer>
+     </fieldType>
+ 
+-    <fieldType name="phonetic" stored="false" indexed="true" class="solr.TextField" >
+-      <analyzer>
+-        <tokenizer class="solr.StandardTokenizerFactory"/>
+-        <filter class="solr.DoubleMetaphoneFilterFactory" inject="false"/>
+-      </analyzer>
+-    </fieldType>
+-
+     <fieldType name="payloads" stored="false" indexed="true" class="solr.TextField" >
+       <analyzer>
+         <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+diff --git a/solr-conf/6.x/schema_extra_types.xml b/solr-conf/6.x/schema_extra_types.xml
+index e5c06ae..12baeeb 100644
+--- a/solr-conf/6.x/schema_extra_types.xml
++++ b/solr-conf/6.x/schema_extra_types.xml
+@@ -3,57 +3,3 @@
+   required by your drupal setup. Having these field types in a separate file is
+   better than modifying schema.xml.
+ -->
+-
+-<!-- An unstemmed text field - good if one does not know the language of the field -->
+-<fieldType name="text_und" class="solr.TextField" positionIncrementGap="100">
+-  <analyzer type="index">
+-    <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+-    <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" />
+-    <filter class="solr.WordDelimiterFilterFactory"
+-            protected="protwords.txt"
+-            generateWordParts="1"
+-            generateNumberParts="1"
+-            catenateWords="1"
+-            catenateNumbers="1"
+-            catenateAll="0"
+-            splitOnCaseChange="0"/>
+-    <filter class="solr.LengthFilterFactory" min="2" max="100" />
+-    <filter class="solr.LowerCaseFilterFactory"/>
+-  </analyzer>
+-  <analyzer type="query">
+-    <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+-    <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+-    <filter class="solr.StopFilterFactory"
+-            ignoreCase="true"
+-            words="stopwords.txt"
+-    />
+-    <filter class="solr.WordDelimiterFilterFactory"
+-            protected="protwords.txt"
+-            generateWordParts="1"
+-            generateNumberParts="1"
+-            catenateWords="0"
+-            catenateNumbers="0"
+-            catenateAll="0"
+-            splitOnCaseChange="0"/>
+-    <filter class="solr.LengthFilterFactory" min="2" max="100" />
+-    <filter class="solr.LowerCaseFilterFactory"/>
+-  </analyzer>
+-  <analyzer type="multiterm">
+-    <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+-    <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+-    <filter class="solr.StopFilterFactory"
+-            ignoreCase="true"
+-            words="stopwords.txt"
+-    />
+-    <filter class="solr.WordDelimiterFilterFactory"
+-            protected="protwords.txt"
+-            generateWordParts="1"
+-            generateNumberParts="1"
+-            catenateWords="0"
+-            catenateNumbers="0"
+-            catenateAll="0"
+-            splitOnCaseChange="0"/>
+-    <filter class="solr.LengthFilterFactory" min="2" max="100" />
+-    <filter class="solr.LowerCaseFilterFactory"/>
+-  </analyzer>
+-</fieldType>
+diff --git a/solr-conf/6.x/solrconfig.xml b/solr-conf/6.x/solrconfig.xml
+index ce82f46..7fbec65 100644
+--- a/solr-conf/6.x/solrconfig.xml
++++ b/solr-conf/6.x/solrconfig.xml
+@@ -977,7 +977,7 @@
+       <str name="enable">${solr.replication.master:false}</str>
+       <str name="replicateAfter">commit</str>
+       <str name="replicateAfter">startup</str>
+-      <str name="confFiles">${solr.replication.confFiles:schema.xml,mapping-ISOLatin1Accent.txt,protwords.txt,stopwords.txt,synonyms.txt,elevate.xml}</str>
++      <str name="confFiles">${solr.replication.confFiles:schema.xml,elevate.xml}</str>
+     </lst>
+     <lst name="slave">
+       <str name="enable">${solr.replication.slave:false}</str>
+diff --git a/solr-conf/6.x/solrcore.properties b/solr-conf/6.x/solrcore.properties
+index d7d045b..12061e8 100644
+--- a/solr-conf/6.x/solrcore.properties
++++ b/solr-conf/6.x/solrcore.properties
+@@ -3,7 +3,7 @@ solr.replication.master=false
+ solr.replication.slave=false
+ solr.replication.pollInterval=00:00:60
+ solr.replication.masterUrl=http://localhost:8983/solr
+-solr.replication.confFiles=schema.xml,mapping-ISOLatin1Accent.txt,protwords.txt,stopwords.txt,synonyms.txt,elevate.xml
++solr.replication.confFiles=schema.xml,elevate.xml
+ solr.mlt.timeAllowed=2000
+ # You should not set your luceneMatchVersion to anything lower than your Solr
+ # Version.
+diff --git a/solr-conf/6.x/stopwords.txt b/solr-conf/6.x/stopwords.txt
+deleted file mode 100644
+index d7f243e..0000000
+--- a/solr-conf/6.x/stopwords.txt
++++ /dev/null
+@@ -1,4 +0,0 @@
+-# Contains words which shouldn't be indexed for fulltext fields, e.g., because
+-# they're too common. For documentation of the format, see
+-# http://wiki.apache.org/solr/AnalyzersTokenizersTokenFilters#solr.StopFilterFactory
+-# (Lines starting with a pound character # are ignored.)
+diff --git a/solr-conf/6.x/synonyms.txt b/solr-conf/6.x/synonyms.txt
+deleted file mode 100644
+index 7d22eea..0000000
+--- a/solr-conf/6.x/synonyms.txt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# Contains synonyms to use for your index. For the format used, see
+-# http://wiki.apache.org/solr/AnalyzersTokenizersTokenFilters#solr.SynonymFilterFactory
+-# (Lines starting with a pound character # are ignored.)
+diff --git a/solr-conf/7.x/mapping-ISOLatin1Accent.txt b/solr-conf/7.x/mapping-ISOLatin1Accent.txt
+deleted file mode 100644
+index b92d03c..0000000
+--- a/solr-conf/7.x/mapping-ISOLatin1Accent.txt
++++ /dev/null
+@@ -1,14 +0,0 @@
+-# This file contains character mappings for the default fulltext field type.
+-# The source characters (on the left) will be replaced by the respective target
+-# characters before any other processing takes place.
+-# Lines starting with a pound character # are ignored.
+-#
+-# For sensible defaults, use the mapping-ISOLatin1Accent.txt file distributed
+-# with the example application of your Solr version.
+-#
+-# Examples:
+-#   "À" => "A"
+-#   "\u00c4" => "A"
+-#   "\u00c4" => "\u0041"
+-#   "æ" => "ae"
+-#   "\n" => " "
+diff --git a/solr-conf/7.x/protwords.txt b/solr-conf/7.x/protwords.txt
+deleted file mode 100644
+index cda8581..0000000
+--- a/solr-conf/7.x/protwords.txt
++++ /dev/null
+@@ -1,7 +0,0 @@
+-#-----------------------------------------------------------------------
+-# This file blocks words from being operated on by the stemmer and word delimiter.
+-&amp;
+-&lt;
+-&gt;
+-&#039;
+-&quot;
+diff --git a/solr-conf/7.x/schema.xml b/solr-conf/7.x/schema.xml
+index ae6d5cf..d91b4ce 100644
+--- a/solr-conf/7.x/schema.xml
++++ b/solr-conf/7.x/schema.xml
+@@ -187,20 +187,10 @@
+   <dynamicField name="ss_*"  type="string"  indexed="true"  stored="false" multiValued="false" docValues="true"/>
+   <!-- For field types using SORTED_SET, multiple identical entries are collapsed into a single value. Thus if I insert values 4, 5, 2, 4, 1, my return will be 1, 2, 4, 5 when enabling docValues. Therefore the multiValued string field doesn't use docValues. -->
+   <dynamicField name="sm_*"  type="string"  indexed="true"  stored="true" multiValued="true" docValues="false"/>
+-  <dynamicField name="ses_*" type="edge_n2_kw_string"  indexed="true"  stored="true" multiValued="false"/>
+-  <dynamicField name="sem_*" type="edge_n2_kw_string"  indexed="true"  stored="true" multiValued="true"/>
+-  <!-- Normal text fields are for full text - the relevance of a match depends on the length of the text -->
+-  <dynamicField name="ts_*"  type="text"    indexed="true"  stored="true" multiValued="false" termVectors="true"/>
+-  <dynamicField name="tm_*"  type="text"    indexed="true"  stored="true" multiValued="true" termVectors="true"/>
+   <!-- Unstemmed text fields for full text - the relevance of a match depends on the length of the text -->
+   <dynamicField name="tus_*" type="text_und" indexed="true"  stored="true" multiValued="false" termVectors="true"/>
+   <dynamicField name="tum_*" type="text_und" indexed="true"  stored="true" multiValued="true" termVectors="true"/>
+-  <!-- These text fields omit norms - useful for extracted text like taxonomy_names -->
+-  <dynamicField name="tos_*" type="text"    indexed="true"  stored="true" multiValued="false" termVectors="true" omitNorms="true"/>
+-  <dynamicField name="tom_*" type="text"    indexed="true"  stored="true" multiValued="true" termVectors="true" omitNorms="true"/>
+   <!-- Special-purpose text fields -->
+-  <dynamicField name="tes_*" type="edge_n2_kw_text" indexed="true" stored="true" multiValued="false"/>
+-  <dynamicField name="tem_*" type="edge_n2_kw_text" indexed="true" stored="true" multiValued="true"/>
+   <dynamicField name="tws_*" type="text_ws" indexed="true" stored="true" multiValued="false"/>
+   <dynamicField name="twm_*" type="text_ws" indexed="true" stored="true" multiValued="true"/>
+ 
+@@ -248,10 +238,6 @@
+   <dynamicField name="rpts_*" type="location_rpt" indexed="true" stored="true" multiValued="false" />
+   <dynamicField name="rptm_*" type="location_rpt" indexed="true" stored="true" multiValued="true" />
+ 
+-  <!-- Special fields for Solr 5 functionality. -->
+-  <dynamicField name="phons_*" type="phonetic" indexed="true" stored="true" multiValued="false" />
+-  <dynamicField name="phonm_*" type="phonetic" indexed="true" stored="true" multiValued="true" />
+-
+   <!-- External file fields -->
+   <dynamicField name="eff_*" type="file"/>
+ 
+@@ -396,154 +382,11 @@
+       </analyzer>
+     </fieldType>
+ 
+-    <!-- A text field that uses WordDelimiterFilter to enable splitting and matching of
+-        words on case-change, alpha numeric boundaries, and non-alphanumeric chars,
+-        so that a query of "wifi" or "wi fi" could match a document containing "Wi-Fi".
+-        Synonyms and stopwords are customized by external files, and stemming is enabled.
+-        Duplicate tokens at the same position (which may result from Stemmed Synonyms or
+-        WordDelim parts) are removed.
+-        -->
+-    <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
+-      <analyzer type="index">
+-        <charFilter class="solr.MappingCharFilterFactory" mapping="mapping-ISOLatin1Accent.txt"/>
+-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+-        <!-- We will only use synonyms at query time
+-        <filter class="solr.SynonymGraphFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
+-        <filter class="solr.FlattenGraphFilterFactory"/>
+-        -->
+-        <!-- Case insensitive stop word removal. -->
+-        <filter class="solr.StopFilterFactory"
+-                ignoreCase="true"
+-                words="stopwords.txt"
+-                />
+-        <filter class="solr.WordDelimiterGraphFilterFactory"
+-                protected="protwords.txt"
+-                generateWordParts="1"
+-                generateNumberParts="1"
+-                catenateWords="1"
+-                catenateNumbers="1"
+-                catenateAll="0"
+-                splitOnCaseChange="0"
+-                preserveOriginal="1"/>
+-        <filter class="solr.LengthFilterFactory" min="2" max="100" />
+-        <filter class="solr.LowerCaseFilterFactory"/>
+-        <filter class="solr.SnowballPorterFilterFactory" language="English" protected="protwords.txt"/>
+-        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+-      </analyzer>
+-      <analyzer type="query">
+-        <charFilter class="solr.MappingCharFilterFactory" mapping="mapping-ISOLatin1Accent.txt"/>
+-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+-        <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+-        <filter class="solr.StopFilterFactory"
+-                ignoreCase="true"
+-                words="stopwords.txt"
+-                />
+-        <filter class="solr.WordDelimiterGraphFilterFactory"
+-                protected="protwords.txt"
+-                generateWordParts="1"
+-                generateNumberParts="1"
+-                catenateWords="0"
+-                catenateNumbers="0"
+-                catenateAll="0"
+-                splitOnCaseChange="0"
+-                preserveOriginal="1"/>
+-        <filter class="solr.LengthFilterFactory" min="2" max="100" />
+-        <filter class="solr.LowerCaseFilterFactory"/>
+-        <filter class="solr.SnowballPorterFilterFactory" language="English" protected="protwords.txt"/>
+-        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+-      </analyzer>
+-      <analyzer type="multiterm">
+-        <charFilter class="solr.MappingCharFilterFactory" mapping="mapping-ISOLatin1Accent.txt"/>
+-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+-        <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+-        <filter class="solr.StopFilterFactory"
+-                ignoreCase="true"
+-                words="stopwords.txt"
+-                />
+-        <filter class="solr.WordDelimiterGraphFilterFactory"
+-                protected="protwords.txt"
+-                generateWordParts="1"
+-                generateNumberParts="1"
+-                catenateWords="0"
+-                catenateNumbers="0"
+-                catenateAll="0"
+-                splitOnCaseChange="1"
+-                preserveOriginal="1"/>
+-        <filter class="solr.LengthFilterFactory" min="2" max="100" />
+-        <filter class="solr.LowerCaseFilterFactory"/>
+-        <filter class="solr.SnowballPorterFilterFactory" language="English" protected="protwords.txt"/>
+-        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+-      </analyzer>
+-    </fieldType>
+-
+-    <fieldType name="edge_n2_kw_text" class="solr.TextField" positionIncrementGap="100">
+-      <analyzer type="index">
+-        <charFilter class="solr.MappingCharFilterFactory" mapping="mapping-ISOLatin1Accent.txt"/>
+-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+-        <!-- Case insensitive stop word removal. -->
+-        <filter class="solr.StopFilterFactory"
+-                ignoreCase="true"
+-                words="stopwords.txt"
+-        />
+-        <filter class="solr.WordDelimiterGraphFilterFactory"
+-                protected="protwords.txt"
+-                generateWordParts="1"
+-                generateNumberParts="1"
+-                catenateWords="1"
+-                catenateNumbers="1"
+-                catenateAll="0"
+-                splitOnCaseChange="0"
+-                preserveOriginal="1"/>
+-        <filter class="solr.LengthFilterFactory" min="2" max="100" />
+-        <filter class="solr.LowerCaseFilterFactory"/>
+-        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+-        <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="25" />
+-      </analyzer>
+-      <analyzer type="query">
+-        <charFilter class="solr.MappingCharFilterFactory" mapping="mapping-ISOLatin1Accent.txt"/>
+-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+-        <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+-        <filter class="solr.StopFilterFactory"
+-                ignoreCase="true"
+-                words="stopwords.txt"
+-        />
+-        <filter class="solr.LengthFilterFactory" min="2" max="100" />
+-        <filter class="solr.LowerCaseFilterFactory"/>
+-      </analyzer>
+-      <analyzer type="multiterm">
+-        <charFilter class="solr.MappingCharFilterFactory" mapping="mapping-ISOLatin1Accent.txt"/>
+-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+-        <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+-        <filter class="solr.StopFilterFactory"
+-                ignoreCase="true"
+-                words="stopwords.txt"
+-        />
+-        <filter class="solr.LengthFilterFactory" min="2" max="100" />
+-        <filter class="solr.LowerCaseFilterFactory"/>
+-      </analyzer>
+-    </fieldType>
+-
+-    <!-- Edge N gram type - for example for matching against queries with results
+-        KeywordTokenizer leaves input string intact as a single term.
+-        see: http://www.lucidimagination.com/blog/2009/09/08/auto-suggest-from-popular-queries-using-edgengrams/
+-      -->
+-    <fieldType name="edge_n2_kw_string" class="solr.TextField" omitNorms="true" positionIncrementGap="100">
+-      <analyzer type="index">
+-        <tokenizer class="solr.KeywordTokenizerFactory"/>
+-        <filter class="solr.LowerCaseFilterFactory"/>
+-        <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="25" />
+-      </analyzer>
+-      <analyzer type="query">
+-        <tokenizer class="solr.KeywordTokenizerFactory"/>
+-        <filter class="solr.LowerCaseFilterFactory"/>
+-      </analyzer>
+-    </fieldType>
+-
+     <!--  Setup simple analysis for spell checking -->
+    <fieldType name="textSpell" class="solr.TextField" positionIncrementGap="100">
+       <analyzer>
+         <tokenizer class="solr.StandardTokenizerFactory" />
+-        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
++        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords_und.txt"/>
+         <filter class="solr.LengthFilterFactory" min="4" max="20" />
+         <filter class="solr.LowerCaseFilterFactory" />
+         <filter class="solr.RemoveDuplicatesTokenFilterFactory" />
+diff --git a/solr-conf/7.x/schema_extra_types.xml b/solr-conf/7.x/schema_extra_types.xml
+index 38b90dc..12baeeb 100644
+--- a/solr-conf/7.x/schema_extra_types.xml
++++ b/solr-conf/7.x/schema_extra_types.xml
+@@ -3,57 +3,3 @@
+   required by your drupal setup. Having these field types in a separate file is
+   better than modifying schema.xml.
+ -->
+-
+-<!-- An unstemmed text field - good if one does not know the language of the field -->
+-<fieldType name="text_und" class="solr.TextField" positionIncrementGap="100">
+-  <analyzer type="index">
+-    <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+-    <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" />
+-    <filter class="solr.WordDelimiterGraphFilterFactory"
+-            protected="protwords.txt"
+-            generateWordParts="1"
+-            generateNumberParts="1"
+-            catenateWords="1"
+-            catenateNumbers="1"
+-            catenateAll="0"
+-            splitOnCaseChange="0"/>
+-    <filter class="solr.LengthFilterFactory" min="2" max="100" />
+-    <filter class="solr.LowerCaseFilterFactory"/>
+-  </analyzer>
+-  <analyzer type="query">
+-    <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+-    <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+-    <filter class="solr.StopFilterFactory"
+-            ignoreCase="true"
+-            words="stopwords.txt"
+-    />
+-    <filter class="solr.WordDelimiterGraphFilterFactory"
+-            protected="protwords.txt"
+-            generateWordParts="1"
+-            generateNumberParts="1"
+-            catenateWords="0"
+-            catenateNumbers="0"
+-            catenateAll="0"
+-            splitOnCaseChange="0"/>
+-    <filter class="solr.LengthFilterFactory" min="2" max="100" />
+-    <filter class="solr.LowerCaseFilterFactory"/>
+-  </analyzer>
+-  <analyzer type="multiterm">
+-    <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+-    <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+-    <filter class="solr.StopFilterFactory"
+-            ignoreCase="true"
+-            words="stopwords.txt"
+-    />
+-    <filter class="solr.WordDelimiterGraphFilterFactory"
+-            protected="protwords.txt"
+-            generateWordParts="1"
+-            generateNumberParts="1"
+-            catenateWords="0"
+-            catenateNumbers="0"
+-            catenateAll="0"
+-            splitOnCaseChange="0"/>
+-    <filter class="solr.LengthFilterFactory" min="2" max="100" />
+-    <filter class="solr.LowerCaseFilterFactory"/>
+-  </analyzer>
+-</fieldType>
+diff --git a/solr-conf/7.x/solrconfig.xml b/solr-conf/7.x/solrconfig.xml
+index 14d1202..2efb0e8 100644
+--- a/solr-conf/7.x/solrconfig.xml
++++ b/solr-conf/7.x/solrconfig.xml
+@@ -919,7 +919,7 @@
+       <str name="enable">${solr.replication.master:false}</str>
+       <str name="replicateAfter">commit</str>
+       <str name="replicateAfter">startup</str>
+-      <str name="confFiles">${solr.replication.confFiles:schema.xml,mapping-ISOLatin1Accent.txt,protwords.txt,stopwords.txt,synonyms.txt,elevate.xml}</str>
++      <str name="confFiles">${solr.replication.confFiles:schema.xml,elevate.xml}</str>
+     </lst>
+     <lst name="slave">
+       <str name="enable">${solr.replication.slave:false}</str>
+diff --git a/solr-conf/7.x/solrcore.properties b/solr-conf/7.x/solrcore.properties
+index 99f68c9..c911b38 100644
+--- a/solr-conf/7.x/solrcore.properties
++++ b/solr-conf/7.x/solrcore.properties
+@@ -3,7 +3,7 @@ solr.replication.master=false
+ solr.replication.slave=false
+ solr.replication.pollInterval=00:00:60
+ solr.replication.masterUrl=http://localhost:8983/solr
+-solr.replication.confFiles=schema.xml,mapping-ISOLatin1Accent.txt,protwords.txt,stopwords.txt,synonyms.txt,elevate.xml
++solr.replication.confFiles=schema.xml,elevate.xml
+ solr.mlt.timeAllowed=2000
+ # You should not set your luceneMatchVersion to anything lower than your Solr
+ # Version.
+diff --git a/solr-conf/7.x/stopwords.txt b/solr-conf/7.x/stopwords.txt
+deleted file mode 100644
+index d7f243e..0000000
+--- a/solr-conf/7.x/stopwords.txt
++++ /dev/null
+@@ -1,4 +0,0 @@
+-# Contains words which shouldn't be indexed for fulltext fields, e.g., because
+-# they're too common. For documentation of the format, see
+-# http://wiki.apache.org/solr/AnalyzersTokenizersTokenFilters#solr.StopFilterFactory
+-# (Lines starting with a pound character # are ignored.)
+diff --git a/solr-conf/7.x/synonyms.txt b/solr-conf/7.x/synonyms.txt
+deleted file mode 100644
+index 7d22eea..0000000
+--- a/solr-conf/7.x/synonyms.txt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# Contains synonyms to use for your index. For the format used, see
+-# http://wiki.apache.org/solr/AnalyzersTokenizersTokenFilters#solr.SynonymFilterFactory
+-# (Lines starting with a pound character # are ignored.)
+diff --git a/src/Controller/SolrFieldTypeListBuilder.php b/src/Controller/SolrFieldTypeListBuilder.php
+index ac0c348..fb33448 100644
+--- a/src/Controller/SolrFieldTypeListBuilder.php
++++ b/src/Controller/SolrFieldTypeListBuilder.php
+@@ -208,11 +208,10 @@ class SolrFieldTypeListBuilder extends ConfigEntityListBuilder {
+    *
+    */
+   public function getSchemaExtraFieldsXml() {
+-    $multilingual = ($this->getBackend() instanceof SolrMultilingualBackendInterface);
+     $xml = '';
+     /** @var \Drupal\search_api_solr\SolrFieldTypeInterface $solr_field_type */
+     foreach ($this->load() as $solr_field_type) {
+-      foreach ($solr_field_type->getDynamicFields($multilingual) as $dynamic_field) {
++      foreach ($solr_field_type->getDynamicFields() as $dynamic_field) {
+         $xml .= '<dynamicField ';
+         foreach ($dynamic_field as $attribute => $value) {
+           $xml .= $attribute . '="' . (is_bool($value) ? ($value ? 'true' : 'false') : $value) . '" ';
+diff --git a/src/Entity/SolrFieldType.php b/src/Entity/SolrFieldType.php
+index af87a01..1688a65 100644
+--- a/src/Entity/SolrFieldType.php
++++ b/src/Entity/SolrFieldType.php
+@@ -333,8 +333,9 @@ class SolrFieldType extends ConfigEntityBase implements SolrFieldTypeInterface {
+           'termVectors' => TRUE,
+           'omitNorms' => strpos($prefix, 'to') === 0,
+         ];
+-        if ($this->custom_code && LanguageInterface::LANGCODE_NOT_SPECIFIED == $this->field_type_language_code) {
+-          // Add a language-unspecific default dynamic field for that custom code.
++        if (LanguageInterface::LANGCODE_NOT_SPECIFIED == $this->field_type_language_code) {
++          // Add a language-unspecific default dynamic field as fallback for
++          // languages we don't have a dedicated config for.
+           $dynamic_field['name'] = SearchApiSolrUtility::encodeSolrName($prefix) . '_*';
+           $dynamic_fields[] = $dynamic_field;
+         }
+diff --git a/src/Plugin/search_api/backend/SearchApiSolrBackend.php b/src/Plugin/search_api/backend/SearchApiSolrBackend.php
+index 73d761d..aeb3934 100644
+--- a/src/Plugin/search_api/backend/SearchApiSolrBackend.php
++++ b/src/Plugin/search_api/backend/SearchApiSolrBackend.php
+@@ -488,11 +488,8 @@ class SearchApiSolrBackend extends BackendPluginBase implements SolrBackendInter
+     return in_array($type, [
+       'location',
+       'rpt',
+-      'solr_string_ngram',
+       'solr_string_storage',
+-      'solr_text_ngram',
+       'solr_text_omit_norms',
+-      'solr_text_phonetic',
+       'solr_text_suggester',
+       'solr_text_unstemmed',
+       'solr_text_wstoken',
+diff --git a/src/Plugin/search_api/data_type/NgramStringDataType.php b/src/Plugin/search_api/data_type/NgramStringDataType.php
+deleted file mode 100644
+index 4483539..0000000
+--- a/src/Plugin/search_api/data_type/NgramStringDataType.php
++++ /dev/null
+@@ -1,18 +0,0 @@
+-<?php
+-
+-namespace Drupal\search_api_solr\Plugin\search_api\data_type;
+-
+-use Drupal\search_api\Plugin\search_api\data_type\StringDataType;
+-
+-/**
+- * Provides a ngram string data type.
+- *
+- * @SearchApiDataType(
+- *   id = "solr_string_ngram",
+- *   label = @Translation("String Ngram"),
+- *   description = @Translation("String fields are used for short, keyword-like character strings where you only want to find complete field values, not individual words. The Ngram derivate allows to search for strings that 'start with'."),
+- *   fallback_type = "string",
+- *   prefix = "se"
+- * )
+- */
+-class NgramStringDataType extends StringDataType {}
+diff --git a/src/Plugin/search_api/data_type/NgramTextDataType.php b/src/Plugin/search_api/data_type/NgramTextDataType.php
+deleted file mode 100644
+index 1ce8ec4..0000000
+--- a/src/Plugin/search_api/data_type/NgramTextDataType.php
++++ /dev/null
+@@ -1,18 +0,0 @@
+-<?php
+-
+-namespace Drupal\search_api_solr\Plugin\search_api\data_type;
+-
+-use Drupal\search_api\Plugin\search_api\data_type\TextDataType;
+-
+-/**
+- * Provides a ngram full text data type.
+- *
+- * @SearchApiDataType(
+- *   id = "solr_text_ngram",
+- *   label = @Translation("Fulltext Ngram"),
+- *   description = @Translation("Full text field with edgeNgramFilter."),
+- *   fallback_type = "text",
+- *   prefix = "te"
+- * )
+- */
+-class NgramTextDataType extends TextDataType {}
+diff --git a/src/Plugin/search_api/data_type/PhoneticTextDataType.php b/src/Plugin/search_api/data_type/PhoneticTextDataType.php
+deleted file mode 100644
+index 6c46a04..0000000
+--- a/src/Plugin/search_api/data_type/PhoneticTextDataType.php
++++ /dev/null
+@@ -1,18 +0,0 @@
+-<?php
+-
+-namespace Drupal\search_api_solr\Plugin\search_api\data_type;
+-
+-use Drupal\search_api\Plugin\search_api\data_type\TextDataType;
+-
+-/**
+- * Provides a phonetic full text data type.
+- *
+- * @SearchApiDataType(
+- *   id = "solr_text_phonetic",
+- *   label = @Translation("Fulltext Phonetic"),
+- *   description = @Translation("Full text field with phonetic matching."),
+- *   fallback_type = "text",
+- *   prefix = "phon"
+- * )
+- */
+-class PhoneticTextDataType extends TextDataType {}
+diff --git a/tests/modules/search_api_solr_test/config/install/search_api.index.solr_search_index.yml b/tests/modules/search_api_solr_test/config/install/search_api.index.solr_search_index.yml
+index 4c62fc1..a283867 100644
+--- a/tests/modules/search_api_solr_test/config/install/search_api.index.solr_search_index.yml
++++ b/tests/modules/search_api_solr_test/config/install/search_api.index.solr_search_index.yml
+@@ -54,14 +54,24 @@ field_settings:
+     type: string
+     datasource_id: 'entity:entity_test_mulrev_changed'
+     property_path: category
++  category_edge:
++    label: Category Edge Ngram
++    type: 'solr_text_custom:edge'
++    datasource_id: 'entity:entity_test_mulrev_changed'
++    property_path: category
++  category_edge_string:
++    label: Category Edge Ngram String
++    type: 'solr_text_custom:edgestring'
++    datasource_id: 'entity:entity_test_mulrev_changed'
++    property_path: category
+   category_ngram:
+     label: Category Ngram
+-    type: solr_text_ngram
++    type: 'solr_text_custom:ngram'
+     datasource_id: 'entity:entity_test_mulrev_changed'
+     property_path: category
+   category_ngram_string:
+     label: Category Ngram String
+-    type: solr_string_ngram
++    type: 'solr_text_custom:ngramstring'
+     datasource_id: 'entity:entity_test_mulrev_changed'
+     property_path: category
+   width:
+diff --git a/tests/src/Kernel/SearchApiSolrTest.php b/tests/src/Kernel/SearchApiSolrTest.php
+index 8fd4a37..4b1af3f 100644
+--- a/tests/src/Kernel/SearchApiSolrTest.php
++++ b/tests/src/Kernel/SearchApiSolrTest.php
+@@ -577,7 +577,7 @@ class SearchApiSolrTest extends SolrBackendTestBase {
+     $this->assertArrayHasKey('name', $fulltext_fields);
+     $this->assertArrayHasKey('body', $fulltext_fields);
+     $this->assertArrayHasKey('body_unstemmed', $fulltext_fields);
+-    $this->assertArrayHasKey('category_ngram', $fulltext_fields);
++    $this->assertArrayHasKey('category_edge', $fulltext_fields);
+     // body_suggest should be removed by getQueryFulltextFields().
+     $this->assertArrayNotHasKey('body_suggest', $fulltext_fields);
+   }
+@@ -913,21 +913,21 @@ class SearchApiSolrTest extends SolrBackendTestBase {
+     // @todo more suggester tests
+ 
+     // Tests ngram search result.
+-    $results = $this->buildSearch(['tre'], [], ['category_ngram'])
++    $results = $this->buildSearch(['tre'], [], ['category_edge'])
+       ->execute();
+     $this->assertResults([1, 2], $results, 'Ngram text "tre".');
+ 
+     $results = $this->buildSearch([], [], [])
+-      ->addCondition('category_ngram_string', 'tre')
++      ->addCondition('category_edge_string', 'tre')
+       ->execute();
+     $this->assertResults([2], $results, 'Ngram string "tre".');
+ 
+-    $results = $this->buildSearch(['Dog'], [], ['category_ngram'])
++    $results = $this->buildSearch(['Dog'], [], ['category_edge'])
+       ->execute();
+     $this->assertResults([1], $results, 'Ngram text "Dog".');
+ 
+     $results = $this->buildSearch([], [], [])
+-      ->addCondition('category_ngram_string', 'Dog')
++      ->addCondition('category_edge_string', 'Dog')
+       ->execute();
+     $this->assertResults([1], $results, 'Ngram string "Dog".');
+   }
+@@ -1187,9 +1187,6 @@ class SearchApiSolrTest extends SolrBackendTestBase {
+           'accents_en.txt' => [
+             '"\u00C4" => "A"'
+           ],
+-          'mapping-ISOLatin1Accent.txt' => [
+-            '"\u00c4" => "A"',
+-          ],
+           'solrcore.properties' => [],
+           'elevate.xml' => [],
+           'schema.xml' => [],
+@@ -1232,9 +1229,6 @@ class SearchApiSolrTest extends SolrBackendTestBase {
+           'accents_de.txt' => [
+             ' Not needed if German2 Porter stemmer is used.'
+           ],
+-          'mapping-ISOLatin1Accent.txt' => [
+-            '"\u00c4" => "A"',
+-          ],
+           'solrcore.properties' => [],
+           'elevate.xml' => [],
+           'schema.xml' => [],

@@ -25,7 +25,7 @@ class Curl extends Configurable implements AdapterInterface
      *
      * @return Response
      */
-    public function execute($request, $endpoint)
+    public function execute(Request $request, Endpoint $endpoint): Response
     {
         return $this->getData($request, $endpoint);
     }
@@ -38,9 +38,8 @@ class Curl extends Configurable implements AdapterInterface
      *
      * @return Response
      */
-    public function getResponse($handle, $httpResponse)
+    public function getResponse($handle, $httpResponse): Response
     {
-        // @codeCoverageIgnoreStart
         if (false !== $httpResponse && null !== $httpResponse) {
             $data = $httpResponse;
             $info = curl_getinfo($handle);
@@ -55,7 +54,6 @@ class Curl extends Configurable implements AdapterInterface
         curl_close($handle);
 
         return new Response($data, $headers);
-        // @codeCoverageIgnoreEnd
     }
 
     /**
@@ -71,8 +69,8 @@ class Curl extends Configurable implements AdapterInterface
      */
     public function createHandle($request, $endpoint)
     {
-        // @codeCoverageIgnoreStart
-        $uri = $endpoint->getBaseUri().$request->getUri();
+        $uri = AdapterHelper::buildUri($request, $endpoint);
+
         $method = $request->getMethod();
         $options = $this->createOptions($request, $endpoint);
 
@@ -120,8 +118,7 @@ class Curl extends Configurable implements AdapterInterface
             curl_setopt($handler, CURLOPT_POST, true);
 
             if ($request->getFileUpload()) {
-                $helper = new AdapterHelper();
-                $data = $helper->buildUploadBodyFromRequest($request);
+                $data = AdapterHelper::buildUploadBodyFromRequest($request);
                 curl_setopt($handler, CURLOPT_POSTFIELDS, $data);
             } else {
                 curl_setopt($handler, CURLOPT_POSTFIELDS, $request->getRawData());
@@ -132,12 +129,20 @@ class Curl extends Configurable implements AdapterInterface
             curl_setopt($handler, CURLOPT_CUSTOMREQUEST, 'HEAD');
         } elseif (Request::METHOD_DELETE == $method) {
             curl_setopt($handler, CURLOPT_CUSTOMREQUEST, 'DELETE');
+        } elseif (Request::METHOD_PUT == $method) {
+            curl_setopt($handler, CURLOPT_CUSTOMREQUEST, 'PUT');
+
+            if ($request->getFileUpload()) {
+                $data = AdapterHelper::buildUploadBodyFromRequest($request);
+                curl_setopt($handler, CURLOPT_POSTFIELDS, $data);
+            } else {
+                curl_setopt($handler, CURLOPT_POSTFIELDS, $request->getRawData());
+            }
         } else {
             throw new InvalidArgumentException("unsupported method: $method");
         }
 
         return $handler;
-        // @codeCoverageIgnoreEnd
     }
 
     /**
@@ -167,14 +172,12 @@ class Curl extends Configurable implements AdapterInterface
      *
      * @return Response
      */
-    protected function getData($request, $endpoint)
+    protected function getData($request, $endpoint): Response
     {
-        // @codeCoverageIgnoreStart
         $handle = $this->createHandle($request, $endpoint);
         $httpResponse = curl_exec($handle);
 
         return $this->getResponse($handle, $httpResponse);
-        // @codeCoverageIgnoreEnd
     }
 
     /**
@@ -186,13 +189,11 @@ class Curl extends Configurable implements AdapterInterface
      */
     protected function init()
     {
-        // @codeCoverageIgnoreStart
         if (!function_exists('curl_init')) {
             throw new RuntimeException('cURL is not available, install it to use the CurlHttp adapter');
         }
 
         parent::init();
-        // @codeCoverageIgnoreEnd
     }
 
     /**
@@ -205,7 +206,6 @@ class Curl extends Configurable implements AdapterInterface
      */
     protected function createOptions($request, $endpoint)
     {
-        // @codeCoverageIgnoreStart
         $options = [
             'timeout' => $endpoint->getTimeout(),
         ];
@@ -217,6 +217,5 @@ class Curl extends Configurable implements AdapterInterface
         }
 
         return $options;
-        // @codeCoverageIgnoreEnd
     }
 }

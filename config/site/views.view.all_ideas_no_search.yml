@@ -580,7 +580,7 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
-      use_ajax: true
+      use_ajax: false
       css_class: main-listing
     cache_metadata:
       max-age: -1
@@ -605,7 +605,7 @@ display:
           metatags:
             title: 'Ideas | [site:name]'
             description: 'Ideas for home appartement or house interiors. Modern, beautiful and simple to use living room, bed and bedroom, bathroom, kitchen and hall designs and decor in pictures. Architectural inspiration with new trendy contemporary indoor space planning, nice furniture and decoration. Small living room or bedroom designs.'
-      path: ideas
+      path: ideas-old
     cache_metadata:
       max-age: -1
       contexts:
